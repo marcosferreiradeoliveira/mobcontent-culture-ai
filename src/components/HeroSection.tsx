@@ -6,7 +6,7 @@ export const HeroSection = () => {
   const [currentPillar, setCurrentPillar] = useState(0);
   const pillars = [
     { icon: Camera, label: "Audiovisual", color: "text-white" },
-    { icon: Brain, label: "IA", color: "text-electric" },
+    { icon: Brain, label: "IA", color: "text-forest-light" },
     { icon: Smartphone, label: "Apps", color: "text-white" }
   ];
 
@@ -18,23 +18,32 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-lab-dark to-secondary">
-      {/* Neural Network Background */}
-      <div className="absolute inset-0 neural-grid opacity-30" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-lab-dark to-lab-medium experimental-cursor">
+      {/* Parallax Background Layers */}
+      <div className="absolute inset-0 parallax-layer" style={{ transform: 'translateZ(-10px) scale(1.1)' }}>
+        <div className="neural-grid opacity-20" />
+      </div>
       
-      {/* Electric Circuit Lines */}
+      {/* Morphing Geometric Shapes */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-electric to-transparent animate-electric-flow" />
-        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-electric to-transparent animate-electric-flow delay-1000" />
-        <div className="absolute left-1/4 top-0 w-px h-full bg-gradient-to-b from-transparent via-electric to-transparent animate-electric-flow delay-500" />
-        <div className="absolute right-1/4 top-0 w-px h-full bg-gradient-to-b from-transparent via-electric to-transparent animate-electric-flow delay-1500" />
+        <div className="absolute top-20 left-20 w-32 h-32 bg-forest-accent/10 morphing-shape animate-parallax-float" />
+        <div className="absolute bottom-40 right-32 w-24 h-24 bg-forest-light/15 morphing-shape animate-parallax-float delay-[5s]" />
+        <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-forest/20 morphing-shape animate-parallax-float delay-[10s]" />
+      </div>
+      
+      {/* Enhanced Circuit Lines */}
+      <div className="absolute inset-0 parallax-layer" style={{ transform: 'translateZ(-5px)' }}>
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-forest-accent to-transparent animate-electric-flow" />
+        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-forest-light to-transparent animate-electric-flow delay-1000" />
+        <div className="absolute left-1/4 top-0 w-px h-full bg-gradient-to-b from-transparent via-forest-accent to-transparent animate-electric-flow delay-500" />
+        <div className="absolute right-1/4 top-0 w-px h-full bg-gradient-to-b from-transparent via-forest-light to-transparent animate-electric-flow delay-1500" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         {/* Logo/Brand Animation */}
-        <div className="mb-12 animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tight">
-            mob<span className="text-gradient-electric">CONTENT</span>
+        <div className="mb-12 animate-fade-in-up parallax-layer" style={{ transform: 'translateZ(5px)' }}>
+          <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tight filter-forest">
+            mob<span className="text-gradient-parallax">CONTENT</span>
           </h1>
         </div>
 
@@ -50,13 +59,13 @@ export const HeroSection = () => {
                   isActive ? 'scale-125 filter-electric' : 'scale-100 opacity-60'
                 }`}
               >
-                <div className={`p-6 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 ${
-                  isActive ? 'border-electric shadow-electric' : ''
+                <div className={`p-6 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 morphing-shape ${
+                  isActive ? 'border-forest-accent shadow-forest' : ''
                 }`}>
-                  <Icon className={`w-12 h-12 ${pillar.color} ${isActive ? 'animate-float' : ''}`} />
+                  <Icon className={`w-12 h-12 ${pillar.color} ${isActive ? 'animate-float filter-forest' : ''}`} />
                 </div>
                 <p className={`mt-4 text-sm font-medium ${
-                  isActive ? 'text-electric' : 'text-white/70'
+                  isActive ? 'text-forest-light' : 'text-white/70'
                 }`}>
                   {pillar.label}
                 </p>
@@ -71,7 +80,7 @@ export const HeroSection = () => {
             Inteligência Artificial para
           </h2>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
-            Narrativas <span className="text-gradient-electric">Culturais</span>
+            Narrativas <span className="text-gradient-forest">Culturais</span>
           </h2>
           
           <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
@@ -85,7 +94,7 @@ export const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up delay-900">
           <Button 
             size="lg" 
-            className="bg-electric hover:bg-electric-dark text-white font-semibold px-8 py-4 electric-glow group"
+            className="bg-forest hover:bg-forest-dark text-white font-semibold px-8 py-4 forest-glow group morphing-shape"
           >
             Conheça nossos projetos
             <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -101,11 +110,14 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-2 h-2 bg-electric rounded-full animate-float delay-1000" />
-      <div className="absolute top-40 right-32 w-3 h-3 bg-electric/60 rounded-full animate-float delay-2000" />
-      <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-electric rounded-full animate-float delay-3000" />
-      <div className="absolute bottom-20 right-20 w-2 h-2 bg-electric/80 rounded-full animate-float delay-4000" />
+      {/* Enhanced Floating Elements */}
+      <div className="absolute top-20 left-20 w-3 h-3 bg-forest-accent rounded-full animate-parallax-float delay-1000 parallax-layer" />
+      <div className="absolute top-40 right-32 w-4 h-4 bg-forest-light/60 rounded-full animate-parallax-float delay-2000 parallax-layer" />
+      <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-forest rounded-full animate-parallax-float delay-3000 parallax-layer" />
+      <div className="absolute bottom-20 right-20 w-3 h-3 bg-forest-accent/80 rounded-full animate-parallax-float delay-4000 parallax-layer" />
+      
+      {/* Custom Cursor */}
+      <div className="custom-cursor" id="customCursor" />
     </section>
   );
 };

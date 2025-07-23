@@ -62,11 +62,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// mobCONTENT custom colors
-				electric: {
-					DEFAULT: 'hsl(var(--electric-blue))',
-					dark: 'hsl(var(--electric-blue-dark))',
-					light: 'hsl(var(--electric-blue-light))'
+				// mobCONTENT custom colors - Forest Green Palette
+				forest: {
+					DEFAULT: 'hsl(var(--forest-green))',
+					dark: 'hsl(var(--forest-green-dark))',
+					light: 'hsl(var(--forest-green-light))',
+					accent: 'hsl(var(--forest-accent))'
 				},
 				gallery: 'hsl(var(--gallery-gray))',
 				lab: {
@@ -127,15 +128,36 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'gradient-shift': {
+					'0%, 100%': {
+						'background-position': '0% 50%'
+					},
+					'50%': {
+						'background-position': '100% 50%'
+					}
+				},
+				'parallax-float': {
+					'0%, 100%': {
+						transform: 'translate3d(0, 0, 0) rotateY(0deg)'
+					},
+					'33%': {
+						transform: 'translate3d(-10px, -20px, 10px) rotateY(2deg)'
+					},
+					'66%': {
+						transform: 'translate3d(10px, -10px, -5px) rotateY(-1deg)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'neural-pulse': 'neural-pulse 8s ease-in-out infinite',
-				'electric-flow': 'electric-flow 2s ease-in-out infinite',
-				'float': 'float 6s ease-in-out infinite',
-				'fade-in-up': 'fade-in-up 0.8s ease-out'
+				'neural-pulse': 'neural-pulse 12s ease-in-out infinite',
+				'electric-flow': 'electric-flow 3s ease-in-out infinite',
+				'float': 'float 8s ease-in-out infinite',
+				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'gradient-shift': 'gradient-shift 4s ease-in-out infinite',
+				'parallax-float': 'parallax-float 15s ease-in-out infinite'
 			}
 		}
 	},
