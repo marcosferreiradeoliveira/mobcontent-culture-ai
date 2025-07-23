@@ -8,35 +8,58 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* mobCONTENT Design System - Monochromatic with Electric Blue */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 5%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 5%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 5%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 212 100% 50%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 85%;
+    --input: 0 0% 90%;
+    --ring: 212 100% 50%;
 
-    --radius: 0.5rem;
+    /* Custom Design Tokens */
+    --electric-blue: 212 100% 50%;
+    --electric-blue-dark: 212 100% 40%;
+    --electric-blue-light: 212 100% 60%;
+    --gallery-gray: 0 0% 95%;
+    --lab-dark: 0 0% 8%;
+    --lab-medium: 0 0% 15%;
+    
+    /* Gradients */
+    --gradient-electric: linear-gradient(135deg, hsl(212 100% 50%), hsl(212 100% 60%));
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 5%), hsl(0 0% 15%));
+    --gradient-neural: radial-gradient(circle at center, hsl(212 100% 50% / 0.1), transparent);
+    
+    /* Shadows */
+    --shadow-electric: 0 10px 40px hsl(212 100% 50% / 0.3);
+    --shadow-gallery: 0 20px 60px hsl(0 0% 0% / 0.1);
+    --shadow-neural: 0 0 80px hsl(212 100% 50% / 0.2);
+    
+    /* Animations */
+    --transition-electric: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --radius: 0.25rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +124,115 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Neural Network Animation */
+  .neural-grid {
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(var(--electric-blue) / 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 80% 80%, hsl(var(--electric-blue) / 0.05) 1px, transparent 1px);
+    background-size: 60px 60px, 40px 40px;
+    animation: neural-pulse 8s ease-in-out infinite;
+  }
+
+  .electric-glow {
+    box-shadow: var(--shadow-electric);
+    transition: var(--transition-electric);
+  }
+
+  .electric-glow:hover {
+    box-shadow: 0 15px 60px hsl(var(--electric-blue) / 0.4);
+    transform: translateY(-2px);
+  }
+
+  .gallery-hover {
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--electric-blue) / 0.1), transparent);
+    transition: left 0.8s ease;
+  }
+
+  .gallery-hover:hover::before {
+    left: 100%;
+  }
+
+  .text-electric {
+    color: hsl(var(--electric-blue));
+  }
+
+  .bg-electric {
+    background: var(--gradient-electric);
+  }
+
+  .border-electric {
+    border-color: hsl(var(--electric-blue));
+  }
+
+  .cursor-trail {
+    pointer-events: none;
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: hsl(var(--electric-blue) / 0.6);
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+  }
+}
+
+@layer utilities {
+  .text-gradient-electric {
+    background: var(--gradient-electric);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .filter-electric {
+    filter: drop-shadow(0 0 20px hsl(var(--electric-blue) / 0.3));
+  }
+}
+
+@keyframes neural-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes electric-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
