@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Camera, Smartphone } from "lucide-react";
+import { useTypingEffect } from "@/hooks/useTypingEffect";
+import blackWomanPortrait from "@/assets/black-woman-portrait.jpg";
+import machineLearning from "@/assets/machine-learning.jpg";
+import culturalArt from "@/assets/cultural-art.jpg";
 
 export const HeroSection = () => {
   const [currentPillar, setCurrentPillar] = useState(0);
@@ -10,6 +14,18 @@ export const HeroSection = () => {
     { icon: Smartphone, label: "Apps", color: "text-white" }
   ];
 
+  const taglineTyping = useTypingEffect({
+    text: "Criamos o futuro da cultura. Em código, em pixels e em narrativas.",
+    speed: 50,
+    delay: 1000
+  });
+
+  const descriptionTyping = useTypingEffect({
+    text: "Unindo IA, audiovisual e apps para redefinir a interação humana com a cultura.",
+    speed: 30,
+    delay: 2500
+  });
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPillar((prev) => (prev + 1) % pillars.length);
@@ -17,11 +33,67 @@ export const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const cursor = document.getElementById('customCursor');
+    const handleMouseMove = (e: MouseEvent) => {
+      if (cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      }
+    };
+
+    const handleMouseEnter = () => {
+      if (cursor) cursor.classList.add('hover');
+    };
+
+    const handleMouseLeave = () => {
+      if (cursor) cursor.classList.remove('hover');
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    
+    const hoverElements = document.querySelectorAll('button, a, .gallery-hover');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', handleMouseEnter);
+      el.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      hoverElements.forEach(el => {
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
+      });
+    };
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-lab-dark to-lab-medium experimental-cursor">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-lab-darker via-primary to-lab-dark experimental-cursor">
+      {/* Parallax Background Images */}
+      <div className="absolute inset-0">
+        <img src={blackWomanPortrait} alt="" className="parallax-bg-image" />
+        <img src={machineLearning} alt="" className="parallax-bg-image" />
+        <img src={culturalArt} alt="" className="parallax-bg-image" />
+      </div>
+      
+      {/* Floating Particles */}
+      <div className="floating-particles">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 15}s`,
+              animationDuration: `${15 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+      </div>
+
       {/* Parallax Background Layers */}
       <div className="absolute inset-0 parallax-layer" style={{ transform: 'translateZ(-10px) scale(1.1)' }}>
-        <div className="neural-grid opacity-20" />
+        <div className="neural-grid opacity-15" />
       </div>
       
       {/* Morphing Geometric Shapes */}
@@ -42,7 +114,7 @@ export const HeroSection = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         {/* Logo/Brand Animation */}
         <div className="mb-12 animate-fade-in-up parallax-layer" style={{ transform: 'translateZ(5px)' }}>
-          <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tight filter-forest">
+          <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight text-texture">
             mob<span className="text-gradient-parallax">CONTENT</span>
           </h1>
         </div>
@@ -83,11 +155,14 @@ export const HeroSection = () => {
             Narrativas <span className="text-gradient-forest">Culturais</span>
           </h2>
           
-          <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-            Criamos o futuro da cultura. Em código, em pixels e em narrativas.
-            <br />
-            Unindo IA, audiovisual e apps para redefinir a interação humana com a cultura.
-          </p>
+          <div className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed space-y-4">
+            <p ref={taglineTyping.ref} className={`${taglineTyping.isTyping ? 'typing-cursor' : ''}`}>
+              {taglineTyping.displayText}
+            </p>
+            <p ref={descriptionTyping.ref} className={`${descriptionTyping.isTyping ? 'typing-cursor' : ''}`}>
+              {descriptionTyping.displayText}
+            </p>
+          </div>
         </div>
 
         {/* CTA Buttons */}

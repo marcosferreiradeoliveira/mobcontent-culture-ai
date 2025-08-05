@@ -8,43 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* mobCONTENT Design System - Dark Green Palette */
-    --background: 0 0% 98%;
-    --foreground: 181 85% 15%;
+    /* mobCONTENT Design System - Dark Theme */
+    --background: 220 15% 3%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 181 85% 15%;
+    --card: 220 15% 8%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 181 85% 15%;
+    --popover: 220 15% 8%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 181 85% 15%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 220 15% 3%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 181 20% 25%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 181 85% 25%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 0 0% 92%;
-    --muted-foreground: 181 15% 45%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 181 85% 35%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 181 75% 35%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 88%;
-    --input: 0 0% 94%;
-    --ring: 181 85% 35%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 181 75% 35%;
 
-    /* Custom Design Tokens - Green Palette */
-    --forest-green: 181 85% 15%;        /* #0d7f80 */
-    --forest-green-dark: 181 85% 10%;   /* darker variant */
-    --forest-green-light: 181 85% 35%;  /* lighter variant */
-    --forest-accent: 181 60% 45%;       /* accent green */
-    --gallery-gray: 0 0% 96%;
-    --lab-dark: 181 30% 8%;
-    --lab-medium: 181 20% 18%;
+    /* Custom Design Tokens - Forest Green Palette */
+    --forest-green: 181 85% 25%;
+    --forest-green-dark: 181 85% 15%;
+    --forest-green-light: 181 60% 45%;
+    --forest-accent: 181 75% 35%;
+    --gallery-gray: 220 9% 46%;
+    --lab-dark: 220 15% 8%;
+    --lab-medium: 220 12% 12%;
+    --lab-darker: 220 15% 5%;
     
     /* Gradients */
     --gradient-forest: linear-gradient(135deg, hsl(181 85% 15%), hsl(181 85% 35%));
@@ -202,12 +203,115 @@ All colors MUST be HSL.
     position: fixed;
     width: 24px;
     height: 24px;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.1s ease;
+    mix-blend-mode: difference;
+  }
+
+  .custom-cursor::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid hsl(var(--forest-accent));
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transition: all 0.2s ease;
+  }
+
+  .custom-cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 12px;
+    background: hsl(var(--forest-accent));
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 2px;
+  }
+
+  .custom-cursor.hover::before {
+    border-left-width: 12px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+  }
+
+  /* Parallax Background Images */
+  .parallax-bg-image {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    opacity: 0.15;
+    transform: translateZ(-20px) scale(1.2);
+    filter: blur(1px) grayscale(20%);
+    transition: transform 0.5s ease-out;
+  }
+
+  .parallax-bg-image:nth-child(1) {
+    top: -10%;
+    left: -10%;
+    animation: parallax-float 20s ease-in-out infinite;
+  }
+
+  .parallax-bg-image:nth-child(2) {
+    bottom: -10%;
+    right: -10%;
+    animation: parallax-float 25s ease-in-out infinite reverse;
+  }
+
+  .parallax-bg-image:nth-child(3) {
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%) translateZ(-15px) scale(1.1);
+    animation: parallax-float 30s ease-in-out infinite;
+  }
+
+  /* Enhanced Particles */
+  .floating-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
     background: hsl(var(--forest-accent));
     border-radius: 50%;
-    pointer-events: none;
-    mix-blend-mode: difference;
-    z-index: 9999;
-    transition: transform 0.1s ease;
+    opacity: 0.6;
+    animation: particle-float 15s linear infinite;
+  }
+
+  .particle:nth-child(odd) {
+    background: hsl(var(--forest-light));
+    animation-duration: 20s;
+  }
+
+  .particle:nth-child(3n) {
+    width: 2px;
+    height: 2px;
+    animation-duration: 25s;
+  }
+
+  /* Text Textures */
+  .text-texture {
+    background: linear-gradient(135deg, 
+      hsl(var(--foreground)) 0%, 
+      hsl(var(--forest-light)) 30%, 
+      hsl(var(--foreground)) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease-in-out infinite;
   }
 
   .cursor-trail {
@@ -301,5 +405,48 @@ All colors MUST be HSL.
   }
   66% {
     transform: translate3d(10px, -10px, -5px) rotateY(-1deg);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing-cursor::after {
+  content: '|';
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: hsl(var(--forest-accent));
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
   }
 }
