@@ -68,7 +68,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-lab-darker via-primary to-lab-dark experimental-cursor">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black experimental-cursor">
       {/* Parallax Background Images */}
       <div className="absolute inset-0">
         <img src={blackWomanPortrait} alt="" className="parallax-bg-image" />

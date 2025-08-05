@@ -30,7 +30,7 @@ const pillars = [
 
 export const PillarsSection = () => {
   return (
-    <section className="py-32 bg-gallery relative overflow-hidden">
+    <section className="py-16 bg-lab-darker relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-8">
         <div className="absolute inset-0 bg-gradient-to-br from-forest-accent/15 via-transparent to-forest/10" />
@@ -39,11 +39,11 @@ export const PillarsSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-primary mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             Nossos <span className="text-gradient-forest">Pilares</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
             Três expertises integradas que formam nossa metodologia única 
             para transformar a interação humana com a cultura
           </p>
@@ -64,7 +64,7 @@ export const PillarsSection = () => {
                 }}
               >
                 {/* Card */}
-                <div className="relative bg-white/90 backdrop-blur-lg rounded-2xl p-8 h-full transition-all duration-700 gallery-hover border border-border/50 hover:border-forest-accent/50 hover:shadow-forest morphing-shape">
+                <div className="relative bg-card/30 backdrop-blur-lg rounded-2xl p-6 h-full transition-all duration-700 gallery-hover border border-white/10 hover:border-forest-accent/50 hover:shadow-forest morphing-shape">
                   {/* Gradient Background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
                   
@@ -78,12 +78,12 @@ export const PillarsSection = () => {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-2xl font-bold text-primary mb-4 group-hover:text-forest-light transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-forest-light transition-colors duration-300">
                       {pillar.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                    <p className="text-white/80 mb-4 leading-relaxed text-sm">
                       {pillar.description}
                     </p>
 
@@ -93,7 +93,7 @@ export const PillarsSection = () => {
                         {pillar.highlights.map((highlight, idx) => (
                           <div
                             key={idx}
-                            className="text-sm text-primary/70 bg-primary/5 px-3 py-2 rounded-lg group-hover:bg-forest-accent/15 group-hover:text-forest transition-all duration-300 morphing-shape"
+                            className="text-xs text-white/70 bg-white/5 px-2 py-1 rounded-lg group-hover:bg-forest-accent/15 group-hover:text-forest transition-all duration-300 morphing-shape"
                           >
                             {highlight}
                           </div>
@@ -121,7 +121,7 @@ export const PillarsSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-20">
+        <div className="text-center mt-12">
           <Button 
             size="lg"
             className="bg-forest hover:bg-forest-dark text-white font-semibold px-12 py-4 forest-glow morphing-shape"

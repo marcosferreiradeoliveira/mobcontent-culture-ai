@@ -38,7 +38,7 @@ const awards = [
 
 export const SocialProofSection = () => {
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
+    <section className="py-20 bg-lab-darker relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="neural-grid" />
@@ -46,19 +46,19 @@ export const SocialProofSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Clients Section */}
-        <div className="mb-24">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-primary mb-4">
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
             Clientes que <span className="text-gradient-forest">Confiam</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Grandes instituições culturais e marcas escolhem a mobCONTENT 
             para transformar suas narrativas
           </p>
         </div>
 
         {/* Clients Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {clients.map((client, index) => (
             <div
               key={client.name}
@@ -68,13 +68,13 @@ export const SocialProofSection = () => {
                 transform: `translateZ(${index * 2}px)`
               }}
             >
-              <div className="aspect-square bg-gallery rounded-2xl flex items-center justify-center gallery-hover border border-border/20 hover:border-forest-accent/40 transition-all duration-300 morphing-shape">
+              <div className="aspect-square bg-card/20 rounded-lg flex items-center justify-center gallery-hover border border-white/10 hover:border-forest-accent/40 transition-all duration-300 morphing-shape">
                 {/* Placeholder for logo - will be replaced with actual logos */}
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-forest-accent/10 rounded-xl mx-auto mb-2 flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors morphing-shape">
-                    <span className="text-forest font-bold text-sm">{client.logo}</span>
+                  <div className="w-8 h-8 bg-forest-accent/10 rounded-lg mx-auto mb-1 flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors morphing-shape">
+                    <span className="text-forest font-bold text-xs">{client.logo}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground group-hover:text-forest transition-colors">
+                  <span className="text-xs text-white/60 group-hover:text-forest transition-colors">
                     {client.name.split(' ')[0]}
                   </span>
                 </div>
@@ -86,11 +86,11 @@ export const SocialProofSection = () => {
 
         {/* Awards Section */}
         <div>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-primary mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
             Reconhecimento <span className="text-gradient-forest">Internacional</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Nosso trabalho é reconhecido globalmente por sua excelência 
             e impacto transformador na cultura
           </p>
@@ -110,7 +110,7 @@ export const SocialProofSection = () => {
                   transform: `translateZ(${index * 4}px) rotateX(${index}deg)`
                 }}
               >
-                <div className="bg-white border border-border/20 rounded-2xl p-6 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest transition-all duration-500 morphing-shape">
+                <div className="bg-card/20 border border-white/10 rounded-xl p-4 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest transition-all duration-500 morphing-shape">
                   {/* Icon */}
                   <div className="mb-6">
                     <div className="w-14 h-14 bg-forest-accent/10 rounded-2xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">
@@ -120,13 +120,13 @@ export const SocialProofSection = () => {
 
                   {/* Content */}
                   <div>
-                    <h3 className="text-lg font-bold text-primary mb-1 group-hover:text-forest-light transition-colors duration-300">
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-forest-light transition-colors duration-300">
                       {award.title}
                     </h3>
-                    <p className="text-forest font-semibold text-sm mb-3">
+                    <p className="text-forest font-semibold text-sm mb-2">
                       {award.subtitle}
                     </p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-white/70 text-xs leading-relaxed">
                       {award.description}
                     </p>
                   </div>

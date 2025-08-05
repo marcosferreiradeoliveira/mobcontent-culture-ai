@@ -8,12 +8,11 @@ const cases = [
     id: "oraculo",
     category: "IA",
     title: "Oráculo Cultural",
-    subtitle: "Inteligência Artificial para Narrativas Museológicas",
-    description: "Sistema de IA que transforma a experiência museológica através de narrativas personalizadas e interativas, revolucionando como visitantes se conectam com acervos culturais.",
+    subtitle: "IA para Narrativas Museológicas",
+    description: "Sistema de IA que transforma a experiência museológica através de narrativas personalizadas e interativas.",
     achievements: [
       { icon: Award, label: "Prêmio British Council" },
-      { icon: Users, label: "+50k interações" },
-      { icon: Globe, label: "Expansão internacional" }
+      { icon: Users, label: "+50k interações" }
     ],
     image: "/api/placeholder/600/400",
     color: "forest-accent"
@@ -22,12 +21,11 @@ const cases = [
     id: "museu-lingua",
     category: "Audiovisual",
     title: "Museu da Língua Portuguesa", 
-    subtitle: "Produção Audiovisual para Instituição Cultural",
-    description: "Criação de conteúdo audiovisual imersivo que celebra a riqueza da língua portuguesa, combinando tecnologia e narrativa para criar experiências culturais únicas.",
+    subtitle: "Produção Audiovisual Cultural",
+    description: "Criação de conteúdo audiovisual imersivo que celebra a riqueza da língua portuguesa.",
     achievements: [
       { icon: Award, label: "Melhor Produção Cultural" },
-      { icon: Users, label: "+1M visualizações" },
-      { icon: Globe, label: "Reconhecimento nacional" }
+      { icon: Users, label: "+1M visualizações" }
     ],
     image: "/api/placeholder/600/400",
     color: "forest"
@@ -36,15 +34,53 @@ const cases = [
     id: "montana-limpia",
     category: "Apps",
     title: "Montaña Limpia",
-    subtitle: "App Internacional para Turismo Sustentável",
-    description: "Aplicativo desenvolvido para cliente internacional que promove turismo sustentável através de tecnologia, conectando viajantes a experiências culturais responsáveis.",
+    subtitle: "App para Turismo Sustentável",
+    description: "Aplicativo internacional que promove turismo sustentável através de tecnologia.",
     achievements: [
       { icon: Globe, label: "Cliente Internacional" },
-      { icon: Users, label: "Multi-idiomas" },
-      { icon: Award, label: "Impacto Ambiental" }
+      { icon: Users, label: "Multi-idiomas" }
     ],
     image: "/api/placeholder/600/400",
     color: "forest-light"
+  },
+  {
+    id: "griot-ai",
+    category: "IA",
+    title: "Griot AI",
+    subtitle: "Narrativas Interativas com IA",
+    description: "Plataforma de IA que cria narrativas culturais interativas e personalizadas.",
+    achievements: [
+      { icon: Award, label: "Inovação em IA" },
+      { icon: Globe, label: "Alcance Internacional" }
+    ],
+    image: "/api/placeholder/600/400",
+    color: "forest-accent"
+  },
+  {
+    id: "etrilhas",
+    category: "Apps",
+    title: "eTrilhas",
+    subtitle: "App de Turismo Digital",
+    description: "Aplicativo que conecta viajantes a experiências culturais autênticas.",
+    achievements: [
+      { icon: Users, label: "Múltiplas cidades" },
+      { icon: Award, label: "App do Ano" }
+    ],
+    image: "/api/placeholder/600/400",
+    color: "forest-light"
+  },
+  {
+    id: "memoria-negra",
+    category: "IA",
+    title: "Museu da Memória Negra",
+    subtitle: "IA Generativa para Cultura",
+    description: "Sistema de IA generativa que preserva e compartilha histórias da cultura negra.",
+    achievements: [
+      { icon: Award, label: "Impacto Social" },
+      { icon: Globe, label: "Reconhecimento Global" }
+    ],
+    image: "/api/placeholder/600/400",
+    color: "forest-accent"
   }
 ];
 
@@ -56,7 +92,7 @@ export const CasesSection = () => {
   });
 
   return (
-    <section className="py-32 bg-lab-darker relative overflow-hidden">
+    <section className="py-32 bg-black relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <img src={imaginePosters} alt="" className="parallax-bg-image opacity-10" />
@@ -77,14 +113,14 @@ export const CasesSection = () => {
         </div>
 
         {/* Cases Grid - Compact Cards */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {cases.map((case_, index) => (
             <div
               key={case_.id}
-              className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 morphing-shape gallery-hover group transition-all duration-300 hover:bg-card/70 hover:border-forest-accent/30"
+              className="bg-card/30 backdrop-blur-sm border border-white/10 rounded-xl p-4 morphing-shape gallery-hover group transition-all duration-300 hover:bg-card/50 hover:border-forest-accent/30"
             >
               {/* Content */}
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {/* Category Badge */}
                 <div className="inline-flex items-center px-3 py-1 bg-forest-accent/25 rounded-full morphing-shape">
                   <div className="w-2 h-2 bg-forest-accent rounded-full mr-2 animate-parallax-float" />
@@ -92,11 +128,11 @@ export const CasesSection = () => {
                 </div>
 
                 {/* Project Image Placeholder */}
-                <div className="aspect-[16/9] bg-gradient-to-br from-forest-accent/25 to-white/10 rounded-xl border border-white/20 backdrop-blur-sm gallery-hover morphing-shape overflow-hidden">
+                <div className="aspect-[4/3] bg-gradient-to-br from-forest-accent/25 to-white/10 rounded-lg border border-white/20 backdrop-blur-sm gallery-hover morphing-shape overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center text-white/60">
                     <div className="text-center">
-                      <div className="w-12 h-12 bg-forest-accent/40 rounded-xl mx-auto mb-3 flex items-center justify-center morphing-shape">
-                        <span className="text-lg font-bold">{case_.category}</span>
+                      <div className="w-8 h-8 bg-forest-accent/40 rounded-lg mx-auto mb-2 flex items-center justify-center morphing-shape">
+                        <span className="text-sm font-bold">{case_.category}</span>
                       </div>
                     </div>
                   </div>
@@ -104,27 +140,27 @@ export const CasesSection = () => {
 
                 {/* Title */}
                 <div>
-                  <h3 className="text-2xl font-black text-white mb-1 group-hover:text-forest-light transition-colors">
+                  <h3 className="text-lg font-black text-white mb-1 group-hover:text-forest-light transition-colors">
                     {case_.title}
                   </h3>
-                  <p className="text-sm text-forest-light font-medium line-clamp-2">
+                  <p className="text-xs text-forest-light font-medium line-clamp-1">
                     {case_.subtitle}
                   </p>
                 </div>
 
                 {/* Description */}
-                <p className="text-white/80 text-sm leading-relaxed line-clamp-3">
+                <p className="text-white/80 text-xs leading-relaxed line-clamp-2">
                   {case_.description}
                 </p>
 
                 {/* Achievements - Compact */}
-                <div className="grid grid-cols-1 gap-2">
-                  {case_.achievements.slice(0, 2).map((achievement, idx) => {
+                <div className="grid grid-cols-1 gap-1">
+                  {case_.achievements.map((achievement, idx) => {
                     const Icon = achievement.icon;
                     return (
                       <div key={idx} className="flex items-center space-x-2">
-                        <div className="w-6 h-6 bg-forest-accent/25 rounded-md flex items-center justify-center morphing-shape">
-                          <Icon className="w-3 h-3 text-forest-accent" />
+                        <div className="w-4 h-4 bg-forest-accent/25 rounded-sm flex items-center justify-center morphing-shape">
+                          <Icon className="w-2 h-2 text-forest-accent" />
                         </div>
                         <span className="text-white/90 font-medium text-xs">{achievement.label}</span>
                       </div>
