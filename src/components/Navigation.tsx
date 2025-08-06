@@ -34,8 +34,8 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#" className="text-2xl font-black">
-              mob<span className="text-electric">CONTENT</span>
+            <a href="#" className="text-xl font-black">
+              mob<span className="text-forest">CONTENT</span>
             </a>
           </div>
 
@@ -45,7 +45,7 @@ export const Navigation = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className={`font-medium transition-colors duration-300 hover:text-electric ${
+                className={`font-medium transition-colors duration-300 hover:text-forest ${
                   isScrolled ? 'text-primary' : 'text-white'
                 }`}
               >
@@ -58,7 +58,7 @@ export const Navigation = () => {
           <div className="hidden md:block">
             <Button 
               size="sm"
-              className="bg-electric hover:bg-electric-dark text-white font-semibold electric-glow"
+              className="bg-forest hover:bg-forest-dark text-white font-semibold forest-glow"
             >
               Começar projeto
               <ArrowRight className="ml-2 w-4 h-4" />
@@ -84,7 +84,7 @@ export const Navigation = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="block text-primary font-medium hover:text-electric transition-colors"
+                  className="block text-primary font-medium hover:text-forest transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
@@ -92,7 +92,7 @@ export const Navigation = () => {
               ))}
               <Button 
                 size="sm"
-                className="w-full mt-4 bg-electric hover:bg-electric-dark text-white font-semibold"
+                className="w-full mt-4 bg-forest hover:bg-forest-dark text-white font-semibold"
               >
                 Começar projeto
                 <ArrowRight className="ml-2 w-4 h-4" />

@@ -31,14 +31,14 @@ const cases = [
     color: "forest"
   },
   {
-    id: "montana-limpia",
+    id: "museu-amanha",
     category: "Apps",
-    title: "Montaña Limpia",
-    subtitle: "App para Turismo Sustentável",
-    description: "Aplicativo internacional que promove turismo sustentável através de tecnologia.",
+    title: "App Museu do Amanhã",
+    subtitle: "Experiência Digital Imersiva",
+    description: "Aplicativo que transforma a visita ao museu em uma experiência interativa e educativa.",
     achievements: [
-      { icon: Globe, label: "Cliente Internacional" },
-      { icon: Users, label: "Multi-idiomas" }
+      { icon: Globe, label: "Inovação Museológica" },
+      { icon: Users, label: "+200k downloads" }
     ],
     image: "/api/placeholder/600/400",
     color: "forest-light"
@@ -57,14 +57,14 @@ const cases = [
     color: "forest-accent"
   },
   {
-    id: "etrilhas",
+    id: "falatorio-ruas",
     category: "Apps",
-    title: "eTrilhas",
-    subtitle: "App de Turismo Digital",
-    description: "Aplicativo que conecta viajantes a experiências culturais autênticas.",
+    title: "Falatório nas Ruas",
+    subtitle: "Narrativas Urbanas Digitais",
+    description: "Aplicativo que captura e compartilha histórias urbanas através de tecnologia móvel.",
     achievements: [
-      { icon: Users, label: "Múltiplas cidades" },
-      { icon: Award, label: "App do Ano" }
+      { icon: Users, label: "Comunidades Ativas" },
+      { icon: Award, label: "Impacto Social" }
     ],
     image: "/api/placeholder/600/400",
     color: "forest-light"

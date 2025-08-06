@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Brain, Camera, Smartphone, ArrowRight } from "lucide-react";
+import { useTypingEffect } from "@/hooks/useTypingEffect";
 
 const pillars = [
   {
@@ -29,6 +30,12 @@ const pillars = [
 ];
 
 export const PillarsSection = () => {
+  const sectionDescription = useTypingEffect({
+    text: "Três expertises integradas que formam nossa metodologia única para transformar a interação humana com a cultura",
+    speed: 40,
+    delay: 500
+  });
+
   return (
     <section className="py-16 bg-lab-darker relative overflow-hidden">
       {/* Background Pattern */}
@@ -39,18 +46,17 @@ export const PillarsSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             Nossos <span className="text-gradient-forest">Pilares</span>
           </h2>
-          <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Três expertises integradas que formam nossa metodologia única 
-            para transformar a interação humana com a cultura
+          <p ref={sectionDescription.ref} className={`text-lg text-white/70 max-w-2xl mx-auto leading-relaxed ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
+            {sectionDescription.displayText}
           </p>
         </div>
 
         {/* Pillars Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-3 gap-8">
           {pillars.map((pillar, index) => {
             const Icon = pillar.icon;
             
@@ -60,60 +66,42 @@ export const PillarsSection = () => {
                 className="group relative parallax-layer"
                 style={{ 
                   animationDelay: `${index * 200}ms`,
-                  transform: `translateZ(${index * 6}px) rotateY(${index * 3}deg)`
+                  transform: `translateZ(${index * 5}px) rotateY(${index * 2}deg)`
                 }}
               >
-                {/* Card */}
-                <div className="relative bg-card/30 backdrop-blur-lg rounded-2xl p-6 h-full transition-all duration-700 gallery-hover border border-white/10 hover:border-forest-accent/50 hover:shadow-forest morphing-shape">
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Icon */}
-                    <div className="mb-8">
-                      <div className="w-16 h-16 bg-forest-accent/10 rounded-2xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">
-                        <Icon className="w-8 h-8 text-forest group-hover:scale-125 filter-forest transition-all duration-300" />
-                      </div>
+                <div className="bg-card/20 border border-white/10 rounded-2xl p-8 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest backdrop-blur-sm transition-all duration-500 morphing-shape">
+                  {/* Icon */}
+                  <div className="mb-6">
+                    <div className="w-16 h-16 bg-forest-accent/10 rounded-2xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">
+                      <Icon className="w-8 h-8 text-forest-accent group-hover:scale-125 filter-forest transition-all duration-300" />
                     </div>
+                  </div>
 
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-forest-light transition-colors duration-300">
-                      {pillar.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-white/80 mb-4 leading-relaxed text-sm">
-                      {pillar.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <div className="mb-8">
-                      <div className="grid grid-cols-2 gap-2">
-                        {pillar.highlights.map((highlight, idx) => (
-                          <div
-                            key={idx}
-                            className="text-xs text-white/70 bg-white/5 px-2 py-1 rounded-lg group-hover:bg-forest-accent/15 group-hover:text-forest transition-all duration-300 morphing-shape"
-                          >
-                            {highlight}
-                          </div>
-                        ))}
-                      </div>
+                  {/* Content */}
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-xl font-black text-white mb-2 group-hover:text-forest-light transition-colors duration-300">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-white/80 text-sm leading-relaxed">
+                        {pillar.description}
+                      </p>
                     </div>
 
                     {/* CTA */}
                     <Button 
                       variant="outline"
-                      className="w-full group-hover:border-forest-accent group-hover:text-forest transition-all duration-300 morphing-shape"
+                      size="sm"
+                      className="w-full border-forest-accent text-forest-accent hover:bg-forest-accent hover:text-white transition-all duration-300 morphing-shape text-xs"
                     >
-                      Conheça os projetos
-                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      Explorar {pillar.title}
+                      <ArrowRight className="ml-2 w-3 h-3" />
                     </Button>
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute top-4 right-4 w-3 h-3 bg-forest-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-parallax-float" />
-                  <div className="absolute bottom-4 left-4 w-2 h-2 bg-forest rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-parallax-float delay-300" />
+                  <div className="absolute top-4 right-4 w-3 h-3 bg-forest-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-parallax-float" />
+                  <div className="absolute bottom-4 left-4 w-2 h-2 bg-forest-light rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-300 animate-parallax-float delay-150" />
                 </div>
               </div>
             );

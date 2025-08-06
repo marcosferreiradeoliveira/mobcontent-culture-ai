@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Camera, Smartphone } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
+import { useCursorTrail } from "@/hooks/useCursorTrail";
 import blackWomanPortrait from "@/assets/black-woman-portrait.jpg";
 import machineLearning from "@/assets/machine-learning.jpg";
 import culturalArt from "@/assets/cultural-art.jpg";
+import imaginePosters from "@/assets/imagine-poster.jpg";
 
 export const HeroSection = () => {
+  useCursorTrail();
+  
   const [currentPillar, setCurrentPillar] = useState(0);
   const pillars = [
     { icon: Camera, label: "Audiovisual", color: "text-white" },
@@ -68,12 +72,13 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black experimental-cursor">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black experimental-cursor cursor-vector">
       {/* Parallax Background Images */}
       <div className="absolute inset-0">
-        <img src={blackWomanPortrait} alt="" className="parallax-bg-image" />
-        <img src={machineLearning} alt="" className="parallax-bg-image" />
-        <img src={culturalArt} alt="" className="parallax-bg-image" />
+        <img src={blackWomanPortrait} alt="" className="parallax-bg-image opacity-30" />
+        <img src={machineLearning} alt="" className="parallax-bg-image opacity-25" style={{ animationDelay: '2s' }} />
+        <img src={culturalArt} alt="" className="parallax-bg-image opacity-20" style={{ animationDelay: '4s' }} />
+        <img src={imaginePosters} alt="" className="parallax-bg-image opacity-35" style={{ animationDelay: '6s' }} />
       </div>
       
       {/* Floating Particles */}

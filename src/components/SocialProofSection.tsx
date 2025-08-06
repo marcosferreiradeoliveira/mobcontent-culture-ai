@@ -30,6 +30,36 @@ const awards = [
   },
   {
     icon: Target,
+    title: "The AI Art Magazine",
+    subtitle: "Destaque em IA Criativa",
+    description: "Reconhecimento por inovação em arte generativa"
+  },
+  {
+    icon: Award,
+    title: "Power To The Pixel",
+    subtitle: "Festival Digital",
+    description: "Seleção em festival de narrativas transmídia"
+  },
+  {
+    icon: Globe,
+    title: "Global Fusion",
+    subtitle: "Inovação Cultural",
+    description: "Prêmio por projetos de fusão cultural digital"
+  },
+  {
+    icon: Trophy,
+    title: "Culture Shift",
+    subtitle: "Transformação Digital",
+    description: "Reconhecimento por mudança cultural através da tecnologia"
+  },
+  {
+    icon: Target,
+    title: "MICSUR",
+    subtitle: "Cooperação Internacional",
+    description: "Mercado de Indústrias Culturais do Sul"
+  },
+  {
+    icon: Award,
     title: "Projetos Internacionais",
     subtitle: "Expansão Global",
     description: "Clientes e projetos em diversos países"
@@ -58,7 +88,7 @@ export const SocialProofSection = () => {
         </div>
 
         {/* Clients Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
           {clients.map((client, index) => (
             <div
               key={client.name}
@@ -71,7 +101,7 @@ export const SocialProofSection = () => {
               <div className="aspect-square bg-card/20 rounded-lg flex items-center justify-center gallery-hover border border-white/10 hover:border-forest-accent/40 transition-all duration-300 morphing-shape">
                 {/* Placeholder for logo - will be replaced with actual logos */}
                 <div className="text-center">
-                  <div className="w-8 h-8 bg-forest-accent/10 rounded-lg mx-auto mb-1 flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors morphing-shape">
+                  <div className="w-6 h-6 bg-forest-accent/10 rounded-lg mx-auto mb-1 flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors morphing-shape">
                     <span className="text-forest font-bold text-xs">{client.logo}</span>
                   </div>
                   <span className="text-xs text-white/60 group-hover:text-forest transition-colors">
@@ -97,7 +127,7 @@ export const SocialProofSection = () => {
         </div>
 
         {/* Awards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {awards.map((award, index) => {
             const Icon = award.icon;
             
@@ -110,20 +140,20 @@ export const SocialProofSection = () => {
                   transform: `translateZ(${index * 4}px) rotateX(${index}deg)`
                 }}
               >
-                <div className="bg-card/20 border border-white/10 rounded-xl p-4 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest transition-all duration-500 morphing-shape">
+                <div className="bg-card/20 border border-white/10 rounded-xl p-3 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest transition-all duration-500 morphing-shape">
                   {/* Icon */}
-                  <div className="mb-6">
-                    <div className="w-14 h-14 bg-forest-accent/10 rounded-2xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">
-                      <Icon className="w-7 h-7 text-forest group-hover:scale-125 filter-forest transition-all duration-300" />
+                  <div className="mb-4">
+                    <div className="w-10 h-10 bg-forest-accent/10 rounded-xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">
+                      <Icon className="w-5 h-5 text-forest group-hover:scale-125 filter-forest transition-all duration-300" />
                     </div>
                   </div>
 
                   {/* Content */}
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-forest-light transition-colors duration-300">
+                    <h3 className="text-sm font-bold text-white mb-1 group-hover:text-forest-light transition-colors duration-300">
                       {award.title}
                     </h3>
-                    <p className="text-forest font-semibold text-sm mb-2">
+                    <p className="text-forest font-semibold text-xs mb-1">
                       {award.subtitle}
                     </p>
                     <p className="text-white/70 text-xs leading-relaxed">
@@ -132,7 +162,7 @@ export const SocialProofSection = () => {
                   </div>
 
                   {/* Decorative Element */}
-                  <div className="absolute top-4 right-4 w-3 h-3 bg-forest-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-parallax-float" />
+                  <div className="absolute top-2 right-2 w-2 h-2 bg-forest-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-parallax-float" />
                   </div>
                 </div>
               );

@@ -241,6 +241,36 @@ All colors MUST be HSL.
     border-bottom-width: 8px;
   }
 
+/* Cursor - Vector Trail Effect */
+.cursor-vector {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M2 2 l16 6 l-6 2 l-2 6 z' fill='%230d7f80' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E"), auto;
+}
+
+/* Cursor vector trail */
+.cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 8px;
+  height: 8px;
+  background: #0d7f80;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  animation: cursor-fade 0.8s ease-out forwards;
+}
+
+@keyframes cursor-fade {
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}
+
   /* Parallax Background Images */
   .parallax-bg-image {
     position: absolute;
