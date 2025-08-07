@@ -138,6 +138,11 @@ const AI = () => {
         <div className="max-w-7xl mx-auto px-6">
           {/* Header Section */}
           <div className="text-center mb-24">
+            <div className="mb-4">
+              <span className="text-forest-accent font-semibold text-lg uppercase tracking-wider">
+                mobCONTENT
+              </span>
+            </div>
             <h1 
               ref={titleTyping.ref}
               className={`text-5xl md:text-7xl font-black text-white mb-8 text-texture ${titleTyping.isTyping ? 'typing-cursor' : ''}`}

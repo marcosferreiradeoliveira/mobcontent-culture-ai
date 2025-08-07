@@ -23,8 +23,8 @@ export const useTypingEffect = ({ text, speed = 50, delay = 0 }: TypingEffectOpt
       const timer = setTimeout(() => {
         let index = 0;
         const typeInterval = setInterval(() => {
-          if (index < text.length) {
-            setDisplayText(text.slice(0, index + 1));
+          if (index <= text.length) {
+            setDisplayText(text.slice(0, index));
             index++;
           } else {
             clearInterval(typeInterval);
@@ -37,7 +37,7 @@ export const useTypingEffect = ({ text, speed = 50, delay = 0 }: TypingEffectOpt
 
       return () => clearTimeout(timer);
     }
-  }, [inView, text, speed, delay, isTyping, displayText]);
+  }, [inView, text, speed, delay]);
 
   return { ref, displayText, isTyping };
 };
