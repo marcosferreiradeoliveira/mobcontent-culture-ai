@@ -16,10 +16,11 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "Soluções", href: "#solucoes" },
-    { label: "Projetos", href: "#projetos" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Contato", href: "#contato" }
+    { label: "Pilares", href: "/#pilares" },
+    { label: "IA", href: "/ia" },
+    { label: "Cases", href: "/#cases" },
+    { label: "Reconhecimento", href: "/#reconhecimento" },
+    { label: "Contato", href: "/#contato" }
   ];
 
   return (
@@ -34,7 +35,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#" className="text-xl font-black">
+            <a href="/" className="text-xl font-black">
               mob<span className="text-forest">CONTENT</span>
             </a>
           </div>
