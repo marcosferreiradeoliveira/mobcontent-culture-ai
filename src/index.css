@@ -40,8 +40,9 @@ All colors MUST be HSL.
     /* Custom Design Tokens - Forest Green Palette */
     --forest-green: 181 85% 25%;
     --forest-green-dark: 181 85% 15%;
-    --forest-green-light: 181 60% 45%;
-    --forest-accent: 181 75% 35%;
+    --forest-green-light: 181 60% 65%;
+    --forest-accent: 181 75% 45%;
+    --forest-deep: 181 30% 8%;
     --gallery-gray: 220 9% 46%;
     --lab-dark: 220 15% 8%;
     --lab-medium: 220 12% 12%;
@@ -321,7 +322,7 @@ All colors MUST be HSL.
   }
 
   .particle:nth-child(odd) {
-    background: hsl(var(--forest-light));
+    background: hsl(var(--forest-green-light));
     animation-duration: 20s;
   }
 
@@ -335,7 +336,7 @@ All colors MUST be HSL.
   .text-texture {
     background: linear-gradient(135deg, 
       hsl(var(--foreground)) 0%, 
-      hsl(var(--forest-light)) 30%, 
+      hsl(var(--forest-green-light)) 30%, 
       hsl(var(--foreground)) 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -350,7 +351,7 @@ All colors MUST be HSL.
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: hsl(var(--electric-blue) / 0.6);
+    background: hsl(var(--forest-accent) / 0.6);
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: all 0.1s ease;

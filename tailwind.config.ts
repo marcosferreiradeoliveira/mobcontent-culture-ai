@@ -67,7 +67,8 @@ export default {
 					DEFAULT: 'hsl(var(--forest-green))',
 					dark: 'hsl(var(--forest-green-dark))',
 					light: 'hsl(var(--forest-green-light))',
-					accent: 'hsl(var(--forest-accent))'
+					accent: 'hsl(var(--forest-accent))',
+					deep: 'hsl(var(--forest-deep))'
 				},
 				gallery: 'hsl(var(--gallery-gray))',
 				lab: {
