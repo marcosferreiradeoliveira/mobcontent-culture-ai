@@ -18,6 +18,7 @@ export const Navigation = () => {
   const navItems = [
     { label: "Pilares", href: "/#pilares" },
     { label: "IA", href: "/ia" },
+    { label: "Vídeo + IA", href: "/video-production" },
     { label: "Cases", href: "/#cases" },
     { label: "Reconhecimento", href: "/#reconhecimento" },
     { label: "Contato", href: "/#contato" }
