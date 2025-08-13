@@ -47,38 +47,38 @@ const VideoProduction = () => {
   const services = [
     {
       icon: Brain,
-      title: "Visuais 100% Gerados por IA",
-      description: "Criamos cenas, personagens e mundos inteiros a partir de descrições. Ideal para conceitos abstratos, clipes musicais e vídeos institucionais inovadores."
+      title: "Vídeos Comerciais com IA",
+      description: "Criamos campanhas publicitárias, vídeos de produto e conteúdo promocional com visuais únicos gerados por IA. Destaque sua marca com narrativas visuais impossíveis de filmar."
     },
     {
       icon: Film,
-      title: "Recriações Históricas e Documentais",
-      description: "Damos vida a momentos do passado que não foram filmados. Perfeito para documentários e projetos educacionais, como em nosso projeto premiado \"O Caso da Lobotomia em Mulheres\"."
+      title: "Vídeos Institucionais e Corporativos",
+      description: "Desenvolvemos apresentações empresariais, treinamentos e comunicação interna usando IA para criar cenários e situações personalizadas para sua empresa."
     },
     {
       icon: Wand2,
       title: "Pós-Produção Inteligente",
-      description: "Elevamos seu material já existente com efeitos, correções de cor e edições complexas assistidas por IA, garantindo um resultado final impecável e ágil."
+      description: "Elevamos seus materiais existentes com correção automática, efeitos visuais e edições complexas assistidas por IA. Resultados profissionais em tempo reduzido."
     }
   ];
 
   const projects = [
     {
       id: 1,
-      title: "O Caso da Lobotomia em Mulheres",
-      description: "Recriações históricas geradas por IA para a série documental.",
+      title: "Campanha McDonald's Brasil",
+      description: "Vídeos comerciais com cenários impossíveis criados por IA para campanha nacional.",
       thumbnail: "/api/placeholder/400/225"
     },
     {
       id: 2,
-      title: "/imagine prompt",
-      description: "Explorando o poder da IA na criação de narrativas visuais para o cinema.",
+      title: "Treinamento Corporativo Petrobras",
+      description: "Simulações de segurança industrial geradas por IA para capacitação de funcionários.",
       thumbnail: "/api/placeholder/400/225"
     },
     {
       id: 3,
-      title: "Museu da Memória Negra",
-      description: "Representações visuais fotorrealistas para resgatar a memória cultural.",
+      title: "Apresentação Institucional Banco Santander",
+      description: "Vídeo institucional com infográficos animados e cenários futuristas criados por IA.",
       thumbnail: "/api/placeholder/400/225"
     }
   ];
@@ -197,9 +197,14 @@ const VideoProduction = () => {
             <h2 className="text-4xl md:text-6xl font-black mb-6 text-texture">
               Sua Ideia. Nosso Orçamento. Em Instantes.
             </h2>
-            <p className="text-xl text-forest-light">
+            <p className="text-xl text-forest-light mb-4">
               Sem formulários, sem espera. Descreva seu projeto em nosso chat e nossa IA irá gerar uma proposta e um orçamento inicial para você.
             </p>
+            <div className="flex items-center justify-center gap-8 text-forest-accent text-sm font-semibold">
+              <span>✨ +500 vídeos produzidos</span>
+              <span>🏆 Prêmios nacionais e internacionais</span>
+              <span>🚀 Líder em IA no Brasil</span>
+            </div>
           </div>
 
           <div className="bg-forest-deep/20 rounded-2xl border border-forest-accent/20 p-8">
@@ -208,7 +213,8 @@ const VideoProduction = () => {
               {chatHistory.length === 0 ? (
                 <div className="text-center text-forest-light py-12">
                   <Brain className="h-12 w-12 text-forest-accent mx-auto mb-4" />
-                  <p>Olá! Sou a IA da mobCONTENT. Conte-me sobre seu projeto de vídeo e eu criarei uma proposta personalizada para você.</p>
+                  <p className="mb-3">Olá! Sou a IA da mobCONTENT. Conte-me sobre seu projeto de vídeo e eu criarei uma proposta personalizada para você.</p>
+                  <p className="text-sm text-forest-light/80">Com mais de 500 vídeos produzidos e prêmios nacionais, somos especialistas em IA aplicada à produção audiovisual.</p>
                 </div>
               ) : (
                 chatHistory.map((chat, index) => (
@@ -232,15 +238,16 @@ const VideoProduction = () => {
 
             {/* Chat Input */}
             <form onSubmit={handleChatSubmit} className="flex gap-4">
-              <Input
+              <textarea
                 value={chatMessage}
                 onChange={(e) => setChatMessage(e.target.value)}
-                placeholder="Descreva seu projeto de vídeo aqui... (ex: 'Preciso de um vídeo animado de 1 minuto para meu produto' ou 'Quero recriar uma cena histórica para um documentário')"
-                className="flex-1 bg-forest-deep/20 border-forest-accent/30 text-white placeholder:text-forest-light/60 focus:border-forest-accent"
+                placeholder="Descreva seu projeto de vídeo aqui... (ex: 'Preciso de um vídeo comercial de 30 segundos para lançamento de produto' ou 'Quero um vídeo institucional para apresentar nossa empresa')"
+                rows={4}
+                className="flex-1 bg-forest-deep/20 border border-forest-accent/30 text-white placeholder:text-forest-light/60 focus:border-forest-accent rounded-lg p-4 resize-none focus:outline-none focus:ring-2 focus:ring-forest-accent/50"
               />
               <Button 
                 type="submit"
-                className="bg-forest-accent hover:bg-forest-light text-black px-6"
+                className="bg-forest-accent hover:bg-forest-light text-black px-6 h-fit mt-auto"
               >
                 <Send className="h-5 w-5" />
               </Button>
