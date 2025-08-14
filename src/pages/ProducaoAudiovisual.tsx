@@ -17,7 +17,9 @@ import {
   Star,
   ArrowRight,
   Phone,
-  Mail
+  Mail,
+  Tv,
+  ExternalLink
 } from "lucide-react";
 import { useEffect } from "react";
 
@@ -54,6 +56,12 @@ const ProducaoAudiovisual = () => {
       title: "Documentários Corporativos",
       description: "Documente processos, conquistas e a cultura da sua empresa",
       features: ["Pesquisa aprofundada", "Entrevistas exclusivas", "Narrativa envolvente", "Arquivo histórico"]
+    },
+    {
+      icon: Tv,
+      title: "Séries de TV",
+      description: "Produção completa de séries para TV, streaming e plataformas digitais",
+      features: ["Desenvolvimento de roteiro", "Produção episódica", "Direção artística", "Pós-produção avançada"]
     }
   ];
 
@@ -109,6 +117,39 @@ const ProducaoAudiovisual = () => {
     { nome: "Áudio Profissional", descricao: "Sennheiser, Rode, Zoom H6" },
     { nome: "Iluminação LED", descricao: "ARRI, Aputure, Godox" },
     { nome: "Estabilização", descricao: "DJI Ronin, Steadicam, Slider motorizado" }
+  ];
+
+  const portfolio = [
+    {
+      title: "Museu da Língua Portuguesa",
+      description: "Documentário institucional sobre a renovação e reabertura do museu, destacando sua importância cultural.",
+      category: "Documentário Institucional",
+      year: "2023"
+    },
+    {
+      title: "Groundbreaker",
+      description: "Série de TV sobre empreendedorismo e inovação, explorando histórias de sucesso no mundo dos negócios.",
+      category: "Série de TV",
+      year: "2023"
+    },
+    {
+      title: "Dujour",
+      description: "Campanha comercial para marca de moda, com foco em storytelling visual e estética contemporânea.",
+      category: "Vídeo Comercial",
+      year: "2022"
+    },
+    {
+      title: "Cabe na Mala",
+      description: "Série web sobre viagens e turismo, apresentando destinos únicos de forma envolvente e inspiradora.",
+      category: "Série Digital",
+      year: "2023"
+    },
+    {
+      title: "E IA, Professor",
+      description: "Documentário educacional sobre inteligência artificial na educação, explorando o futuro do aprendizado.",
+      category: "Documentário Educacional",
+      year: "2024"
+    }
   ];
 
   return (
@@ -266,6 +307,47 @@ const ProducaoAudiovisual = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">{equipamento.descricao}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Portfolio em Destaque
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Conheça alguns dos nossos projetos mais marcantes e impactantes
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {portfolio.map((projeto, index) => (
+              <Card key={index} className="border-border hover:border-forest-accent transition-all duration-300 group cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="outline" className="text-forest-accent border-forest-accent">
+                      {projeto.category}
+                    </Badge>
+                    <span className="text-sm text-muted-foreground">{projeto.year}</span>
+                  </div>
+                  <CardTitle className="text-foreground group-hover:text-forest-accent transition-colors">
+                    {projeto.title}
+                  </CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    {projeto.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center text-forest-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-sm font-medium">Ver projeto</span>
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </div>
                 </CardContent>
               </Card>
             ))}
