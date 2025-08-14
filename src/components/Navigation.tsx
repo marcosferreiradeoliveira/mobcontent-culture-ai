@@ -19,6 +19,7 @@ export const Navigation = () => {
     { label: "Pilares", href: "/#pilares" },
     { label: "IA", href: "/ia" },
     { label: "Vídeo + IA", href: "/video-production" },
+    { label: "Produção Audiovisual", href: "/producao-audiovisual" },
     { label: "Cases", href: "/#cases" },
     { label: "Reconhecimento", href: "/#reconhecimento" },
     { label: "Contato", href: "/#contato" }
