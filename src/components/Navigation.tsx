@@ -20,6 +20,7 @@ export const Navigation = () => {
     { label: "IA", href: "/ia" },
     { label: "Vídeo + IA", href: "/video-production" },
     { label: "Produção Audiovisual", href: "/producao-audiovisual" },
+    { label: "Desenvolvimento Apps", href: "/desenvolvimento-apps" },
     { label: "Cases", href: "/#cases" },
     { label: "Reconhecimento", href: "/#reconhecimento" },
     { label: "Contato", href: "/#contato" }
