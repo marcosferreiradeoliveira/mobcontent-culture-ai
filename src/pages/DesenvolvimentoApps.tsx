@@ -189,20 +189,20 @@ const DesenvolvimentoApps = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 to-secondary/5 overflow-hidden">
+      <section className="relative py-20 lg:py-32 bg-black overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
               Desenvolvimento de Apps
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Transformamos ideias em 
-              <span className="text-primary"> aplicativos </span>
+              <span className="text-forest"> aplicativos </span>
               poderosos
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
               Desenvolvemos aplicativos móveis e web que conectam sua marca aos usuários. 
               Soluções nativas, híbridas e PWAs com foco na experiência do usuário e resultados de negócio.
             </p>
@@ -219,37 +219,43 @@ const DesenvolvimentoApps = () => {
         </div>
         
         {/* Background Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-forest/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-forest/10 rounded-full blur-xl animate-ping"></div>
+        <div className="absolute top-1/2 left-0 w-2 h-64 bg-gradient-to-b from-transparent via-forest/20 to-transparent"></div>
+        
+        {/* Neural grid background */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="neural-grid"></div>
+        </div>
       </section>
 
       {/* Plataformas */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Plataformas que Dominamos
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Desenvolvemos para todas as principais plataformas, garantindo alcance máximo para seu app
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {plataformas.map((plataforma, index) => (
-              <Card key={index} className="border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
+              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 hover:shadow-lg">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
-                    <plataforma.icon className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4 p-3 bg-forest/20 rounded-full w-fit">
+                    <plataforma.icon className="h-8 w-8 text-forest" />
                   </div>
-                  <CardTitle className="text-foreground">{plataforma.title}</CardTitle>
-                  <CardDescription>{plataforma.description}</CardDescription>
+                  <CardTitle className="text-white">{plataforma.title}</CardTitle>
+                  <CardDescription className="text-gray-300">{plataforma.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     {plataforma.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                        <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
+                      <li key={idx} className="flex items-center text-sm text-gray-300">
+                        <CheckCircle className="h-4 w-4 text-forest mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -262,26 +268,26 @@ const DesenvolvimentoApps = () => {
       </section>
 
       {/* Serviços */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-900/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Nossos Serviços
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Soluções completas para levar seu app do conceito ao sucesso no mercado
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicos.map((servico, index) => (
-              <Card key={index} className="border-border hover:border-primary/50 transition-all duration-300 group">
+              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 group">
                 <CardHeader>
-                  <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors">
-                    <servico.icon className="h-6 w-6 text-primary" />
+                  <div className="mb-4 p-3 bg-forest/20 rounded-lg w-fit group-hover:bg-forest/30 transition-colors">
+                    <servico.icon className="h-6 w-6 text-forest" />
                   </div>
-                  <CardTitle className="text-foreground">{servico.title}</CardTitle>
-                  <CardDescription>{servico.description}</CardDescription>
+                  <CardTitle className="text-white">{servico.title}</CardTitle>
+                  <CardDescription className="text-gray-300">{servico.description}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -290,24 +296,24 @@ const DesenvolvimentoApps = () => {
       </section>
 
       {/* Tecnologias */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Tecnologias de Ponta
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Utilizamos as tecnologias mais modernas e confiáveis do mercado
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {tecnologias.map((tech, index) => (
-              <Card key={index} className="border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg text-center">
+              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 hover:shadow-lg text-center">
                 <CardContent className="p-6">
                   <div className="text-3xl mb-3">{tech.logo}</div>
-                  <h3 className="font-semibold text-foreground mb-1">{tech.nome}</h3>
-                  <p className="text-sm text-muted-foreground">{tech.categoria}</p>
+                  <h3 className="font-semibold text-white mb-1">{tech.nome}</h3>
+                  <p className="text-sm text-gray-300">{tech.categoria}</p>
                 </CardContent>
               </Card>
             ))}
@@ -316,28 +322,28 @@ const DesenvolvimentoApps = () => {
       </section>
 
       {/* Processo */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-900/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Nosso Processo
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Metodologia ágil e transparente para entregar seu app no prazo e orçamento
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {processo.map((etapa, index) => (
-              <Card key={index} className="border-border hover:border-primary/50 transition-all duration-300">
+              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center mb-4">
-                    <div className="bg-primary text-primary-foreground rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">
+                    <div className="bg-forest text-black rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">
                       {etapa.numero}
                     </div>
-                    <CardTitle className="text-foreground">{etapa.titulo}</CardTitle>
+                    <CardTitle className="text-white">{etapa.titulo}</CardTitle>
                   </div>
-                  <CardDescription className="leading-relaxed">
+                  <CardDescription className="leading-relaxed text-gray-300">
                     {etapa.descricao}
                   </CardDescription>
                 </CardHeader>
@@ -348,23 +354,23 @@ const DesenvolvimentoApps = () => {
       </section>
 
       {/* Portfolio */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Apps que Desenvolvemos
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Conheça alguns dos aplicativos que criamos para nossos clientes
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolio.map((app, index) => (
-              <Card key={index} className="border-border hover:border-primary/50 transition-all duration-300 group cursor-pointer">
+              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 group cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge variant="outline" className="text-primary border-primary">
+                    <Badge variant="outline" className="text-forest border-forest">
                       {app.category}
                     </Badge>
                     <div className="flex items-center text-yellow-500">
@@ -372,15 +378,15 @@ const DesenvolvimentoApps = () => {
                       <span className="ml-1 text-sm font-medium">{app.rating}</span>
                     </div>
                   </div>
-                  <CardTitle className="text-foreground group-hover:text-primary transition-colors">
+                  <CardTitle className="text-white group-hover:text-forest transition-colors">
                     {app.title}
                   </CardTitle>
-                  <CardDescription className="leading-relaxed">
+                  <CardDescription className="leading-relaxed text-gray-300">
                     {app.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between text-sm text-gray-300">
                     <div className="flex items-center">
                       <Layers className="h-4 w-4 mr-1" />
                       <span>{app.platform}</span>
