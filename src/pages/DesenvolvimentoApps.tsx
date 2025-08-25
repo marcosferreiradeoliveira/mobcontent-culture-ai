@@ -21,11 +21,15 @@ import {
   Download,
   Layers
 } from "lucide-react";
+import { Navigation } from "@/components/Navigation";
+import { ContactSection } from "@/components/ContactSection";
 import { useEffect } from "react";
+import { PageViewTracker } from '@/components/Analytics/PageViewTracker';
 
 const DesenvolvimentoApps = () => {
   useEffect(() => {
     document.title = "Desenvolvimento de Apps | mobCONTENT";
+    window.scrollTo(0, 0);
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -190,8 +194,10 @@ const DesenvolvimentoApps = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <PageViewTracker />
+      <Navigation />
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-black overflow-hidden">
+      <section className="relative py-20 lg:pt-32 lg:pb-20 bg-black overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
@@ -403,28 +409,8 @@ const DesenvolvimentoApps = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Pronto para Criar Seu App?
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Vamos transformar sua ideia em um aplicativo de sucesso. 
-            Entre em contato e descubra como podemos ajudar.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-              <Phone className="mr-2 h-5 w-5" />
-              (11) 99999-9999
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-              <Mail className="mr-2 h-5 w-5" />
-              contato@mobcontent.com.br
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 };

@@ -16,15 +16,14 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "Pilares", href: "/#pilares" },
-    { label: "IA", href: "/ia" },
-    { label: "Vídeo + IA", href: "/video-production" },
-    { label: "Produção Audiovisual", href: "/producao-audiovisual" },
-    { label: "Desenvolvimento Apps", href: "/desenvolvimento-apps" },
-    { label: "Portfólio", href: "/portfolio" },
-    { label: "Cases", href: "/#cases" },
-    { label: "Reconhecimento", href: "/#reconhecimento" },
-    { label: "Contato", href: "/#contato" }
+    { label: "Soluções", href: "#solucoes" },
+    { label: "Projetos", href: "#projetos" },
+    { label: "Contato", href: "#contato" },
+    { 
+      label: "Marcos Ferreira", 
+      href: "https://mobcontent.com.br/marcos-ferreira/",
+      external: true
+    }
   ];
 
   return (
@@ -50,6 +49,8 @@ export const Navigation = () => {
               <a
                 key={item.label}
                 href={item.href}
+                target={item.external ? '_blank' : '_self'}
+                rel={item.external ? 'noopener noreferrer' : ''}
                 className={`font-medium transition-colors duration-300 hover:text-forest ${
                   isScrolled ? 'text-primary' : 'text-white'
                 }`}
@@ -61,13 +62,15 @@ export const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button 
-              size="sm"
-              className="bg-forest hover:bg-forest-dark text-white font-semibold forest-glow"
-            >
-              Começar projeto
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <a href="#contato" className="inline-flex">
+              <Button 
+                size="sm"
+                className="bg-forest hover:bg-forest-dark text-white font-semibold forest-glow"
+              >
+                Começar projeto
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,19 +92,23 @@ export const Navigation = () => {
                 <a
                   key={item.label}
                   href={item.href}
+                  target={item.external ? '_blank' : '_self'}
+                  rel={item.external ? 'noopener noreferrer' : ''}
                   className="block text-primary font-medium hover:text-forest transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
-              <Button 
-                size="sm"
-                className="w-full mt-4 bg-forest hover:bg-forest-dark text-white font-semibold"
-              >
-                Começar projeto
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <a href="#contato" className="inline-flex">
+                <Button 
+                  size="sm"
+                  className="w-full mt-4 bg-forest hover:bg-forest-dark text-white font-semibold"
+                >
+                  Começar projeto
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </a>
             </div>
           </div>
         )}

@@ -22,6 +22,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { useEffect } from "react";
+import { PageViewTracker } from '@/components/Analytics/PageViewTracker';
 
 const ProducaoAudiovisual = () => {
   useEffect(() => {
@@ -154,6 +155,7 @@ const ProducaoAudiovisual = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageViewTracker />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-forest-deep via-lab-dark to-forest-green-dark">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--forest-accent)/0.1),transparent_70%)]" />

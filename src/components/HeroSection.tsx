@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Camera, Smartphone } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { useCursorTrail } from "@/hooks/useCursorTrail";
+import { useNavigate } from "react-router-dom";
 import blackWomanPortrait from "@/assets/black-woman-portrait.jpg";
 import machineLearning from "@/assets/machine-learning.jpg";
 import culturalArt from "@/assets/cultural-art.jpg";
@@ -10,6 +11,7 @@ import imaginePosters from "@/assets/imagine-poster.jpg";
 
 export const HeroSection = () => {
   useCursorTrail();
+  const navigate = useNavigate();
   
   const [currentPillar, setCurrentPillar] = useState(0);
   const pillars = [
@@ -29,6 +31,10 @@ export const HeroSection = () => {
     speed: 30,
     delay: 2500
   });
+  
+  const handleStartProject = () => {
+    navigate('/video-production');
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,13 +79,17 @@ export const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black experimental-cursor cursor-vector">
-      {/* Parallax Background Images */}
-      <div className="absolute inset-0">
-        <img src={blackWomanPortrait} alt="" className="parallax-bg-image opacity-30" />
-        <img src={machineLearning} alt="" className="parallax-bg-image opacity-25" style={{ animationDelay: '2s' }} />
-        <img src={culturalArt} alt="" className="parallax-bg-image opacity-20" style={{ animationDelay: '4s' }} />
-        <img src={imaginePosters} alt="" className="parallax-bg-image opacity-35" style={{ animationDelay: '6s' }} />
-      </div>
+      {/* Main Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style={{
+          backgroundImage: 'url(https://cms.mobcontent.com.br/wp-content/uploads/2024/11/Anastacia-Grande.jpeg)',
+          opacity: 0.7
+        }}
+      />
+      
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40 z-0"></div>
       
       {/* Floating Particles */}
       <div className="floating-particles">
@@ -161,10 +171,10 @@ export const HeroSection = () => {
           </h2>
           
           <div className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed space-y-4">
-            <p ref={taglineTyping.ref} className={`${taglineTyping.isTyping ? 'typing-cursor' : ''}`}>
+            <p className={`${taglineTyping.isTyping ? 'typing-cursor' : ''}`}>
               {taglineTyping.displayText}
             </p>
-            <p ref={descriptionTyping.ref} className={`${descriptionTyping.isTyping ? 'typing-cursor' : ''}`}>
+            <p className={`${descriptionTyping.isTyping ? 'typing-cursor' : ''}`}>
               {descriptionTyping.displayText}
             </p>
           </div>
@@ -172,14 +182,17 @@ export const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up delay-900">
-          <Button 
-            size="lg" 
-            className="bg-forest hover:bg-forest-dark text-white font-semibold px-8 py-4 forest-glow group morphing-shape"
-          >
-            Conheça nossos projetos
-            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <a href="#contato" className="inline-flex">
+            <Button 
+              size="lg" 
+              className="bg-forest hover:bg-forest-dark text-white font-semibold px-8 py-4 forest-glow group morphing-shape"
+            >
+              Começar Projeto
+              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </a>
           
+          {/* Temporarily commented out
           <Button 
             variant="outline" 
             size="lg"
@@ -187,6 +200,7 @@ export const HeroSection = () => {
           >
             Nossa história
           </Button>
+          */}
         </div>
       </div>
 
