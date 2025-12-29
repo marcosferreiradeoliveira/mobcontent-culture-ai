@@ -16,9 +16,9 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "Soluções", href: "#solucoes" },
-    { label: "Projetos", href: "#projetos" },
-    { label: "Contato", href: "#contato" },
+    { label: "Soluções", href: "/#solucoes" },
+    { label: "Projetos", href: "/#projetos" },
+    { label: "Contato", href: "/#contato" },
     { 
       label: "Marcos Ferreira", 
       href: "https://mobcontent.com.br/marcos-ferreira/",

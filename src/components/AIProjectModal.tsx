@@ -1,4 +1,3 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Cpu, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,7 +38,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 50 }}
           transition={{ type: "spring", duration: 0.5 }}
-          className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-xl border border-white/20 rounded-3xl morphing-shape"
+          className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-xl border border-white/20 rounded-3xl"
         >
           {/* Close Button */}
           <Button
@@ -62,14 +61,17 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
             
             {/* Header Content */}
             <div className="absolute bottom-8 left-8 right-16">
-              <div className="inline-flex items-center px-4 py-2 bg-forest-accent/25 backdrop-blur-sm rounded-full morphing-shape mb-4">
+              <div className="inline-flex items-center px-4 py-2 bg-forest-accent/25 backdrop-blur-sm rounded-full mb-4">
                 <div className="w-2 h-2 bg-forest-accent rounded-full mr-2 animate-pulse" />
                 <span className="text-forest-accent font-bold text-sm">IA</span>
               </div>
               
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-2 text-texture">
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-2">
                 {project.fullTitle}
               </h2>
+              <h3 className="text-xl font-medium text-forest-accent">
+                {project.title}
+              </h3>
             </div>
           </div>
 
@@ -78,7 +80,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
             {/* Description */}
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <div className="w-8 h-8 bg-forest-accent/25 rounded-lg mr-3 flex items-center justify-center morphing-shape">
+                <div className="w-8 h-8 bg-forest-accent/25 rounded-lg mr-3 flex items-center justify-center">
                   <Zap className="w-4 h-4 text-forest-accent" />
                 </div>
                 Sobre o Projeto
@@ -91,7 +93,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
             {/* Technologies */}
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <div className="w-8 h-8 bg-forest-accent/25 rounded-lg mr-3 flex items-center justify-center morphing-shape">
+                <div className="w-8 h-8 bg-forest-accent/25 rounded-lg mr-3 flex items-center justify-center">
                   <Cpu className="w-4 h-4 text-forest-accent" />
                 </div>
                 Tecnologias
@@ -100,7 +102,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
                 {project.technologies.split(', ').map((tech, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 bg-forest-accent/20 text-forest-light rounded-full border border-forest-accent/30 morphing-shape text-sm font-medium"
+                    className="px-5 py-2.5 bg-forest-accent/20 text-forest-light rounded-full border border-forest-accent/30 text-sm font-medium hover:bg-forest-accent/30 transition-colors duration-200"
                   >
                     {tech}
                   </span>
@@ -111,7 +113,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
             {/* Impact */}
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <div className="w-8 h-8 bg-forest-accent/25 rounded-lg mr-3 flex items-center justify-center morphing-shape">
+                <div className="w-8 h-8 bg-forest-accent/25 rounded-lg mr-3 flex items-center justify-center">
                   <Target className="w-4 h-4 text-forest-accent" />
                 </div>
                 Impacto
@@ -137,11 +139,53 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
                 <h3 className="text-xl font-bold text-white">
                   Interessado em saber mais?
                 </h3>
-                <Button 
+                <Button
+                  asChild
                   size="lg"
-                  className="bg-forest hover:bg-forest-dark text-white font-semibold px-8 py-3 forest-glow morphing-shape"
+                  className="bg-forest hover:bg-forest-dark text-white font-semibold px-8 py-3 forest-glow"
                 >
-                  Entre em contato
+                  <a 
+                    href={
+                      project.id === "museum-black-memory" 
+                        ? "https://www.instagram.com/museudamemorianegraemia/" 
+                        : project.id === "oraculo-cultural"
+                        ? "https://oraculocultural.com.br/"
+                        : project.id === "griot-ai"
+                        ? "https://grioai.com.br/"
+                        : project.id === "e-ia-professor"
+                        ? "https://www.youtube.com/watch?v=5KkIA1xMxuI"
+                        : project.id === "lobotomia-mulheres"
+                        ? "https://www.youtube.com/watch?v=CfgIYrNHCqA"
+                        : project.id === "imagine-prompt"
+                        ? "https://www.youtube.com/watch?v=8THwwhAtUMY"
+                        : "#contato"
+                    }
+                    target={
+                      project.id === "museum-black-memory" || 
+                      project.id === "oraculo-cultural" ||
+                      project.id === "griot-ai" ||
+                      project.id === "e-ia-professor" ||
+                      project.id === "lobotomia-mulheres" ||
+                      project.id === "imagine-prompt"
+                        ? "_blank" 
+                        : "_self"
+                    }
+                    rel="noopener noreferrer"
+                  >
+                    {
+                      project.id === "museum-black-memory" 
+                        ? "Saiba mais" 
+                        : project.id === "oraculo-cultural"
+                        ? "Acessar site"
+                        : project.id === "griot-ai"
+                        ? "Acessar site"
+                        : project.id === "e-ia-professor" || 
+                          project.id === "lobotomia-mulheres" ||
+                          project.id === "imagine-prompt"
+                        ? "Assistir no YouTube"
+                        : "Entre em contato"
+                    }
+                  </a>
                 </Button>
               </div>
             </div>

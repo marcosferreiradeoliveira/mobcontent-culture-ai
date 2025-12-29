@@ -123,7 +123,7 @@ export const PillarsSection = () => {
 
                       {/* CTA */}
                       <AnalyticsButton
-                        eventName="pillar_click"
+                        eventName={`pillar_${pillar.id}_click`}
                         eventCategory="engagement"
                         eventLabel={`Pillar CTA - ${pillar.title}`}
                         variant="outline"

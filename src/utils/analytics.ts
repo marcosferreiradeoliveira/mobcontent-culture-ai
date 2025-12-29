@@ -19,19 +19,16 @@ export const initAnalytics = () => {
   window.dataLayer = window.dataLayer || [];
   
   // Define the gtag function
-  function gtag(...args: any[]) {
+  function gtag() {
     window.dataLayer.push(arguments);
   }
   
   // Set the gtag function
-  window.gtag = gtag;
+  window.gtag = gtag as any;
   
   // Initialize with config
   window.gtag('js', new Date());
-  window.gtag('config', 'G-NM2XMDD1TL', {
-    'transport_url': 'https://mobcontent.com.br',
-    'first_party_collection': true
-  });
+  window.gtag('config', 'G-NM2XMDD1TL');
 };
 
 type EventParams = {
@@ -45,13 +42,6 @@ type EventParams = {
 export const trackPageView = (url: string) => {
   if (typeof window.gtag === 'function') {
     window.gtag('event', 'page_view', {
-      page_path: url,
-      page_title: document.title,
-      page_location: window.location.href
-    });
-    
-    // Enhanced page view with more context
-    window.gtag('config', 'G-NM2XMDD1TL', {
       page_path: url,
       page_title: document.title,
       page_location: window.location.href

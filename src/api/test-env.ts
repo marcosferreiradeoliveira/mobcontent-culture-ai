@@ -1,17 +1,17 @@
-import type { ViteApiHandler } from 'vite'
+import type { Handler } from '@netlify/functions';
 
-export const handler: ViteApiHandler = async (req, res) => {
+export const handler: Handler = async (event, context) => {
   // Retorna apenas se a chave existe, sem mostrar o valor real
-  const isConfigured = !!import.meta.env.VITE_OPENAI_API_KEY;
+  const isConfigured = !!process.env.VITE_OPENAI_API_KEY;
   
   return {
-    status: 200,
-    body: {
+    statusCode: 200,
+    body: JSON.stringify({
       status: isConfigured ? 'success' : 'error',
       message: isConfigured 
         ? 'Variável de ambiente configurada corretamente' 
         : 'Variável de ambiente não encontrada',
       keyConfigured: isConfigured
-    }
+    })
   };
 };

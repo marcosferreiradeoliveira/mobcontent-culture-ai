@@ -25,10 +25,12 @@ import { Navigation } from "@/components/Navigation";
 import { ContactSection } from "@/components/ContactSection";
 import { useEffect } from "react";
 import { PageViewTracker } from '@/components/Analytics/PageViewTracker';
+import { AppsWeDeveloped } from "@/components/AppsWeDeveloped";
+import { trackButtonClick } from "@/utils/analytics";
 
 const DesenvolvimentoApps = () => {
   useEffect(() => {
-    document.title = "Desenvolvimento de Apps | mobCONTENT";
+    document.title = "Desenvolvimento de Aplicativos e Sites | mobCONTENT";
     window.scrollTo(0, 0);
     
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -192,225 +194,154 @@ const DesenvolvimentoApps = () => {
     }
   ];
 
+  const handleWhatsAppClick = (location: string) => {
+    trackButtonClick('whatsapp_click', 'conversion', { location });
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <PageViewTracker />
+    <div className="min-h-screen bg-background">
       <Navigation />
+      <PageViewTracker/>
+      
+      {/* WhatsApp Button - Fixed */}
+      <a 
+        href="https://wa.me/5521966225632" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full p-4 shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-xl"
+        aria-label="Fale conosco no WhatsApp"
+        onClick={() => handleWhatsAppClick('floating')}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.964-.941 1.162-.173.198-.349.223-.646.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.499.1-.202.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.198 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+      </a>
+      
       {/* Hero Section */}
-      <section className="relative py-20 lg:pt-32 lg:pb-20 bg-black overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
-              Desenvolvimento de Apps
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Transformamos ideias em 
-              <span className="text-forest"> aplicativos </span>
-              poderosos
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Desenvolvemos aplicativos móveis e web que conectam sua marca aos usuários. 
-              Soluções nativas, híbridas e PWAs com foco na experiência do usuário e resultados de negócio.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                Iniciar Projeto
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10">
-                Ver Portfolio
-              </Button>
-            </div>
-          </div>
+      <section 
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+        style={{
+          backgroundImage: "url('https://cms.mobcontent.com.br/wp-content/uploads/2023/02/cropped-MG_0671.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          position: 'relative',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative z-10 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">
+            Desenvolvimento de Aplicativos e Sites
+          </h1>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-6">
+            Criação de aplicativos móveis e web personalizados que impulsionam negócios e engajam usuários
+          </p>
+          <a 
+            href="https://wa.me/5521966225632" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            onClick={() => handleWhatsAppClick('hero_section')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.964-.941 1.162-.173.198-.349.223-.646.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.499.1-.202.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.198 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Fale Conosco no WhatsApp
+          </a>
         </div>
-        
-        {/* Background Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-forest/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-forest/10 rounded-full blur-xl animate-ping"></div>
-        <div className="absolute top-1/2 left-0 w-2 h-64 bg-gradient-to-b from-transparent via-forest/20 to-transparent"></div>
-        
-        {/* Neural grid background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="neural-grid"></div>
+      </section>
+
+      {/* Apps We've Developed Section */}
+      <section 
+        className="py-16 relative"
+        style={{
+          backgroundImage: "url('https://cms.mobcontent.com.br/wp-content/uploads/2023/02/rq48n957djcp028jlv59.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          position: 'relative',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="relative z-10">
+          <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <AppsWeDeveloped />
+          </div>
         </div>
       </section>
 
       {/* Plataformas */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Plataformas que Dominamos
-            </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Desenvolvemos para todas as principais plataformas, garantindo alcance máximo para seu app
-            </p>
-          </div>
+      <section 
+        className="py-20 relative"
+        style={{
+          backgroundImage: "url('https://cms.mobcontent.com.br/wp-content/uploads/2021/04/Etrilhas-1.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative z-10">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Plataformas que Dominamos
+              </h2>
+              <p className="text-gray-200 max-w-2xl mx-auto">
+                Desenvolvemos para todas as principais plataformas, garantindo alcance máximo para seu app
+              </p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {plataformas.map((plataforma, index) => (
-              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 hover:shadow-lg">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-3 bg-forest/20 rounded-full w-fit">
-                    <plataforma.icon className="h-8 w-8 text-forest" />
-                  </div>
-                  <CardTitle className="text-white">{plataforma.title}</CardTitle>
-                  <CardDescription className="text-gray-300">{plataforma.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {plataforma.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-300">
-                        <CheckCircle className="h-4 w-4 text-forest mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Serviços */}
-      <section className="py-20 bg-gray-900/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Nossos Serviços
-            </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Soluções completas para levar seu app do conceito ao sucesso no mercado
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {servicos.map((servico, index) => (
-              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 group">
-                <CardHeader>
-                  <div className="mb-4 p-3 bg-forest/20 rounded-lg w-fit group-hover:bg-forest/30 transition-colors">
-                    <servico.icon className="h-6 w-6 text-forest" />
-                  </div>
-                  <CardTitle className="text-white">{servico.title}</CardTitle>
-                  <CardDescription className="text-gray-300">{servico.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tecnologias */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Tecnologias de Ponta
-            </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Utilizamos as tecnologias mais modernas e confiáveis do mercado
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {tecnologias.map((tech, index) => (
-              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 hover:shadow-lg text-center">
-                <CardContent className="p-6">
-                  <div className="text-3xl mb-3">{tech.logo}</div>
-                  <h3 className="font-semibold text-white mb-1">{tech.nome}</h3>
-                  <p className="text-sm text-gray-300">{tech.categoria}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Processo */}
-      <section className="py-20 bg-gray-900/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Nosso Processo
-            </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Metodologia ágil e transparente para entregar seu app no prazo e orçamento
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {processo.map((etapa, index) => (
-              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300">
-                <CardHeader>
-                  <div className="flex items-center mb-4">
-                    <div className="bg-forest text-black rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">
-                      {etapa.numero}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {plataformas.map((plataforma, index) => (
+                <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 hover:shadow-lg backdrop-blur-sm">
+                  <CardHeader className="text-center">
+                    <div className="mx-auto mb-4 p-3 bg-forest/20 rounded-full w-fit">
+                      <plataforma.icon className="h-8 w-8 text-forest" />
                     </div>
-                    <CardTitle className="text-white">{etapa.titulo}</CardTitle>
-                  </div>
-                  <CardDescription className="leading-relaxed text-gray-300">
-                    {etapa.descricao}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Apps que Desenvolvemos
-            </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Conheça alguns dos aplicativos que criamos para nossos clientes
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolio.map((app, index) => (
-              <Card key={index} className="bg-gray-900/80 border-gray-700 hover:border-forest/50 transition-all duration-300 group cursor-pointer">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="outline" className="text-forest border-forest">
-                      {app.category}
-                    </Badge>
-                    <div className="flex items-center text-yellow-500">
-                      <Star className="h-4 w-4 fill-current" />
-                      <span className="ml-1 text-sm font-medium">{app.rating}</span>
-                    </div>
-                  </div>
-                  <CardTitle className="text-white group-hover:text-forest transition-colors">
-                    {app.title}
-                  </CardTitle>
-                  <CardDescription className="leading-relaxed text-gray-300">
-                    {app.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between text-sm text-gray-300">
-                    <div className="flex items-center">
-                      <Layers className="h-4 w-4 mr-1" />
-                      <span>{app.platform}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Download className="h-4 w-4 mr-1" />
-                      <span>{app.downloads}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                    <CardTitle className="text-white">{plataforma.title}</CardTitle>
+                    <CardDescription className="text-gray-300">{plataforma.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {plataforma.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-sm text-gray-300">
+                          <CheckCircle className="h-4 w-4 text-forest mr-2 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <ContactSection />
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Entre em Contato</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto mb-8">Tem um projeto em mente? Fale com nossa equipe agora mesmo!</p>
+            <a 
+              href="https://wa.me/5521966225632" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              onClick={() => handleWhatsAppClick('contact_section')}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.964-.941 1.162-.173.198-.349.223-.646.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.499.1-.202.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.198 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              Fale Conosco no WhatsApp
+            </a>
+          </div>
+          <ContactSection />
+        </div>
+      </section>
     </div>
   );
 };

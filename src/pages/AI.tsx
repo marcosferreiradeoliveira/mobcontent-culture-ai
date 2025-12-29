@@ -6,10 +6,12 @@ import { AIProjectModal } from "@/components/AIProjectModal";
 import { useCursorTrail } from "@/hooks/useCursorTrail";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { ContactSection } from "@/components/ContactSection";
+import { motion } from "framer-motion";
 import imaginePosters from "@/assets/imagine-poster.jpg";
 import blackWomanPortrait from "@/assets/black-woman-portrait.jpg";
 import culturalArt from "@/assets/cultural-art.jpg";
 import machineLearning from "@/assets/machine-learning.jpg";
+import grioAI from "@/assets/grioai.png";
 
 interface AIProject {
   id: string;
@@ -26,13 +28,13 @@ interface AIProject {
 const aiProjects: AIProject[] = [
   {
     id: "museum-black-memory",
-    title: "Museum of Black Memory in IA",
+    title: "Museu da Memória Negra em IA",
     shortDescription: "Resgate da história afro-brasileira com IA generativa para recriar momentos sem registros pictóricos.",
-    fullTitle: "Museum of Black Memory in IA: Resgatando Memórias Culturais",
+    fullTitle: "Museu da Memória Negra em IA: Resgatando Memórias Culturais",
     detailedDescription: "Este projeto emprega IA generativa para criar representações visuais fotorrealistas de momentos significativos da história afro-brasileira que carecem de registros. Ao aliar pesquisa histórica detalhada com tecnologia de ponta, o museu preenche lacunas na memória e promove a inclusão. O projeto foi exposto na Alemanha e Áustria.",
     technologies: "Inteligência Artificial Generativa, Pesquisa Histórica",
     impact: "Resgate e inclusão memorial da história afro-brasileira",
-    image: blackWomanPortrait
+    image: "https://cms.mobcontent.com.br/wp-content/uploads/2024/11/mmobcontent_hyperrealistic_photo_of_a_black_woman_facing_camera_b30b7584-ec5b-4700-a96a-0812d112cc8b-scaled.jpeg"
   },
   {
     id: "oraculo-cultural",
@@ -42,17 +44,17 @@ const aiProjects: AIProject[] = [
     detailedDescription: "O Oráculo Cultural é uma solução que utiliza uma poderosa ferramenta de inteligência artificial para auxiliar na redação e realizar uma análise estratégica de propostas culturais, comparando-as com as regras do edital para identificar falhas, inconsistências e riscos de desclassificação.",
     technologies: "Inteligência Artificial, Análise Estratégica de Dados, Plataforma de Assinatura",
     impact: "Empodera a comunidade cultural, aumentando as chances de sucesso e democratizando o acesso a recursos culturais",
-    image: culturalArt
+    image: "https://cms.mobcontent.com.br/wp-content/uploads/2025/08/Screenshot-2025-08-26-at-18.44.22.png"
   },
   {
     id: "griot-ai",
-    title: "Griot AI",
+    title: "Grio AI",
     shortDescription: "Exploração da vida de Mohammed G. Baquaqua, figura da diáspora africana, usando IA generativa e storytelling interativo.",
-    fullTitle: "Griot AI: Dando Voz à História com IA Interativa",
+    fullTitle: "Grio AI: Dando Voz à História com IA Interativa",
     detailedDescription: "Focado na jornada de Mohammed Gardo Baquaqua, este projeto utiliza IA generativa e storytelling interativo para personalizar a experiência narrativa. O objetivo é dar voz a figuras históricas, fomentando a educação e o engajamento cultural de forma inovadora.",
     technologies: "Inteligência Artificial Generativa, Storytelling Interativo",
     impact: "Educação e engajamento cultural através de narrativas personalizadas",
-    image: imaginePosters
+    image: grioAI
   },
   {
     id: "e-ia-professor",
@@ -62,7 +64,7 @@ const aiProjects: AIProject[] = [
     detailedDescription: "Uma série documental que apresenta um panorama crítico sobre o impacto da inteligência artificial na educação brasileira. Combinando entrevistas com especialistas, visitas a escolas e análise de políticas públicas, o projeto debate o uso da IA para a inclusão, os desafios éticos de privacidade e vieses, e como a tecnologia pode preparar alunos e educadores para o futuro.",
     technologies: "Produção Documental, Pesquisa e Análise de IA",
     impact: "Inspirar soluções práticas para a educação, promovendo um debate sobre ética e inclusão",
-    image: machineLearning
+    image: "https://cms.mobcontent.com.br/wp-content/uploads/2025/08/profess.jpg"
   },
   {
     id: "lobotomia-mulheres",
@@ -73,7 +75,7 @@ const aiProjects: AIProject[] = [
     technologies: "Inteligência Artificial Generativa (para recriações históricas), Produção Documental",
     impact: "Conscientização sobre discriminação de gênero na história da medicina",
     format: "Série de 6 episódios de 20 minutos",
-    image: blackWomanPortrait
+    image: "https://cms.mobcontent.com.br/wp-content/uploads/2025/08/mmobcontent_a_movie_poster_of_a_true_crime_documentary_with_a_l_5dc2fdcb-be2a-40c4-be0c-45ca515b27f1-1-Medium.jpeg"
   },
   {
     id: "imagine-prompt",
@@ -83,107 +85,67 @@ const aiProjects: AIProject[] = [
     detailedDescription: "Este projeto é um longa-metragem que investiga o potencial da Inteligência Artificial como ferramenta para a criação de narrativas visuais. A iniciativa busca abrir novas e empolgantes possibilidades para a linguagem cinematográfica e para a expressão artística na era digital.",
     technologies: "Inteligência Artificial, Cinema",
     impact: "Exploração de novas fronteiras criativas e narrativas para a indústria audiovisual",
-    image: imaginePosters
+    image: "https://cms.mobcontent.com.br/wp-content/uploads/2024/11/imaginePromptPoster_Wide.jpg"
   }
 ];
 
-const AI = () => {
+const AIPage = () => {
+  const title = "Inteligência Artificial para Narrativas de Impacto";
+  const { displayText } = useTypingEffect({ 
+    text: title,
+    speed: 50,
+    delay: 500 
+  });
+  
   const [selectedProject, setSelectedProject] = useState<AIProject | null>(null);
   useCursorTrail();
 
-  const titleTyping = useTypingEffect({
-    text: "Inteligência Artificial para Narrativas de Impacto",
-    speed: 60,
-    delay: 300
-  });
-
-  const subtitleTyping = useTypingEffect({
-    text: "Explore nossos projetos pioneiros que utilizam IA para resgatar memórias, dar voz a figuras históricas, denunciar injustiças e transformar a educação.",
-    speed: 30,
-    delay: 2000
-  });
-
   return (
-    <div className="min-h-screen bg-black cursor-vector">
-      {/* Background Elements */}
-      <div className="fixed inset-0 z-0">
-        <img src={imaginePosters} alt="" className="parallax-bg-image opacity-5" />
-        <img src={blackWomanPortrait} alt="" className="parallax-bg-image opacity-5" style={{top: '20%', right: '-10%'}} />
-        <img src={culturalArt} alt="" className="parallax-bg-image opacity-5" style={{bottom: '10%', left: '60%'}} />
-        <div className="neural-grid opacity-20" />
-        
-        {/* Enhanced Floating Particles */}
-        <div className="floating-particles">
-          {Array.from({ length: 25 }).map((_, i) => (
-            <div
-              key={i}
-              className="particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 15}s`,
-                animationDuration: `${15 + Math.random() * 10}s`
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Additional Background Effects */}
-        <div className="absolute top-20 left-20 w-96 h-96 bg-forest-accent/10 rounded-full blur-3xl animate-parallax-float" />
-        <div className="absolute bottom-32 right-32 w-80 h-80 bg-forest-green/15 rounded-full blur-3xl animate-parallax-float delay-[7s]" />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-forest-light/8 rounded-full blur-3xl animate-parallax-float delay-[3s]" />
-      </div>
-
+    <div className="min-h-screen bg-black text-white">
       <Navigation />
       
-      <main className="relative z-10 pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Header Section */}
-          <div className="text-center mb-24">
-            <div className="mb-4">
-              <span className="text-forest-accent font-semibold text-lg uppercase tracking-wider">
-                mobCONTENT
-              </span>
-            </div>
-            <h1 
-              ref={titleTyping.ref}
-              className={`text-5xl md:text-7xl font-black text-white mb-8 text-texture ${titleTyping.isTyping ? 'typing-cursor' : ''}`}
-            >
-              {titleTyping.displayText}
-            </h1>
-            <p 
-              ref={subtitleTyping.ref}
-              className={`text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed ${subtitleTyping.isTyping ? 'typing-cursor' : ''}`}
-            >
-              {subtitleTyping.displayText}
-            </p>
-          </div>
+      <main className="container mx-auto px-4 py-16 md:py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-light text-white/90 mb-2 leading-tight">
+            Inteligência Artificial para
+          </h2>
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
+            <span className="text-gradient-parallax">Narrativas</span> de Impacto
+          </h1>
+          <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
+            Transformando histórias e criando impacto através da inteligência artificial
+          </p>
+        </motion.div>
 
-          {/* Projects Grid - Asymmetric Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-auto">
-            {aiProjects.map((project, index) => (
-              <AIProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                onClick={() => setSelectedProject(project)}
-              />
-            ))}
-          </div>
-        </div>
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {aiProjects.map((project, index) => (
+            <AIProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              onClick={() => setSelectedProject(project)}
+            />
+          ))}
+        </section>
+
+        {selectedProject && (
+          <AIProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+
+        <ContactSection />
       </main>
-
-      {/* Project Modal */}
-      {selectedProject && (
-        <AIProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
-
-      <ContactSection />
+      
       <Footer />
     </div>
   );
 };
 
-export default AI;
+export default AIPage;

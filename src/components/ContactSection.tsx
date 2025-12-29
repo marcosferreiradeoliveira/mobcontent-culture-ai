@@ -8,6 +8,13 @@ import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, Instagram, Linkedin }
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { trackFormSubmission, trackEvent } from "@/utils/analytics";
 
+declare global {
+  interface Window {
+    gtag: (command: string, ...args: any[]) => void;
+    fbq: (command: string, ...args: any[]) => void;
+  }
+}
+
 export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -46,9 +53,41 @@ export const ContactSection = () => {
       });
       
       if (response.ok) {
-        setIsSuccess(true);
         // Track successful submission
-        trackFormSubmission(formName, true);
+        trackFormSubmission('contact_form', true);
+        
+        // Track Google Ads conversion
+        if (window.gtag) {
+          window.gtag('event', 'conversion', {'send_to': 'AW-819789199/2Y_XCMLkooUYEI_784YD'});
+        }
+        
+        // Track Google Ads conversion using the analytics utility
+        trackEvent('conversion', {
+          event_category: 'conversion',
+          event_label: 'contact_form_submission',
+          value: 1.0
+        });
+        
+        // Track Meta Pixel conversion
+        if (window.fbq) {
+          window.fbq('track', 'Lead', {
+            content_name: 'Formulário de Contato',
+            content_category: 'Lead',
+            value: 0.00,
+            currency: 'BRL'
+          });
+        }
+        
+        // Track form submission with GTM
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'form_submission',
+          'form_name': formName,
+          'form_type': 'contact',
+          'form_location': 'contact_section'
+        });
+        
+        setIsSuccess(true);
         // Reset form
         e.currentTarget.reset();
         // Reset success message after 5 seconds
