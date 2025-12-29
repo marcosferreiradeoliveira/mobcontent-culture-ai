@@ -7,15 +7,12 @@ import { componentTagger } from "lovable-tagger";
 const htmlBasePathPlugin = (basePath: string) => {
   return {
     name: 'html-base-path',
-    transformIndexHtml: {
-      enforce: 'pre' as const,
-      transform(html: string) {
-        // Ajusta o caminho do favicon para incluir o base path
-        return html.replace(
-          'href="/favicon.ico"',
-          `href="${basePath}favicon.ico"`
-        );
-      },
+    transformIndexHtml(html: string) {
+      // Ajusta o caminho do favicon para incluir o base path
+      return html.replace(
+        'href="/favicon.ico"',
+        `href="${basePath}favicon.ico"`
+      );
     },
   };
 };
@@ -32,10 +29,9 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
-      mode === 'development' &&
-      componentTagger(),
+      ...(mode === 'development' ? [componentTagger()] : []),
       htmlBasePathPlugin(base),
-    ].filter(Boolean),
+    ],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
