@@ -12,7 +12,7 @@ a
 
 Simply visit the [Lovable Project](https://lovable.dev/projects/9ef8245b-afe3-4989-9e11-5ed1b4a3bd0f) and start prompting.
 
-Changes made via Lovable will be committed automatically to this repo.
+Changes made via Lovable will be committed automatically to this repo.aa
 
 **Use your preferred IDE**
 

@@ -19,7 +19,9 @@ const htmlBasePathPlugin = (basePath: string) => {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const base = mode === 'production' ? '/mobcontent-culture-ai/' : '/';
+  // Se tiver domínio customizado configurado, usa raiz, senão usa o path do repositório
+  const customDomain = process.env.VITE_CUSTOM_DOMAIN;
+  const base = customDomain || (mode === 'production' ? '/mobcontent-culture-ai/' : '/');
   
   return {
     base,

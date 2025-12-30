@@ -19,7 +19,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename={import.meta.env.PROD ? '/mobcontent-culture-ai' : ''}>
+      <BrowserRouter basename={import.meta.env.VITE_CUSTOM_DOMAIN ? '' : (import.meta.env.PROD ? '/mobcontent-culture-ai' : '')}>
         <PageViewTracker />
         <Routes>
           <Route path="/" element={<Index />} />

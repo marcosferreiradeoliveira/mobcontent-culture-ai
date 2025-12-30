@@ -35,6 +35,8 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          # Para usar domínio customizado, descomente a linha abaixo:
+          # VITE_CUSTOM_DOMAIN: /
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
