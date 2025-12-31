@@ -69,9 +69,9 @@ export const PillarsSection = () => {
       }}
     >
       {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black/80">
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-accent/20 via-black/30 to-forest/20" />
-        <div className="neural-grid opacity-20" />
+      <div className="absolute inset-0 bg-black/40">
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-accent/15 via-black/20 to-forest/15" />
+        <div className="neural-grid opacity-15" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -117,7 +117,7 @@ export const PillarsSection = () => {
                     </div>
                   )}
                   <div 
-                    className={`relative border border-white/10 rounded-2xl p-10 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest backdrop-blur-[1px] transition-all duration-500 z-10 bg-black/70`}
+                    className={`relative border border-white/10 rounded-2xl p-10 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest backdrop-blur-[1px] transition-all duration-500 z-10 bg-black/40`}
                     style={{
                       transform: `translateZ(${index * 5}px) rotateY(${index * 2}deg)`,
                       animationDelay: `${index * 200}ms`
