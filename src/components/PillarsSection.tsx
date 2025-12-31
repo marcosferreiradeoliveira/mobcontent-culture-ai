@@ -57,18 +57,20 @@ export const PillarsSection = () => {
   };
 
   return (
-    <section id="solucoes" className="py-20 relative overflow-hidden bg-black">
-      {/* Background Pattern */}
-      <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-          style={{
-            backgroundImage: `url(${texturaImage})`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-accent/20 via-black/50 to-forest/20" />
+    <section 
+      id="solucoes" 
+      className="py-20 relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${texturaImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-black/80">
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-accent/20 via-black/30 to-forest/20" />
         <div className="neural-grid opacity-20" />
-        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
