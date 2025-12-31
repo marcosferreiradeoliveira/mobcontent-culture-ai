@@ -228,6 +228,17 @@ const DesenvolvimentoApps = () => {
           position: 'relative',
         }}
       >
+        <img 
+          src="https://cms.mobcontent.com.br/wp-content/uploads/2023/02/cropped-MG_0671.jpg"
+          alt=""
+          className="hidden"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            if (target.parentElement) {
+              target.parentElement.style.backgroundImage = 'none';
+            }
+          }}
+        />
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">

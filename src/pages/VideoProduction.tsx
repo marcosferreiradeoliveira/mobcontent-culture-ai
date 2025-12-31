@@ -344,6 +344,10 @@ const VideoProduction = () => {
             src="https://cms.mobcontent.com.br/wp-content/uploads/2023/08/275834393_152110030564858_7985067907118765247_n-e1691006390190.jpg"
             alt="Background"
             className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>

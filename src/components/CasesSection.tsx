@@ -92,6 +92,7 @@ const cases = [
 ];
 
 export const CasesSection = () => {
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const sectionDescription = useTypingEffect({
     text: "Projetos que demonstram nossa capacidade de integrar IA, audiovisual e apps para criar soluções culturais transformadoras",
     speed: 40,
@@ -146,11 +147,20 @@ export const CasesSection = () => {
 
                   {/* Project Image */}
                   <div className="aspect-[4/3] bg-gradient-to-br from-forest-accent/25 to-white/10 rounded-lg border border-white/20 backdrop-blur-sm overflow-hidden">
-                    <img 
-                      src={caseItem.image} 
-                      alt={caseItem.title} 
-                      className="w-full h-full object-cover"
-                    />
+                    {!imageErrors[caseItem.id] ? (
+                      <img 
+                        src={caseItem.image} 
+                        alt={caseItem.title} 
+                        className="w-full h-full object-cover"
+                        onError={() => setImageErrors(prev => ({ ...prev, [caseItem.id]: true }))}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-forest-accent/50 text-xs text-center px-4">
+                          {caseItem.title}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Title */}

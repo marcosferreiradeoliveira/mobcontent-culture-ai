@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
@@ -11,31 +12,47 @@ interface AppCardProps {
   imageUrl?: string;
 }
 
-const AppCard = ({ title, description, technologies, category, imageUrl }: AppCardProps) => (
-  <Card className="h-full flex flex-col transition-all hover:shadow-lg hover:-translate-y-1">
-    <CardHeader className="pb-2">
-      <div className="flex justify-between items-start">
-        <CardTitle className="text-xl">{title}</CardTitle>
-        <Badge variant="outline" className="bg-forest/10 text-forest">
-          {category}
-        </Badge>
-      </div>
-    </CardHeader>
-    <CardContent className="flex-1 flex flex-col">
-      <p className="text-muted-foreground mb-4 flex-1">{description}</p>
-      {imageUrl && (
-        <img src={imageUrl} alt={title} className="w-full h-48 object-cover mb-4" />
-      )}
-      <div className="flex flex-wrap gap-2 mt-auto pt-2">
-        {technologies.map((tech) => (
-          <Badge key={tech} variant="secondary" className="font-normal">
-            {tech}
+const AppCard = ({ title, description, technologies, category, imageUrl }: AppCardProps) => {
+  const [imageError, setImageError] = useState(false);
+  
+  return (
+    <Card className="h-full flex flex-col transition-all hover:shadow-lg hover:-translate-y-1">
+      <CardHeader className="pb-2">
+        <div className="flex justify-between items-start">
+          <CardTitle className="text-xl">{title}</CardTitle>
+          <Badge variant="outline" className="bg-forest/10 text-forest">
+            {category}
           </Badge>
-        ))}
-      </div>
-    </CardContent>
-  </Card>
-);
+        </div>
+      </CardHeader>
+      <CardContent className="flex-1 flex flex-col">
+        <p className="text-muted-foreground mb-4 flex-1">{description}</p>
+        {imageUrl && !imageError && (
+          <img 
+            src={imageUrl} 
+            alt={title} 
+            className="w-full h-48 object-cover mb-4" 
+            onError={() => setImageError(true)}
+          />
+        )}
+        {imageError && imageUrl && (
+          <div className="w-full h-48 bg-gradient-to-br from-forest-accent/25 to-white/10 flex items-center justify-center mb-4 rounded">
+            <div className="text-forest-accent/50 text-xs text-center px-4">
+              {title}
+            </div>
+          </div>
+        )}
+        <div className="flex flex-wrap gap-2 mt-auto pt-2">
+          {technologies.map((tech) => (
+            <Badge key={tech} variant="secondary" className="font-normal">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 export const AppsWeDeveloped = () => {
   const sectionTitle = useTypingEffect({

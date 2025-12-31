@@ -5,6 +5,7 @@ import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { useState } from "react";
 import { ParticleHoverEffect } from "./ParticleHoverEffect";
 import { useNavigate } from "react-router-dom";
+import machineLearningImage from "@/assets/machine-learning.jpg";
 
 const pillars = [
   {
@@ -14,7 +15,7 @@ const pillars = [
     description: "Desenvolvemos IAs generativas e narrativas interativas que revolucionam a experiência cultural. Do Oráculo Cultural ao Griot AI, criamos sistemas inteligentes que conectam pessoas à cultura de forma inovadora.",
     highlights: ["Oráculo Cultural", "IA Generativa", "Narrativas Interativas", "Griot AI"],
     gradient: "from-forest-accent/20 to-forest-accent/5",
-    backgroundImage: 'https://cms.mobcontent.com.br/wp-content/uploads/2022/11/machine_learning.png',
+    backgroundImage: machineLearningImage,
     path: '/ai'
   },
   {
@@ -41,6 +42,7 @@ const pillars = [
 
 export const PillarsSection = () => {
   const [hoveredPillar, setHoveredPillar] = useState<string | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const navigate = useNavigate();
   const sectionDescription = useTypingEffect({
     text: "Soluções integradas que formam nossa metodologia única para transformar a interação humana com a cultura",
@@ -87,14 +89,21 @@ export const PillarsSection = () => {
               >
                 <div className="relative overflow-hidden rounded-2xl h-full">
                   <ParticleHoverEffect id={pillar.id} isHovered={isHovered} />
-                  {pillar.backgroundImage && (
+                  {pillar.backgroundImage && !imageErrors[pillar.id] && (
                     <div 
                       className="absolute inset-0 z-0 bg-cover bg-center"
                       style={{
                         backgroundImage: `url(${pillar.backgroundImage})`,
                         opacity: 0.5,
                       }}
-                    />
+                    >
+                      <img 
+                        src={pillar.backgroundImage}
+                        alt=""
+                        className="hidden"
+                        onError={() => setImageErrors(prev => ({ ...prev, [pillar.id]: true }))}
+                      />
+                    </div>
                   )}
                   <div 
                     className={`relative border border-white/10 rounded-2xl p-10 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest backdrop-blur-[1px] transition-all duration-500 z-10 bg-card/50`}

@@ -86,7 +86,19 @@ export const HeroSection = () => {
           backgroundImage: 'url(https://cms.mobcontent.com.br/wp-content/uploads/2024/11/Anastacia-Grande.jpeg)',
           opacity: 0.7
         }}
-      />
+      >
+        <img 
+          src="https://cms.mobcontent.com.br/wp-content/uploads/2024/11/Anastacia-Grande.jpeg"
+          alt=""
+          className="hidden"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            if (target.parentElement) {
+              target.parentElement.style.backgroundImage = 'none';
+            }
+          }}
+        />
+      </div>
       
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40 z-0"></div>

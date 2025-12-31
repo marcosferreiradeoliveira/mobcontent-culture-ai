@@ -1,4 +1,5 @@
 import { Award, Globe, Trophy, Target } from "lucide-react";
+import { useState } from "react";
 import theAiArtImage from "@/assets/theaiart.jpeg";
 import globalFusionImage from "@/assets/globalfusion.jpeg";
 import sxswImage from "@/assets/sxsw.jpg";
@@ -172,6 +173,8 @@ const awards = [
 ];
 
 export const SocialProofSection = () => {
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
   return (
     <section className="py-20 bg-lab-darker relative overflow-hidden">
       {/* Background Pattern */}
@@ -204,12 +207,13 @@ export const SocialProofSection = () => {
                 }}
               >
                 <div className={`${client.name === 'Fundação Roberto Marinho' ? 'h-40' : 'h-28'} bg-card/20 rounded-lg flex items-center justify-center p-6`}>
-                  {client.logoImage ? (
+                  {client.logoImage && !imageErrors[`client-${index}`] ? (
                     <img 
                       src={client.logoImage} 
                       alt={client.name} 
                       className={`mx-auto ${client.name === 'Fundação Roberto Marinho' ? 'h-28 w-auto' : 'h-16 w-auto'}`}
                       style={{ objectFit: 'contain' }}
+                      onError={() => setImageErrors(prev => ({ ...prev, [`client-${index}`]: true }))}
                     />
                   ) : (
                     <div className="h-16 w-16 bg-forest-accent/10 rounded-lg flex items-center justify-center">
@@ -271,7 +275,7 @@ export const SocialProofSection = () => {
                   }}
                 >
                   {/* Background Image */}
-                  {award.image && (
+                  {award.image && !imageErrors[`award-${index}`] && (
                     <div 
                       className="absolute inset-0 z-0 opacity-40"
                       style={{
@@ -280,7 +284,14 @@ export const SocialProofSection = () => {
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
                       }}
-                    />
+                    >
+                      <img 
+                        src={award.image}
+                        alt=""
+                        className="hidden"
+                        onError={() => setImageErrors(prev => ({ ...prev, [`award-${index}`]: true }))}
+                      />
+                    </div>
                   )}
                   
                   <div className="relative z-10 bg-card/20 border-2 border-white/15 rounded-xl p-8 h-full">
