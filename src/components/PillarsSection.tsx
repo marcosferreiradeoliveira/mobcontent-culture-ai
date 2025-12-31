@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ParticleHoverEffect } from "./ParticleHoverEffect";
 import { useNavigate } from "react-router-dom";
 import machineLearningImage from "@/assets/machine-learning.jpg";
+import texturaImage from "@/assets/textura.png";
 
 const pillars = [
   {
@@ -59,6 +60,12 @@ export const PillarsSection = () => {
     <section id="solucoes" className="py-20 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-8">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{
+            backgroundImage: `url(${texturaImage})`,
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-br from-forest-accent/15 via-transparent to-forest/10" />
         <div className="neural-grid opacity-30" />
       </div>
