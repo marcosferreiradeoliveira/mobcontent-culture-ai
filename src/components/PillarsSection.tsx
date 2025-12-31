@@ -7,6 +7,7 @@ import { ParticleHoverEffect } from "./ParticleHoverEffect";
 import { useNavigate } from "react-router-dom";
 import machineLearningImage from "@/assets/machine-learning.jpg";
 import texturaImage from "@/assets/textura.png";
+import anastaciaImage from "@/assets/anastacia.png";
 
 const pillars = [
   {
@@ -16,7 +17,7 @@ const pillars = [
     description: "Desenvolvemos IAs generativas e narrativas interativas que revolucionam a experiência cultural. Do Oráculo Cultural ao Griot AI, criamos sistemas inteligentes que conectam pessoas à cultura de forma inovadora.",
     highlights: ["Oráculo Cultural", "IA Generativa", "Narrativas Interativas", "Griot AI"],
     gradient: "from-forest-accent/20 to-forest-accent/5",
-    backgroundImage: machineLearningImage,
+    backgroundImage: anastaciaImage,
     path: '/ai'
   },
   {
