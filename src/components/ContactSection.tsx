@@ -7,6 +7,7 @@ import { AnalyticsButton } from "@/components/ui/analytics-button";
 import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, Instagram, Linkedin } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { trackFormSubmission, trackEvent } from "@/utils/analytics";
+import equipeImage from "@/assets/equipe02-1024x683.jpg";
 
 declare global {
   interface Window {
@@ -119,9 +120,18 @@ export const ContactSection = () => {
   };
 
   return (
-    <section className="py-32 bg-forest-darker relative overflow-hidden" id="contato">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
+    <section 
+      className="py-32 relative overflow-hidden" 
+      id="contato"
+      style={{
+        backgroundImage: `url(${equipeImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-black/70">
         <div className="absolute top-20 left-10 w-64 h-64 bg-forest-accent/15 rounded-full blur-3xl animate-parallax-float" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-forest/10 rounded-full blur-3xl animate-parallax-float delay-[5s]" />
         <div className="neural-grid opacity-10" />
