@@ -4,10 +4,6 @@ import { ArrowRight, Brain, Camera, Smartphone } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { useCursorTrail } from "@/hooks/useCursorTrail";
 import { useNavigate } from "react-router-dom";
-import blackWomanPortrait from "@/assets/black-woman-portrait.jpg";
-import machineLearning from "@/assets/machine-learning.jpg";
-import culturalArt from "@/assets/cultural-art.jpg";
-import imaginePosters from "@/assets/imagine-poster.jpg";
 import anastaciaGrande from "@/assets/AnastaciaGrande.jpeg";
 
 export const HeroSection = () => {
