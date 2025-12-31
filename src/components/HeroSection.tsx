@@ -8,6 +8,7 @@ import blackWomanPortrait from "@/assets/black-woman-portrait.jpg";
 import machineLearning from "@/assets/machine-learning.jpg";
 import culturalArt from "@/assets/cultural-art.jpg";
 import imaginePosters from "@/assets/imagine-poster.jpg";
+import anastaciaGrande from "@/assets/AnastaciaGrande.jpeg";
 
 export const HeroSection = () => {
   useCursorTrail();
@@ -83,22 +84,10 @@ export const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
-          backgroundImage: 'url(https://cms.mobcontent.com.br/wp-content/uploads/2024/11/Anastacia-Grande.jpeg)',
+          backgroundImage: `url(${anastaciaGrande})`,
           opacity: 0.7
         }}
-      >
-        <img 
-          src="https://cms.mobcontent.com.br/wp-content/uploads/2024/11/Anastacia-Grande.jpeg"
-          alt=""
-          className="hidden"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            if (target.parentElement) {
-              target.parentElement.style.backgroundImage = 'none';
-            }
-          }}
-        />
-      </div>
+      />
       
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40 z-0"></div>
