@@ -12,6 +12,7 @@ import blackWomanPortrait from "@/assets/black-woman-portrait.jpg";
 import culturalArt from "@/assets/cultural-art.jpg";
 import machineLearning from "@/assets/machine-learning.jpg";
 import grioAI from "@/assets/grioai.png";
+import geminiImage from "@/assets/Gemini_Generated_Image_yrunukyrunukyrun Medium.jpeg";
 
 interface AIProject {
   id: string;
@@ -34,7 +35,7 @@ const aiProjects: AIProject[] = [
     detailedDescription: "Este projeto emprega IA generativa para criar representações visuais fotorrealistas de momentos significativos da história afro-brasileira que carecem de registros. Ao aliar pesquisa histórica detalhada com tecnologia de ponta, o museu preenche lacunas na memória e promove a inclusão. O projeto foi exposto na Alemanha e Áustria.",
     technologies: "Inteligência Artificial Generativa, Pesquisa Histórica",
     impact: "Resgate e inclusão memorial da história afro-brasileira",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2024/11/mmobcontent_hyperrealistic_photo_of_a_black_woman_facing_camera_b30b7584-ec5b-4700-a96a-0812d112cc8b-scaled.jpeg"
+    image: geminiImage
   },
   {
     id: "oraculo-cultural",

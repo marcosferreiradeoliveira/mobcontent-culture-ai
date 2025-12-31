@@ -7,6 +7,9 @@ import imaginePosters from "@/assets/imagine-poster.jpg";
 import oraculoImage from "@/assets/oraculo.png";
 import grioAIImage from "@/assets/grioai.png";
 import falatorioImage from "@/assets/falatorio.jpeg";
+import tomzeImage from "@/assets/TomZe-768x576.jpg";
+import mdaImage from "@/assets/mda.jpeg";
+import geminiImage from "@/assets/Gemini_Generated_Image_yrunukyrunukyrun Medium.jpeg";
 import { SectionTracker } from "@/components/Analytics/SectionTracker";
 
 const cases = [
@@ -33,7 +36,7 @@ const cases = [
       { icon: Users, label: "Nomes como Bethânia, Gil e Arnaldo Antunes" },
       { icon: Globe, label: "Licenciamento de acervo audiovisual histórico" }
     ],
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/12.jpg",
+    image: tomzeImage,
     color: "forest",
     videoUrl: "https://www.youtube.com/watch?v=Dd_TIBGHY60"
   },
@@ -47,7 +50,7 @@ const cases = [
       { icon: Users, label: "Acessibilidade completa" },
       { icon: Globe, label: "Popups interativos nos locais de exposição" }
     ],
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/MuseuDoAmanha.png",
+    image: mdaImage,
     color: "forest-light",
     videoUrl: "https://www.youtube.com/watch?v=JFg02dn56qU"
   },
@@ -87,7 +90,7 @@ const cases = [
       { icon: Globe, label: "Exibido na Alemanha, Áustria, México e Japão" },
       { icon: Award, label: "Escolhido pela The Ai Art Magazine (ALE)" }
     ],
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2024/11/mmobcontent_hyperrealistic_photo_of_a_black_woman_facing_camera_b30b7584-ec5b-4700-a96a-0812d112cc8b-scaled.jpeg",
+    image: geminiImage,
     color: "forest-accent"
   }
 ];

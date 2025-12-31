@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import vetoresImage from "@/assets/vetores.jpeg";
+import mdaImage from "@/assets/mda.jpeg";
 
 interface AppCardProps {
   title: string;
@@ -88,7 +89,7 @@ export const AppsWeDeveloped = () => {
       description: "Um guia interativo que enriquece a experiência do visitante no Museu do Amanhã, utilizando a tecnologia de beacons.",
       technologies: ["Aplicativo Móvel", "Internet das Coisas (IoT)"],
       category: "Cultura e Interatividade",
-      imageUrl: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/MuseuDoAmanha.png"
+      imageUrl: mdaImage
     },
     {
       title: "Cidade Antigamente",

@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import machineLearningImage from "@/assets/machine-learning.jpg";
 import texturaImage from "@/assets/textura.png";
 import anastaciaImage from "@/assets/anastacia.png";
+import museuLinguaImage from "@/assets/cropped-MuseuDaLinguaPOrtuguesa2.jpg";
+import mg0671Image from "@/assets/MG_0671-1024x683.jpg";
 
 const pillars = [
   {
@@ -27,7 +29,7 @@ const pillars = [
     description: "Criamos conteúdo audiovisual de alta qualidade para TV, streaming e instituições culturais. Séries, documentários e conteúdo de marca que transformam narrativas em experiências visuais impactantes.",
     highlights: ["Séries & Documentários", "Conteúdo para Streaming", "TV & Marca", "Narrativas Visuais"],
     gradient: "from-forest/20 to-forest/5",
-    backgroundImage: 'https://cms.mobcontent.com.br/wp-content/uploads/2023/08/Denise_banner.jpg',
+    backgroundImage: museuLinguaImage,
     path: '/video-production'
   },
   {
@@ -37,7 +39,7 @@ const pillars = [
     description: "Desenvolvemos aplicativos para museus, turismo e clientes corporativos com experiência internacional. Soluções digitais que aproximam pessoas da cultura através da tecnologia.",
     highlights: ["Apps para Museus", "Turismo Digital", "eTrilhas", "Clientes Internacionais"],
     gradient: "from-forest-light/20 to-forest-light/5",
-    backgroundImage: 'https://cms.mobcontent.com.br/wp-content/uploads/2023/02/cropped-MG_0671.jpg',
+    backgroundImage: mg0671Image,
     path: '/desenvolvimento-apps'
   }
 ];

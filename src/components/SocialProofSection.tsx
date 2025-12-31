@@ -3,6 +3,7 @@ import { useState } from "react";
 import theAiArtImage from "@/assets/theaiart.jpeg";
 import globalFusionImage from "@/assets/globalfusion.jpeg";
 import sxswImage from "@/assets/sxsw.jpg";
+import showMambembeImage from "@/assets/ShowMambembe-1536x864.jpg";
 
 const clients = [
   { 
@@ -176,10 +177,18 @@ export const SocialProofSection = () => {
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   return (
-    <section className="py-20 bg-lab-darker relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="neural-grid" />
+    <section 
+      className="py-20 bg-lab-darker relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${showMambembeImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-black/70">
+        <div className="neural-grid opacity-5" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
