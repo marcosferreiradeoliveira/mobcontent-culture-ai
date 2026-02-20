@@ -44,9 +44,9 @@ export const Footer = () => {
                 <Mail className="w-5 h-5 text-electric" />
                 <span>contato@mobcontent.com.br</span>
               </div>
-              <a href="https://wa.me/5521966225623" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-white/80 hover:text-[#25D366] transition-colors">
+              <a href="https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT." target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-white/80 hover:text-[#25D366] transition-colors">
                 <MessageCircle className="w-5 h-5 text-electric" />
-                <span>+55 21 96622-5623</span>
+                <span>+55 21 96622-5632</span>
               </a>
               <div className="flex items-center space-x-3 text-white/80">
                 <Globe className="w-5 h-5 text-electric" />
@@ -57,7 +57,7 @@ export const Footer = () => {
                 <span>Rio de Janeiro, Brasil & Internacional</span>
               </div>
               <a
-                href="https://wa.me/5521966225623"
+                href="https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-2 px-4 py-2 bg-[#25D366] hover:bg-[#20BD5A] text-white text-sm font-semibold rounded-lg transition-colors"

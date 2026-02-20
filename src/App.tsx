@@ -11,6 +11,7 @@ import DesenvolvimentoApps from "./pages/DesenvolvimentoApps";
 import Portfolio from "./pages/Portfolio";
 import NotFound from "./pages/NotFound";
 import { PageViewTracker } from "./components/Analytics/PageViewTracker";
+import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <FloatingWhatsApp />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

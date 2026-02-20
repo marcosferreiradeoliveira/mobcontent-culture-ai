@@ -147,7 +147,7 @@ export const ContactSection = () => {
             {sectionDescription.displayText}
           </p>
           <a
-            href="https://wa.me/5521966225623"
+            href="https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
@@ -293,7 +293,7 @@ export const ContactSection = () => {
                 {
                   icon: Phone,
                   title: "WhatsApp",
-                  info: "+55 21 96622-5623",
+                  info: "+55 21 96622-5632",
                   description: "Atendimento: Seg-Sex, 9h-18h"
                 },
                 {
@@ -309,7 +309,7 @@ export const ContactSection = () => {
                   <a
                     key={contact.title}
                     href={contact.title === "Email" ? "mailto:contato@mobcontent.com.br" : 
-                         contact.title === "WhatsApp" ? "https://wa.me/5521966225623" : "#"}
+                         contact.title === "WhatsApp" ? "https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT." : "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block group"
