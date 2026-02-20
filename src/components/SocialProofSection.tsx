@@ -5,96 +5,97 @@ import globalFusionImage from "@/assets/globalfusion.jpeg";
 import sxswImage from "@/assets/sxsw.jpg";
 import showMambembeImage from "@/assets/ShowMambembe-1536x864.jpg";
 
+/* Logos dos parceiros: Wikimedia Commons e fontes públicas. Preferência versão branca (filtro CSS). */
 const clients = [
   { 
     name: "Fundação Roberto Marinho", 
     logo: "FRM",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/FRM.png"
+    logoImage: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Logotipo_Funda%C3%A7%C3%A3o_Roberto_Marinho_%282021%29.svg"
   },
   { 
     name: "Canal Brasil",
     logo: "CB",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/CB.png"
+    logoImage: "https://upload.wikimedia.org/wikipedia/commons/6/62/Logo_CanalBrasil.png"
   },
   { 
     name: "Futura",
     logo: "FUT",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/Futura.png"
+    logoImage: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Canal_Futura_2022.svg"
   },
   { 
     name: "Conservation International",
     logo: "CI",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/CI.png"
+    logoImage: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Conservation_International_logo.png"
   },
   { 
     name: "Museu do Amanhã",
     logo: "MDA",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/MDA.png"
+    logoImage: null
   },
   { 
     name: "Governo do Estado do Rio de Janeiro",
     logo: "GERJ",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/GE.png"
+    logoImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Bras%C3%A3o_do_estado_do_Rio_de_Janeiro.svg/200px-Bras%C3%A3o_do_estado_do_Rio_de_Janeiro.svg.png"
   },
   { 
     name: "Sebrae",
     logo: "SEBRAE",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/sebrae.png"
+    logoImage: "https://upload.wikimedia.org/wikipedia/commons/6/65/Sebrae_logo.png"
   },
   { 
     name: "British Council",
     logo: "BC",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/BC.png"
+    logoImage: "https://upload.wikimedia.org/wikipedia/commons/1/19/British_Council_logo.svg"
   },
   { 
     name: "Museu da Língua Portuguesa", 
     logo: "MLP", 
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/MLP.png" 
+    logoImage: null
   },
   { 
     name: "Benfeitoria",
     logo: "BENF",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/Benfeitoria.png"
+    logoImage: null
   },
   { 
     name: "Webedia",
     logo: "WEB",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/webedia-group.png"
+    logoImage: null
   },
   { 
     name: "BR Malls",
     logo: "BRMALLS",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/brmalls.png"
+    logoImage: null
   },
   { 
     name: "Credipronto",
     logo: "CRED",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/crediponto.png"
+    logoImage: null
   },
   { 
     name: "Abstartups",
     logo: "ABST",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/logo-branca.png"
+    logoImage: null
   },
   { 
     name: "CBEDS",
     logo: "CEBDS",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/CEBDS.png"
+    logoImage: null
   },
   { 
     name: "AccesoPanam",
     logo: "AP",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2023/08/panam.png"
+    logoImage: null
   },
   { 
     name: "Sistac",
     logo: "SIST",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/sistac-logo.png"
+    logoImage: null
   },
   { 
     name: "Multiseguros",
     logo: "MULTI",
-    logoImage: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/multiseguros.png"
+    logoImage: null
   }
 ];
 
@@ -220,7 +221,7 @@ export const SocialProofSection = () => {
                     <img 
                       src={client.logoImage} 
                       alt={client.name} 
-                      className={`mx-auto ${client.name === 'Fundação Roberto Marinho' ? 'h-28 w-auto' : 'h-16 w-auto'}`}
+                      className={`mx-auto logo-parceiro-branco ${client.name === 'Fundação Roberto Marinho' ? 'h-28 w-auto' : 'h-16 w-auto'}`}
                       style={{ objectFit: 'contain' }}
                       onError={() => setImageErrors(prev => ({ ...prev, [`client-${index}`]: true }))}
                     />

@@ -473,6 +473,11 @@ All colors MUST be HSL.
   font-weight: bold;
 }
 
+/* Logos dos parceiros em branco (seção Clientes que Confiam) */
+.logo-parceiro-branco {
+  filter: brightness(0) invert(1);
+}
+
 @keyframes blink {
   0%, 50% {
     opacity: 1;

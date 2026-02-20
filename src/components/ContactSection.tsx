@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { AnalyticsButton } from "@/components/ui/analytics-button";
-import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, Instagram, Linkedin } from "lucide-react";
+import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { trackFormSubmission, trackEvent } from "@/utils/analytics";
 import equipeImage from "@/assets/equipe02-1024x683.jpg";
@@ -146,6 +146,16 @@ export const ContactSection = () => {
           <p ref={sectionDescription.ref} className={`text-xl text-white/70 max-w-3xl mx-auto leading-relaxed ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
             {sectionDescription.displayText}
           </p>
+          <a
+            href="https://wa.me/5521966225623"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
+            aria-label="Falar pelo WhatsApp"
+          >
+            <MessageCircle className="w-5 h-5" />
+            Falar pelo WhatsApp
+          </a>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
@@ -283,7 +293,7 @@ export const ContactSection = () => {
                 {
                   icon: Phone,
                   title: "WhatsApp",
-                  info: "+55 21 99211-3485",
+                  info: "+55 21 96622-5623",
                   description: "Atendimento: Seg-Sex, 9h-18h"
                 },
                 {
@@ -299,7 +309,7 @@ export const ContactSection = () => {
                   <a
                     key={contact.title}
                     href={contact.title === "Email" ? "mailto:contato@mobcontent.com.br" : 
-                         contact.title === "WhatsApp" ? "https://wa.me/5521992113485" : "#"}
+                         contact.title === "WhatsApp" ? "https://wa.me/5521966225623" : "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block group"

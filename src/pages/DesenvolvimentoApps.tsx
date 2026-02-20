@@ -205,7 +205,7 @@ const DesenvolvimentoApps = () => {
       
       {/* WhatsApp Button - Fixed */}
       <a 
-        href="https://wa.me/5521966225632" 
+        href="https://wa.me/5521966225623" 
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full p-4 shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-xl"
@@ -248,7 +248,7 @@ const DesenvolvimentoApps = () => {
             Criação de aplicativos móveis e web personalizados que impulsionam negócios e engajam usuários
           </p>
           <a 
-            href="https://wa.me/5521966225632" 
+            href="https://wa.me/5521966225623" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -338,7 +338,7 @@ const DesenvolvimentoApps = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Entre em Contato</h2>
             <p className="text-gray-300 max-w-2xl mx-auto mb-8">Tem um projeto em mente? Fale com nossa equipe agora mesmo!</p>
             <a 
-              href="https://wa.me/5521966225632" 
+              href="https://wa.me/5521966225623" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
