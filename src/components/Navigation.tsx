@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 export const Navigation = () => {
@@ -15,11 +16,11 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "IA", href: "/ai" },
-    { label: "Apps", href: "/desenvolvimento-apps" },
-    { label: "Audiovisual", href: "/video-production" },
-    { label: "Sobre a mob", href: "/sobre" },
-    { label: "Contato", href: "#contato" }
+    { label: "IA", href: "/ai", internal: true },
+    { label: "Apps", href: "/desenvolvimento-apps", internal: true },
+    { label: "Audiovisual", href: "/video-production", internal: true },
+    { label: "Sobre a mob", href: "/sobre", internal: true },
+    { label: "Contato", href: "#contato", internal: false }
   ];
 
   return (
@@ -34,26 +35,36 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <div className="flex items-center min-w-0">
-            <a href="/" className="text-lg sm:text-xl font-black truncate">
+            <Link to="/" className="text-lg sm:text-xl font-black truncate">
               mob<span className="text-forest">CONTENT</span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.external ? '_blank' : '_self'}
-                rel={item.external ? 'noopener noreferrer' : ''}
-                className={`font-medium transition-colors duration-300 hover:text-forest ${
-                  isScrolled ? 'text-primary' : 'text-white'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.internal && !item.href.startsWith('#') ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={`font-medium transition-colors duration-300 hover:text-forest ${
+                    isScrolled ? 'text-primary' : 'text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`font-medium transition-colors duration-300 hover:text-forest ${
+                    isScrolled ? 'text-primary' : 'text-white'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -71,18 +82,27 @@ export const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-border/20 shadow-lg">
             <div className="px-6 py-6 space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.external ? '_blank' : '_self'}
-                  rel={item.external ? 'noopener noreferrer' : ''}
-                  className="block text-primary font-medium hover:text-forest transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.internal && !item.href.startsWith('#') ? (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="block text-primary font-medium hover:text-forest transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="block text-primary font-medium hover:text-forest transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )
+              )}
             </div>
           </div>
         )}

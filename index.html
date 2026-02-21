@@ -80,23 +80,21 @@
     <!-- Single Page Apps for GitHub Pages -->
     <script>
       // https://github.com/rafgraph/spa-github-pages
-      // This script checks to see if a redirect is present in the query string,
-      // converts it back into the correct url and adds it to the
-      // browser's history using window.history.replaceState(...),
-      // which won't cause the browser to attempt to load the new url.
-      // When the single page app is loaded further down in this file,
-      // the correct url will be waiting in the browser's history for
-      // the single page app to route accordingly.
+      // Corrige redirect SPA: ?/rota vira /rota. Usa só decoded (nunca pathname+decoded)
+      // para não duplicar path. Se a query já estiver corrompida (?/&/~and~/...), restaura só o path.
       (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
+        if (l.search.length < 2 || l.search[1] !== '/') return;
+        var q = l.search.slice(1);
+        var isCorrupted = q.indexOf('?/&') !== -1 || (q.match(/~and~/g) && q.match(/~and~/g).length > 2);
+        if (isCorrupted) {
+          var cleanPath = l.pathname.replace(/\/$/, '') || '/';
+          window.history.replaceState(null, null, cleanPath + (l.hash || ''));
+          return;
         }
-      }(window.location))
+        var decoded = q.split('&').map(function(s) { return s.replace(/~and~/g, '&'); }).join('?');
+        if (!/^\//.test(decoded)) return;
+        window.history.replaceState(null, null, decoded + (l.hash || ''));
+      }(window.location));
     </script>
     
     <div id="root"></div>
