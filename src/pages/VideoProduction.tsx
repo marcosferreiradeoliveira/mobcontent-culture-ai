@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Brain, Film, Wand2, Send, Mail, MessageCircle, ArrowDown, Menu, X, ArrowRight, Phone, CheckCircle2 } from 'lucide-react';
@@ -206,28 +207,38 @@ const VideoProduction = () => {
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <a href="/" className="text-xl font-black">
+              <Link to="/" className="text-xl font-black">
                 mob<span className={`${isScrolled ? 'text-forest' : 'text-white'}`}>
                   CONTENT
                 </span>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.external ? "_blank" : "_self"}
-                  rel={item.external ? "noopener noreferrer" : ""}
-                  className={`text-sm font-medium hover:text-forest transition-colors ${
-                    isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.href.startsWith('#') ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={`text-sm font-medium hover:text-forest transition-colors ${
+                      isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className={`text-sm font-medium hover:text-forest transition-colors ${
+                      isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -251,20 +262,31 @@ const VideoProduction = () => {
           } ${isScrolled ? 'bg-white' : 'bg-gray-900'}`}
         >
           <div className="px-6 py-4 space-y-4">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.external ? "_blank" : "_self"}
-                rel={item.external ? "noopener noreferrer" : ""}
-                className={`block py-2 hover:text-forest transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith('#') ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`block py-2 hover:text-forest transition-colors ${
+                    isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={`block py-2 hover:text-forest transition-colors ${
+                    isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
         </div>
       </nav>

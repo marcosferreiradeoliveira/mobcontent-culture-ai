@@ -20,6 +20,12 @@ const SobreMob = () => {
     if (meta) {
       meta.setAttribute("content", "Conheça a trajetória da mobCONTENT: inovação, cultura e narrativas digitais na vanguarda brasileira desde 2011.");
     }
+    // Corrige URL corrompida (?/&/~and~/...) mantendo só o path atual
+    const q = window.location.search;
+    if (q && (q.includes('?/&') || (q.match(/~and~/g)?.length ?? 0) > 2)) {
+      const path = window.location.pathname.replace(/\/$/, '') || '/sobre';
+      window.history.replaceState(null, '', path + (window.location.hash || ''));
+    }
   }, []);
 
   const sections = [
