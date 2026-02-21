@@ -13,6 +13,7 @@ import polissonorumImage from "@/assets/Polissonorum-1-300x209.jpg";
 import itinereImage from "@/assets/itinere-1-300x169.jpg";
 import etrilhasImage from "@/assets/Etrilhas-1-300x169.jpg";
 import animapaImage from "@/assets/Animapa2-768x454.jpg";
+import grioaiImage from "@/assets/grioai.png";
 
 interface AppCardProps {
   title: string;
@@ -84,7 +85,7 @@ export const AppsWeDeveloped = () => {
       description: "Um projeto que usa IA generativa e storytelling interativo para dar voz a figuras históricas e personalizar a experiência narrativa de forma educativa e cultural.",
       technologies: ["Inteligência Artificial (IA) Generativa", "Storytelling Interativo"],
       category: "IA e Cultura",
-      imageUrl: "src/assets/grioai.png"
+      imageUrl: grioaiImage
     },
     {
       title: "Vetores Vertentes",
