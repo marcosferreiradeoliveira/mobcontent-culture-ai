@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { trackEvent } from "@/utils/analytics";
 import { Footer } from "@/components/Footer";
@@ -6,6 +7,7 @@ import { AIProjectCard } from "@/components/AIProjectCard";
 import { AIProjectModal } from "@/components/AIProjectModal";
 import { useCursorTrail } from "@/hooks/useCursorTrail";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { ContactSection } from "@/components/ContactSection";
 import { motion } from "framer-motion";
 import imaginePosters from "@/assets/imagine-poster.jpg";
@@ -163,6 +165,13 @@ const AIPage = () => {
   
   const [selectedProject, setSelectedProject] = useState<AIProject | null>(null);
   useCursorTrail();
+  const location = useLocation();
+  usePageMeta({
+    title: "Inteligência Artificial",
+    description: "IA generativa e narrativas interativas para cultura: Museu da Memória Negra, Oráculo Cultural, Griot AI, Fabulador e mais projetos da mobCONTENT.",
+    ogImage: "/og-ia.jpg",
+    path: location.pathname,
+  });
 
   return (
     <div className="min-h-screen text-white relative">

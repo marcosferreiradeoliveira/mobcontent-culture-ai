@@ -19,19 +19,20 @@ import { Navigation } from "@/components/Navigation";
 import { ContactSection } from "@/components/ContactSection";
 import { useEffect } from "react";
 import { PageViewTracker } from '@/components/Analytics/PageViewTracker';
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { AppsWeDeveloped } from "@/components/AppsWeDeveloped";
 import heroBgImage from "@/assets/MG_0671-1024x683.jpg";
 import appsSectionBg from "@/assets/rq48n957djcp028jlv59-1024x576.webp";
 
 const DesenvolvimentoApps = () => {
+  usePageMeta({
+    title: "Desenvolvimento de Aplicativos e Sites",
+    description: "Desenvolvimento de aplicativos móveis e web personalizados. Apps nativos iOS/Android, PWAs e soluções digitais inovadoras para sua empresa.",
+    ogImage: "/og-apps.png",
+    path: "/desenvolvimento-apps",
+  });
   useEffect(() => {
-    document.title = "Desenvolvimento de Aplicativos e Sites | mobCONTENT";
     window.scrollTo(0, 0);
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Desenvolvimento de aplicativos móveis e web personalizados. Apps nativos iOS/Android, PWAs e soluções digitais inovadoras para sua empresa.");
-    }
   }, []);
 
   const tecnologias = [
@@ -163,41 +164,32 @@ const DesenvolvimentoApps = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Fundo fixo do hero em toda a página (não rola) */}
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBgImage})` }}
+        aria-hidden
+      />
+      <div className="fixed inset-0 z-0 bg-black/70" aria-hidden />
       <Navigation />
       <PageViewTracker/>
-      
-      {/* Hero Section */}
-      <section 
-        className="relative pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
-        style={{
-          backgroundImage: `url(${heroBgImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
-        <div className="relative z-10 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white px-1">
-            Desenvolvimento de Aplicativos e Sites
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-1">
-            Criação de aplicativos móveis e web personalizados que impulsionam negócios e engajam usuários
-          </p>
-        </div>
-      </section>
 
-      {/* Apps We've Developed Section */}
-      <section 
-        className="py-16 relative overflow-hidden"
-        style={{
-          backgroundImage: `url(${appsSectionBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
+      <div className="relative z-10">
+        {/* Hero Section - título e texto */}
+        <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white px-1">
+              Desenvolvimento de Aplicativos e Sites
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-1">
+              Criação de aplicativos móveis e web personalizados que impulsionam negócios e engajam usuários
+            </p>
+          </div>
+        </section>
+
+        {/* Apps We've Developed Section */}
+        <section className="py-16 relative">
         <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
         <div className="relative z-10">
           <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -206,12 +198,13 @@ const DesenvolvimentoApps = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-black">
-        <div className="container mx-auto px-4 sm:px-6">
-          <ContactSection />
-        </div>
-      </section>
+        {/* Contact Section */}
+        <section className="py-12 sm:py-16 md:py-20 bg-black">
+          <div className="container mx-auto px-4 sm:px-6">
+            <ContactSection />
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

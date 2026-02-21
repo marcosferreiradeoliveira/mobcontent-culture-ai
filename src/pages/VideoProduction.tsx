@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Brain, Film, Wand2, Send, Mail, MessageCircle, ArrowDown, Menu, X, ArrowRight, Phone, CheckCircle2 } from 'lucide-react';
 import { useTypingEffect } from '@/hooks/useTypingEffect';
 import { useCursorTrail } from '@/hooks/useCursorTrail';
+import { usePageMeta } from '@/hooks/usePageMeta';
 import monstroVideo from '@/assets/monstro.mp4';
 import mentoriaVideo from '@/assets/mentoria.mp4';
 import podcast2Video from '@/assets/podcast2.mp4';
@@ -25,6 +26,12 @@ const VideoProduction = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   
   useCursorTrail();
+  usePageMeta({
+    title: "Audiovisual",
+    description: "Produção de vídeos com IA generativa, captação e animação. Do roteiro à finalização, séries, documentários e conteúdo para TV e streaming.",
+    ogImage: "/og-audiovisual.jpg",
+    path: "/video-production",
+  });
 
   useEffect(() => {
     const handleScroll = () => {

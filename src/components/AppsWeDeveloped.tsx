@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTypingEffect } from "@/hooks/useTypingEffect";
 import vetoresImage from "@/assets/vetores.jpeg";
 import apdxImage from "@/assets/APDX-768x730.jpg";
 import museuAmanhaImage from "@/assets/MuseuDoAmanha-300x277.png";
@@ -66,12 +65,6 @@ const AppCard = ({ title, description, technologies, category, imageUrl }: AppCa
 };
 
 export const AppsWeDeveloped = () => {
-  const sectionTitle = useTypingEffect({
-    text: "Aplicativos que desenvolvemos",
-    speed: 40,
-    delay: 200,
-  });
-
   const apps = [
     {
       title: "App Museu do Amanhã",
@@ -160,17 +153,10 @@ export const AppsWeDeveloped = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-3 sm:mb-4 text-white">
-          {sectionTitle.displayText}
-        </h2>
-        <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto px-1">
-          Soluções inovadoras que combinam tecnologia e criatividade para criar experiências únicas
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+    <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Sombra da parte de baixo */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" aria-hidden />
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {apps.map((app, index) => (
           <AppCard key={index} {...app} />
         ))}

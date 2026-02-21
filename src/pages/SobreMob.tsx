@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { ContactSection } from "@/components/ContactSection";
@@ -13,13 +14,14 @@ import premioTelaVivaImage from "@/assets/premio-tela-viva-768x512.jpg";
 import showMambembeBg from "@/assets/ShowMambembe-1536x864.jpg";
 
 const SobreMob = () => {
+  usePageMeta({
+    title: "Sobre a mob",
+    description: "Conheça a trajetória da mobCONTENT: inovação, cultura e narrativas digitais na vanguarda brasileira desde 2011.",
+    ogImage: "/og-sobre.jpg",
+    path: "/sobre",
+  });
   useEffect(() => {
-    document.title = "Sobre a mob | mobCONTENT";
     window.scrollTo(0, 0);
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute("content", "Conheça a trajetória da mobCONTENT: inovação, cultura e narrativas digitais na vanguarda brasileira desde 2011.");
-    }
     // Corrige URL corrompida (?/&/~and~/...) mantendo só o path atual
     const q = window.location.search;
     if (q && (q.includes('?/&') || (q.match(/~and~/g)?.length ?? 0) > 2)) {
