@@ -1,28 +1,18 @@
 // src/components/Analytics/PageViewTracker.tsx
-'use client';
-
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { trackPageView } from '@/utils/analytics';
 
 export function PageViewTracker() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const location = useLocation();
 
   useEffect(() => {
-    if (pathname) {
-      // Combine path with search params
-      const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
-      
-      // Track page view with additional context
-      trackPageView(url);
-      
-      // Debug log
-      if (process.env.NODE_ENV === 'development') {
-        console.log('Page view tracked:', url);
-      }
+    const url = location.pathname + (location.search || '');
+    trackPageView(url);
+    if (import.meta.env.DEV) {
+      console.log('Page view tracked:', url);
     }
-  }, [pathname, searchParams]);
+  }, [location.pathname, location.search]);
 
   return null;
 }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,14 +15,11 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "Soluções", href: "/#solucoes" },
-    { label: "Projetos", href: "/#projetos" },
-    { label: "Contato", href: "/#contato" },
-    { 
-      label: "Marcos Ferreira", 
-      href: "https://mobcontent.com.br/marcos-ferreira/",
-      external: true
-    }
+    { label: "IA", href: "/ai" },
+    { label: "Apps", href: "/desenvolvimento-apps" },
+    { label: "Audiovisual", href: "/video-production" },
+    { label: "Sobre a mob", href: "/sobre" },
+    { label: "Contato", href: "/#contato" }
   ];
 
   return (
@@ -34,11 +30,11 @@ export const Navigation = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <div className="flex items-center">
-            <a href="/" className="text-xl font-black">
+          <div className="flex items-center min-w-0">
+            <a href="/" className="text-lg sm:text-xl font-black truncate">
               mob<span className="text-forest">CONTENT</span>
             </a>
           </div>
@@ -58,19 +54,6 @@ export const Navigation = () => {
                 {item.label}
               </a>
             ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <a href="#contato" className="inline-flex">
-              <Button 
-                size="sm"
-                className="bg-forest hover:bg-forest-dark text-white font-semibold forest-glow"
-              >
-                Começar projeto
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -100,15 +83,6 @@ export const Navigation = () => {
                   {item.label}
                 </a>
               ))}
-              <a href="#contato" className="inline-flex">
-                <Button 
-                  size="sm"
-                  className="w-full mt-4 bg-forest hover:bg-forest-dark text-white font-semibold"
-                >
-                  Começar projeto
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </a>
             </div>
           </div>
         )}

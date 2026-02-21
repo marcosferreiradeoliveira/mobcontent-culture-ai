@@ -9,6 +9,7 @@ import AI from "./pages/AI";
 import ProducaoAudiovisual from "./pages/ProducaoAudiovisual";
 import DesenvolvimentoApps from "./pages/DesenvolvimentoApps";
 import Portfolio from "./pages/Portfolio";
+import SobreMob from "./pages/SobreMob";
 import NotFound from "./pages/NotFound";
 import { PageViewTracker } from "./components/Analytics/PageViewTracker";
 import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/producao-audiovisual" element={<ProducaoAudiovisual />} />
           <Route path="/desenvolvimento-apps" element={<DesenvolvimentoApps />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/sobre" element={<SobreMob />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

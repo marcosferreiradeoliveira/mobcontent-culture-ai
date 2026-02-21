@@ -10,29 +10,47 @@ export const useTypingEffect = ({ text, speed = 50, delay = 0 }: TypingEffectOpt
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const ref = useRef<HTMLParagraphElement>(null);
+  const timeoutIdsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const isMountedRef = useRef(true);
 
   useEffect(() => {
+    isMountedRef.current = true;
     if (!text) return;
 
-    setIsTyping(true);
-    
-    const timer = setTimeout(() => {
+    const safeSetDisplay = (value: string) => {
+      if (isMountedRef.current) setDisplayText(value);
+    };
+    const safeSetTyping = (value: boolean) => {
+      if (isMountedRef.current) setIsTyping(value);
+    };
+
+    safeSetTyping(true);
+
+    const delayTimer = setTimeout(() => {
       let currentIndex = 0;
-      
+
       const typeCharacter = () => {
+        if (!isMountedRef.current) return;
         if (currentIndex <= text.length) {
-          setDisplayText(text.substring(0, currentIndex));
+          safeSetDisplay(text.substring(0, currentIndex));
           currentIndex++;
-          setTimeout(typeCharacter, speed);
+          const t = setTimeout(typeCharacter, speed);
+          timeoutIdsRef.current.push(t);
         } else {
-          setIsTyping(false);
+          safeSetTyping(false);
         }
       };
-      
+
       typeCharacter();
     }, delay);
 
-    return () => clearTimeout(timer);
+    timeoutIdsRef.current.push(delayTimer);
+
+    return () => {
+      isMountedRef.current = false;
+      timeoutIdsRef.current.forEach((id) => clearTimeout(id));
+      timeoutIdsRef.current = [];
+    };
   }, [text, speed, delay]);
 
   return {

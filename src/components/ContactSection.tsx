@@ -121,7 +121,7 @@ export const ContactSection = () => {
 
   return (
     <section 
-      className="py-32 relative overflow-hidden" 
+      className="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden" 
       id="contato"
       style={{
         backgroundImage: `url(${equipeImage})`,
@@ -137,30 +137,30 @@ export const ContactSection = () => {
         <div className="neural-grid opacity-10" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
             Vamos <span className="text-gradient-forest">Conversar</span>
           </h2>
-          <p ref={sectionDescription.ref} className={`text-xl text-white/70 max-w-3xl mx-auto leading-relaxed ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
+          <p ref={sectionDescription.ref} className={`text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed px-1 ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
             {sectionDescription.displayText}
           </p>
           <a
             href="https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 mt-4 sm:mt-6 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors text-sm sm:text-base"
             aria-label="Falar pelo WhatsApp"
           >
-            <MessageCircle className="w-5 h-5" />
+            <MessageCircle className="w-5 h-5 flex-shrink-0" />
             Falar pelo WhatsApp
           </a>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
           {/* Contact Form */}
-          <div className="bg-card/30 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
+          <div className="bg-card/30 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-6 md:p-8">
             {isSuccess ? (
               <div className="text-center p-8">
                 <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
@@ -175,7 +175,7 @@ export const ContactSection = () => {
                   </div>
                 )}
                 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-white">Nome *</Label>
                     <Input
@@ -254,9 +254,9 @@ export const ContactSection = () => {
             )}
             
             {/* Social Media Links */}
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <p className="text-white/70 mb-4 text-center">Siga-nos nas redes sociais</p>
-              <div className="flex justify-center space-x-6">
+            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10">
+              <p className="text-white/70 mb-3 sm:mb-4 text-center text-sm sm:text-base">Siga-nos nas redes sociais</p>
+              <div className="flex justify-center gap-6">
                 <a 
                   href="https://www.instagram.com/mobcontent/" 
                   target="_blank" 
@@ -280,9 +280,9 @@ export const ContactSection = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Contact Cards */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {[
                 {
                   icon: Mail,
@@ -318,50 +318,20 @@ export const ContactSection = () => {
                       className="bg-card/20 border border-white/10 rounded-xl p-6 gallery-hover hover:border-forest-accent/40 transition-all duration-300 group-hover:bg-forest/5"
                       style={{ animationDelay: `${index * 150}ms` }}
                     >
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-forest-accent/10 rounded-xl flex items-center justify-center group-hover:bg-forest-accent/20 transition-colors">
-                          <Icon className="w-6 h-6 text-forest-accent" />
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-forest-accent/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-forest-accent/20 transition-colors">
+                          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-forest-accent" />
                         </div>
-                        <div>
-                          <h3 className="text-white font-bold mb-1">{contact.title}</h3>
-                          <p className="text-forest-accent font-semibold mb-1">{contact.info}</p>
-                          <p className="text-white/60 text-sm">{contact.description}</p>
+                        <div className="min-w-0">
+                          <h3 className="text-white font-bold mb-1 text-sm sm:text-base">{contact.title}</h3>
+                          <p className="text-forest-accent font-semibold mb-1 text-sm sm:text-base break-all">{contact.info}</p>
+                          <p className="text-white/60 text-xs sm:text-sm">{contact.description}</p>
                         </div>
                       </div>
                     </div>
                   </a>
                 );
               })}
-            </div>
-
-            {/* Additional Info */}
-            <div className="bg-card/20 border border-white/10 rounded-xl p-6 h-full">
-              <h3 className="text-white font-bold text-xl mb-4">Nossa Abordagem</h3>
-              <p className="text-white/80 mb-5">Na mobCONTENT, combinamos tecnologia de ponta com narrativas culturais impactantes para criar experiências únicas e memoráveis.</p>
-              
-              <h4 className="text-forest-accent font-semibold mb-3">Nossos Diferenciais:</h4>
-              <ul className="space-y-3 text-white/80 text-sm">
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-forest-accent rounded-full mt-2 flex-shrink-0" />
-                  <span><strong>IA Generativa:</strong> Soluções personalizadas com inteligência artificial</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-forest-accent rounded-full mt-2 flex-shrink-0" />
-                  <span><strong>Storytelling Imersivo:</strong> Narrativas que engajam e emocionam</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-forest-accent rounded-full mt-2 flex-shrink-0" />
-                  <span><strong>Inovação Contínua:</strong> Sempre à frente nas últimas tendências tecnológicas</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-forest-accent rounded-full mt-2 flex-shrink-0" />
-                  <span><strong>Impacto Cultural:</strong> Projetos que fazem a diferença na sociedade</span>
-                </li>
-              </ul>
-              
-              <div className="mt-6 pt-5 border-t border-white/10">
-                <p className="text-white/60 text-sm">Agende uma consultoria gratuita e descubra como podemos elevar a presença digital da sua marca.</p>
-              </div>
             </div>
           </div>
         </div>

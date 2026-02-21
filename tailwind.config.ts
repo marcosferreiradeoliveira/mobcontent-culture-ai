@@ -73,12 +73,13 @@ export default {
 				gallery: 'hsl(var(--gallery-gray))',
 				lab: {
 					dark: 'hsl(var(--lab-dark))',
+					darker: 'hsl(var(--lab-darker))',
 					medium: 'hsl(var(--lab-medium))'
 				}
 			},
 			fontFamily: {
-				'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
-				'display': ['Inter', 'ui-sans-serif', 'system-ui']
+				'sans': ['DIN Pro', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				'display': ['DIN Pro', 'ui-sans-serif', 'system-ui', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

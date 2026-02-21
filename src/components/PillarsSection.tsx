@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Brain, Camera, Smartphone, ArrowRight } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { useState } from "react";
-import { ParticleHoverEffect } from "./ParticleHoverEffect";
 import { useNavigate } from "react-router-dom";
 import machineLearningImage from "@/assets/machine-learning.jpg";
 import texturaImage from "@/assets/textura.png";
@@ -45,7 +44,6 @@ const pillars = [
 ];
 
 export const PillarsSection = () => {
-  const [hoveredPillar, setHoveredPillar] = useState<string | null>(null);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const navigate = useNavigate();
   const sectionDescription = useTypingEffect({
@@ -62,7 +60,7 @@ export const PillarsSection = () => {
   return (
     <section 
       id="solucoes" 
-      className="py-20 relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 relative overflow-hidden"
       style={{
         backgroundImage: `url(${texturaImage})`,
         backgroundSize: 'cover',
@@ -76,32 +74,26 @@ export const PillarsSection = () => {
         <div className="neural-grid opacity-15" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4">
             Nossos <span className="text-gradient-forest">Pilares</span>
           </h2>
-          <p ref={sectionDescription.ref} className={`text-lg text-white/70 max-w-2xl mx-auto leading-relaxed ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
+          <p ref={sectionDescription.ref} className={`text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed px-1 ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
             {sectionDescription.displayText}
           </p>
         </div>
 
         {/* Pillars Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {pillars.map((pillar, index) => {
             const Icon = pillar.icon;
-            const isHovered = hoveredPillar === pillar.id;
-            
+
             return (
-              <div
-                key={pillar.id}
-                className="group relative"
-                onMouseEnter={() => setHoveredPillar(pillar.id)}
-                onMouseLeave={() => setHoveredPillar(null)}
-              >
+              <div key={pillar.id} className="group relative">
                 <div className="relative overflow-hidden rounded-2xl h-full">
-                  <ParticleHoverEffect id={pillar.id} isHovered={isHovered} />
+                  {/* Partículas desativadas para evitar "Page Unresponsive" - ver docs/PERFORMANCE.md */}
                   {pillar.backgroundImage && !imageErrors[pillar.id] && (
                     <div 
                       className="absolute inset-0 z-0 bg-cover bg-center"
@@ -119,7 +111,7 @@ export const PillarsSection = () => {
                     </div>
                   )}
                   <div 
-                    className={`relative border border-white/10 rounded-2xl p-10 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest backdrop-blur-[1px] transition-all duration-500 z-10 bg-black/40`}
+                    className={`relative border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 h-full gallery-hover hover:border-forest-accent/40 hover:shadow-forest backdrop-blur-[1px] transition-all duration-500 z-10 bg-black/40`}
                     style={{
                       transform: `translateZ(${index * 5}px) rotateY(${index * 2}deg)`,
                       animationDelay: `${index * 200}ms`

@@ -50,7 +50,7 @@ const Portfolio = () => {
     },
     {
       id: 'amanha',
-      title: "App 'Amanhã'",
+      title: "App Museu do Amanhã",
       description: 'Guia interativo do Museu do Amanhã, eleito o melhor aplicativo de Internet das Coisas (IoT) em 2016.',
       details: 'Uma ferramenta de navegação para o museu que utiliza tecnologias como beacons para interatividade contextual, enriquecendo a experiência do visitante.',
       icon: Award,

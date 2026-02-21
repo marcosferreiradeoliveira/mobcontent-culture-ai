@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
+import { trackEvent } from "@/utils/analytics";
 import { Footer } from "@/components/Footer";
 import { AIProjectCard } from "@/components/AIProjectCard";
 import { AIProjectModal } from "@/components/AIProjectModal";
@@ -13,6 +14,15 @@ import culturalArt from "@/assets/cultural-art.jpg";
 import machineLearning from "@/assets/machine-learning.jpg";
 import grioAI from "@/assets/grioai.png";
 import geminiImage from "@/assets/Gemini_Generated_Image_yrunukyrunukyrun Medium.jpeg";
+import oraculoImage from "@/assets/oraculo.png";
+import fabuladorImage from "@/assets/fabulador.png";
+import eIaProfessorImage from "@/assets/EIAlow.jpeg";
+import lobotomiaImage from "@/assets/Cartaz_Juquery2Large.jpeg";
+import imaginePromptImage from "@/assets/imageineLow.jpeg";
+import fabricaConteudoImage from "@/assets/FabricadeConeudo.png";
+import rouanetImage from "@/assets/rouanet.jpeg";
+import execucaoImage from "@/assets/execucao.jpeg";
+import growthImage from "@/assets/growth.jpeg";
 
 interface AIProject {
   id: string;
@@ -24,6 +34,7 @@ interface AIProject {
   impact: string;
   format?: string;
   image: string;
+  link?: string;
 }
 
 const aiProjects: AIProject[] = [
@@ -45,7 +56,7 @@ const aiProjects: AIProject[] = [
     detailedDescription: "O Oráculo Cultural é uma solução que utiliza uma poderosa ferramenta de inteligência artificial para auxiliar na redação e realizar uma análise estratégica de propostas culturais, comparando-as com as regras do edital para identificar falhas, inconsistências e riscos de desclassificação.",
     technologies: "Inteligência Artificial, Análise Estratégica de Dados, Plataforma de Assinatura",
     impact: "Empodera a comunidade cultural, aumentando as chances de sucesso e democratizando o acesso a recursos culturais",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2025/08/Screenshot-2025-08-26-at-18.44.22.png"
+    image: oraculoImage
   },
   {
     id: "griot-ai",
@@ -58,6 +69,57 @@ const aiProjects: AIProject[] = [
     image: grioAI
   },
   {
+    id: "fabulador",
+    title: "Fabulador",
+    shortDescription: "App com IA que ajuda a transformar relatos orais em literatura, com um agente estimulador.",
+    fullTitle: "Fabulador: Relatos Orais em Literatura com IA",
+    detailedDescription: "O Fabulador é um aplicativo com inteligência artificial que auxilia a transformar relatos orais em literatura. Um agente de IA atua como estimulador, guiando o usuário no processo de estruturação e escrita, preservando a voz e a história de cada narrador.",
+    technologies: "Inteligência Artificial, Agente Conversacional, Literatura",
+    impact: "Democratização da escrita literária a partir de histórias orais",
+    image: fabuladorImage,
+    link: "https://fabulador.web.app/"
+  },
+  {
+    id: "chief-growth-officer",
+    title: "Chief Growth Officer",
+    shortDescription: "Dashboard com IA que analisa dados de vários canais (Ads, Outbound, CRM, Produto) para identificar gargalos e sugerir estratégias de crescimento, com Gemini.",
+    fullTitle: "Chief Growth Officer",
+    detailedDescription: "Dashboard com IA que consolida e analisa dados de múltiplos canais — anúncios, outbound, CRM e produto — para identificar gargalos e sugerir estratégias de crescimento acionáveis, utilizando Gemini.",
+    technologies: "Inteligência Artificial (Gemini), Análise de Dados, Growth",
+    impact: "Decisões de crescimento baseadas em dados e recomendações acionáveis",
+    image: growthImage
+  },
+  {
+    id: "fabrica-conteudo",
+    title: "Fábrica de Conteúdo de Redes Sociais",
+    shortDescription: "Gerador em IA de vídeos, imagens, carrosséis e textos para todas as redes sociais a partir de uma ideia.",
+    fullTitle: "Fábrica de Conteúdo de Redes Sociais",
+    detailedDescription: "Solução em IA que gera vídeos, imagens, carrosséis e textos para todas as redes sociais a partir de uma única ideia. Ideal para marcas e criadores que precisam escalar conteúdo de forma consistente e criativa.",
+    technologies: "Inteligência Artificial Generativa, Redes Sociais, Vídeo e Imagem",
+    impact: "Escala e consistência de conteúdo para marcas e criadores",
+    image: fabricaConteudoImage
+  },
+  {
+    id: "analista-rouanet",
+    title: "Analista de Padrões de Rouanet",
+    shortDescription: "Ferramenta que analisa com IA padrões dos projetos de sucesso da Rouanet.",
+    fullTitle: "Analista de Padrões de Rouanet",
+    detailedDescription: "Ferramenta que utiliza inteligência artificial para analisar e identificar padrões nos projetos aprovados e de sucesso da Lei Rouanet. Ajuda proponentes e produtores culturais a entender o que funciona e a qualificar suas propostas de incentivo fiscal.",
+    technologies: "Inteligência Artificial, Análise de Dados, Lei Rouanet",
+    impact: "Qualificação de propostas e maior taxa de aprovação em editais de incentivo fiscal",
+    image: rouanetImage
+  },
+  {
+    id: "prestacao-contas-ia",
+    title: "Prestação de Contas com IA",
+    shortDescription: "Ferramenta que analisa orçamentos e notas fiscais com IA junto à Rouanet.",
+    fullTitle: "Prestação de Contas com IA",
+    detailedDescription: "Ferramenta que utiliza inteligência artificial para analisar orçamentos e notas fiscais no contexto da Lei Rouanet. Ajuda proponentes e produtores a organizar, validar e prestar contas de projetos de incentivo fiscal com mais agilidade e conformidade.",
+    technologies: "Inteligência Artificial, Análise Documental, Lei Rouanet",
+    impact: "Agilidade e conformidade na prestação de contas de projetos culturais",
+    image: execucaoImage
+  },
+  {
     id: "e-ia-professor",
     title: "E Ia, Professor?",
     shortDescription: "Série que explora como a IA está transformando o cenário educacional no Brasil, destacando oportunidades e desafios.",
@@ -65,7 +127,7 @@ const aiProjects: AIProject[] = [
     detailedDescription: "Uma série documental que apresenta um panorama crítico sobre o impacto da inteligência artificial na educação brasileira. Combinando entrevistas com especialistas, visitas a escolas e análise de políticas públicas, o projeto debate o uso da IA para a inclusão, os desafios éticos de privacidade e vieses, e como a tecnologia pode preparar alunos e educadores para o futuro.",
     technologies: "Produção Documental, Pesquisa e Análise de IA",
     impact: "Inspirar soluções práticas para a educação, promovendo um debate sobre ética e inclusão",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2025/08/profess.jpg"
+    image: eIaProfessorImage
   },
   {
     id: "lobotomia-mulheres",
@@ -76,7 +138,7 @@ const aiProjects: AIProject[] = [
     technologies: "Inteligência Artificial Generativa (para recriações históricas), Produção Documental",
     impact: "Conscientização sobre discriminação de gênero na história da medicina",
     format: "Série de 6 episódios de 20 minutos",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2025/08/mmobcontent_a_movie_poster_of_a_true_crime_documentary_with_a_l_5dc2fdcb-be2a-40c4-be0c-45ca515b27f1-1-Medium.jpeg"
+    image: lobotomiaImage
   },
   {
     id: "imagine-prompt",
@@ -86,7 +148,7 @@ const aiProjects: AIProject[] = [
     detailedDescription: "Este projeto é um longa-metragem que investiga o potencial da Inteligência Artificial como ferramenta para a criação de narrativas visuais. A iniciativa busca abrir novas e empolgantes possibilidades para a linguagem cinematográfica e para a expressão artística na era digital.",
     technologies: "Inteligência Artificial, Cinema",
     impact: "Exploração de novas fronteiras criativas e narrativas para a indústria audiovisual",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2024/11/imaginePromptPoster_Wide.jpg"
+    image: imaginePromptImage
   }
 ];
 
@@ -105,31 +167,39 @@ const AIPage = () => {
     <div className="min-h-screen bg-black text-white">
       <Navigation />
       
-      <main className="container mx-auto px-4 py-16 md:py-24">
+      <main className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-light text-white/90 mb-2 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white/90 mb-2 leading-tight">
             Inteligência Artificial para
           </h2>
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight">
             <span className="text-gradient-parallax">Narrativas</span> de Impacto
           </h1>
-          <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed px-1">
             Transformando histórias e criando impacto através da inteligência artificial
           </p>
         </motion.div>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-24">
           {aiProjects.map((project, index) => (
             <AIProjectCard
               key={project.id}
               project={project}
               index={index}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => {
+                trackEvent('project_detail_view', {
+                  event_category: 'engagement',
+                  event_label: project.title,
+                  project_id: project.id,
+                  page: '/ai'
+                });
+                setSelectedProject(project);
+              }}
             />
           ))}
         </section>

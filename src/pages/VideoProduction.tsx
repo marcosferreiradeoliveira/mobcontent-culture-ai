@@ -35,14 +35,11 @@ const VideoProduction = () => {
   }, []);
 
   const navItems = [
-    { label: "Soluções", href: "/#solucoes" },
-    { label: "Projetos", href: "/#projetos" },
-    { label: "Contato", href: "/#contato" },
-    { 
-      label: "Marcos Ferreira", 
-      href: "https://mobcontent.com.br/marcos-ferreira/",
-      external: true
-    }
+    { label: "IA", href: "/ai" },
+    { label: "Apps", href: "/desenvolvimento-apps" },
+    { label: "Audiovisual", href: "/video-production" },
+    { label: "Sobre a mob", href: "/sobre" },
+    { label: "Contato", href: "/#contato" }
   ];
 
   const titleTyping = useTypingEffect({ 
@@ -205,8 +202,8 @@ const VideoProduction = () => {
             : 'bg-transparent text-white'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <div className="flex items-center">
               <a href="/" className="text-xl font-black">
@@ -231,11 +228,6 @@ const VideoProduction = () => {
                   {item.label}
                 </a>
               ))}
-              <a href="/">
-                <Button className="bg-forest hover:bg-forest/90 text-white">
-                  Voltar para o Início
-                </Button>
-              </a>
             </div>
 
             {/* Mobile menu button */}
@@ -273,13 +265,6 @@ const VideoProduction = () => {
                 {item.label}
               </a>
             ))}
-            <a 
-              href="/" 
-              className="block py-2 text-forest font-medium"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Voltar para o Início
-            </a>
           </div>
         </div>
       </nav>
@@ -301,9 +286,9 @@ const VideoProduction = () => {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
-        <div className="relative z-20 text-center max-w-5xl mx-auto px-6 py-20">
+        <div className="relative z-20 text-center max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <h1 
-            className="text-4xl md:text-6xl font-bold text-center mb-6 max-w-4xl mx-auto"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center mb-4 sm:mb-6 max-w-4xl mx-auto"
             style={{ 
               textShadow: '0 2px 10px rgba(0,0,0,0.8)'
             }}
@@ -312,7 +297,7 @@ const VideoProduction = () => {
           </h1>
           
           <p 
-            className="text-lg md:text-xl text-center mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-center mb-6 sm:mb-8 max-w-2xl mx-auto"
             style={{ 
               textShadow: '0 1px 5px rgba(0,0,0,0.8)'
             }}
@@ -322,10 +307,10 @@ const VideoProduction = () => {
 
           <Button 
             onClick={scrollToChat}
-            className="bg-forest-accent hover:bg-forest-light text-black font-bold py-4 px-8 text-lg rounded-lg transition-all duration-300 transform hover:scale-105 forest-glow"
+            className="bg-forest-accent hover:bg-forest-light text-black font-bold py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 forest-glow"
           >
             Crie seu orçamento agora
-            <ArrowDown className="ml-2 h-5 w-5" />
+            <ArrowDown className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
         </div>
 
@@ -337,7 +322,7 @@ const VideoProduction = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 relative">
+      <section className="py-16 sm:py-20 md:py-24 relative">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0 opacity-40">
           <img 
@@ -352,12 +337,12 @@ const VideoProduction = () => {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-black text-center mb-20 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-center mb-12 sm:mb-16 md:mb-20 text-white">
             O Futuro do Vídeo, Hoje
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
             {services.map((service, index) => (
               <div 
                 key={index}
@@ -372,16 +357,16 @@ const VideoProduction = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-8">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-forest-accent/20 mb-6 group-hover:bg-forest-accent/30 transition-colors duration-300">
-                      <service.icon className="h-8 w-8 text-forest-accent" />
+                  <div className="p-5 sm:p-8">
+                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-forest-accent/20 mb-4 sm:mb-6 group-hover:bg-forest-accent/30 transition-colors duration-300">
+                      <service.icon className="h-6 w-6 sm:h-8 sm:w-8 text-forest-accent" />
                     </div>
                     
-                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-forest-accent transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white group-hover:text-forest-accent transition-colors">
                       {service.title}
                     </h3>
                     
-                    <p className="text-forest-light leading-relaxed mb-6">
+                    <p className="text-forest-light leading-relaxed text-sm sm:text-base mb-4 sm:mb-6">
                       {service.description}
                     </p>
                     
@@ -398,7 +383,7 @@ const VideoProduction = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-24 relative">
+      <section className="py-16 sm:py-20 md:py-24 relative">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0 opacity-40">
           <img 
@@ -409,15 +394,15 @@ const VideoProduction = () => {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-black text-center mb-12 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-center mb-8 sm:mb-12 text-white">
             Nossos Cases
           </h2>
-          <p className="text-xl text-forest-light text-center mb-16 max-w-4xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-forest-light text-center mb-10 sm:mb-16 max-w-4xl mx-auto px-1">
             Confira alguns dos nossos trabalhos mais recentes e inovadores na produção audiovisual.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projects.map((project) => (
               <a 
                 key={project.id}
@@ -440,12 +425,12 @@ const VideoProduction = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="text-sm text-forest-accent font-medium mb-2">{project.category}</div>
-                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-forest-accent transition-colors">
+                <div className="p-4 sm:p-6">
+                  <div className="text-xs sm:text-sm text-forest-accent font-medium mb-1 sm:mb-2">{project.category}</div>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white group-hover:text-forest-accent transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-forest-light text-sm leading-relaxed mb-4">
+                  <p className="text-forest-light text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
                     {project.description}
                   </p>
                   <div className="text-sm font-medium text-forest-accent group-hover:text-white transition-colors inline-flex items-center">
@@ -537,7 +522,7 @@ const VideoProduction = () => {
       )}
       
       {/* Human Contact Form Section */}
-      <section id="contato" className="py-24 relative">
+      <section id="contato" className="py-16 sm:py-20 md:py-24 relative">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <img 
@@ -567,19 +552,19 @@ const VideoProduction = () => {
           </div>
         )}
         
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black text-forest-light mb-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-forest-light mb-4 sm:mb-6">
               Fale com nosso time
             </h2>
-            <p className="text-xl text-forest-light/80 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-forest-light/80 max-w-2xl mx-auto">
               Preencha o formulário abaixo e nossa equipe entrará em contato o mais breve possível.
             </p>
           </div>
 
-          <div className="bg-forest-deep/80 backdrop-blur-sm rounded-2xl border border-forest-accent/20 p-8">
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-forest-deep/80 backdrop-blur-sm rounded-2xl border border-forest-accent/20 p-5 sm:p-6 md:p-8">
+            <form onSubmit={handleFormSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="block text-forest-light font-medium">Nome *</label>
                   <Input
@@ -661,9 +646,9 @@ const VideoProduction = () => {
             </form>
           </div>
           
-          <div className="mt-12 text-center text-forest-light/80">
+          <div className="mt-8 sm:mt-12 text-center text-forest-light/80 text-sm sm:text-base">
             <p>Ou se preferir, entre em contato diretamente:</p>
-            <div className="flex flex-wrap justify-center gap-6 mt-6">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 sm:mt-6">
               <a href="mailto:contato@mobcontent.com.br" className="flex items-center gap-2 hover:text-forest-accent transition-colors">
                 <Mail className="h-5 w-5" />
                 contato@mobcontent.com.br
@@ -675,13 +660,13 @@ const VideoProduction = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-forest-light/80 mb-4">Ou se preferir, fale conosco pelo WhatsApp:</p>
+          <div className="mt-6 sm:mt-8 text-center">
+            <p className="text-forest-light/80 mb-3 sm:mb-4 text-sm sm:text-base">Ou se preferir, fale conosco pelo WhatsApp:</p>
             <a 
               href="https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT." 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg transition-colors text-sm sm:text-base"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.1-.473-.148-.673.15-.197.295-.771.961-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.761-1.66-2.059-.174-.297-.018-.458.13-.606.136-.135.298-.353.446-.52.146-.181.194-.296.297-.494.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.516-.173-.008-.371-.01-.57-.01-.2 0-.523.074-.797.36-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.1 3.195 5.1 4.485.714.3 1.27.489 1.704.625.714.227 1.365.195 1.88.121.574-.09 1.758-.719 2.006-1.413.248-.691.248-1.289.173-1.413-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016a9.77 9.77 0 01-5.469-1.695l-.37-.225-3.75.975 1.005-3.645-.239-.375a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 017.022 2.9 9.85 9.85 0 01-1.43 14.896 9.8 9.8 0 01-4.69 1.267M12 2.165A9.864 9.864 0 002.929 17.25a.75.75 0 01-.09.38L1.25 22.5l4.92-1.3a.75.75 0 01.36-.09 9.864 9.864 0 009.94-9.94 9.864 9.864 0 00-9.94-9.94A9.864 9.864 0 002.25 12v.67a.75.75 0 01-1.5 0V12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10z"/>

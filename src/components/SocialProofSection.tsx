@@ -1,102 +1,55 @@
 import { Award, Globe, Trophy, Target } from "lucide-react";
 import { useState } from "react";
+import showMambembeImage from "@/assets/ShowMambembe-1536x864.jpg";
+// Parceiros – logos em assets/partners
+import imgFundacaoRobertoMarinho from "@/assets/partners/fundacao-roberto-marinho-286x300.png";
+import imgFutura from "@/assets/partners/futura.png";
+import imgMuseuAmanha from "@/assets/partners/museu-do-amanha-300x189.png";
+import imgLogoBranca from "@/assets/partners/logo-branca-300x68.png";
+import imgGovRj from "@/assets/partners/GOV-RJ-300x197.png";
+import imgSebrae from "@/assets/partners/sebrae-300x149.png";
+import imgBritishCouncil from "@/assets/partners/british-council-300x87.png";
+import imgYCEMedium from "@/assets/YCEMedium.jpeg";
+import imgMuseuLingua from "@/assets/partners/Museu-da-Lingua-Portuguesa-300x216.png";
+import imgBenfeitoria from "@/assets/partners/Benfeitoria-300x76.png";
+import imgWebedia from "@/assets/partners/webedia-group-300x75.png";
+import imgBrmalls from "@/assets/partners/brmalls-300x66.png";
+import imgCrediponto from "@/assets/partners/crediponto-300x44.png";
+import imgSistac from "@/assets/partners/sistac-logo-300x121.png";
+import imgMultiseguros from "@/assets/partners/multiseguros.png";
+import imgCebds from "@/assets/cebds.png";
+import imgCanalBrasil from "@/assets/canal-brasil-300x229.png";
+import imgSoftex from "@/assets/partners/softex-300x92.png";
+import imgRioCriativo from "@/assets/partners/rio-criativo.png";
+import imgCertificadoRioCriativo from "@/assets/certificado-rio-criativo-300x213.jpg";
+// Premiações – logos em assets/partners
+import imgGaragemMaker from "@/assets/garagem-maker-300x225.jpg";
+import imgPremioTelaViva768 from "@/assets/premio-tela-viva-768x512.jpg";
+import imgSunnySideDocAwards from "@/assets/sunny-side-doc-awards-300x225.jpg";
+import imgPttp from "@/assets/PTTP.png";
+import imgSxsw from "@/assets/sxsw.jpg";
 import theAiArtImage from "@/assets/theaiart.jpeg";
 import globalFusionImage from "@/assets/globalfusion.jpeg";
-import sxswImage from "@/assets/sxsw.jpg";
-import showMambembeImage from "@/assets/ShowMambembe-1536x864.jpg";
 
-/* Logos dos parceiros: Wikimedia Commons e fontes públicas. Preferência versão branca (filtro CSS). */
 const clients = [
-  { 
-    name: "Fundação Roberto Marinho", 
-    logo: "FRM",
-    logoImage: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Logotipo_Funda%C3%A7%C3%A3o_Roberto_Marinho_%282021%29.svg"
-  },
-  { 
-    name: "Canal Brasil",
-    logo: "CB",
-    logoImage: "https://upload.wikimedia.org/wikipedia/commons/6/62/Logo_CanalBrasil.png"
-  },
-  { 
-    name: "Futura",
-    logo: "FUT",
-    logoImage: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Canal_Futura_2022.svg"
-  },
-  { 
-    name: "Conservation International",
-    logo: "CI",
-    logoImage: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Conservation_International_logo.png"
-  },
-  { 
-    name: "Museu do Amanhã",
-    logo: "MDA",
-    logoImage: null
-  },
-  { 
-    name: "Governo do Estado do Rio de Janeiro",
-    logo: "GERJ",
-    logoImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Bras%C3%A3o_do_estado_do_Rio_de_Janeiro.svg/200px-Bras%C3%A3o_do_estado_do_Rio_de_Janeiro.svg.png"
-  },
-  { 
-    name: "Sebrae",
-    logo: "SEBRAE",
-    logoImage: "https://upload.wikimedia.org/wikipedia/commons/6/65/Sebrae_logo.png"
-  },
-  { 
-    name: "British Council",
-    logo: "BC",
-    logoImage: "https://upload.wikimedia.org/wikipedia/commons/1/19/British_Council_logo.svg"
-  },
-  { 
-    name: "Museu da Língua Portuguesa", 
-    logo: "MLP", 
-    logoImage: null
-  },
-  { 
-    name: "Benfeitoria",
-    logo: "BENF",
-    logoImage: null
-  },
-  { 
-    name: "Webedia",
-    logo: "WEB",
-    logoImage: null
-  },
-  { 
-    name: "BR Malls",
-    logo: "BRMALLS",
-    logoImage: null
-  },
-  { 
-    name: "Credipronto",
-    logo: "CRED",
-    logoImage: null
-  },
-  { 
-    name: "Abstartups",
-    logo: "ABST",
-    logoImage: null
-  },
-  { 
-    name: "CBEDS",
-    logo: "CEBDS",
-    logoImage: null
-  },
-  { 
-    name: "AccesoPanam",
-    logo: "AP",
-    logoImage: null
-  },
-  { 
-    name: "Sistac",
-    logo: "SIST",
-    logoImage: null
-  },
-  { 
-    name: "Multiseguros",
-    logo: "MULTI",
-    logoImage: null
-  }
+  { name: "Fundação Roberto Marinho", logo: "FRM", logoImage: imgFundacaoRobertoMarinho },
+  { name: "Canal Brasil", logo: "CB", logoImage: imgCanalBrasil },
+  { name: "Futura", logo: "FUT", logoImage: imgFutura },
+  { name: "Museu do Amanhã", logo: "MDA", logoImage: imgMuseuAmanha },
+  { name: "Governo do Estado do Rio de Janeiro", logo: "GERJ", logoImage: imgGovRj },
+  { name: "Sebrae", logo: "SEBRAE", logoImage: imgSebrae },
+  { name: "British Council", logo: "BC", logoImage: imgBritishCouncil },
+  { name: "Museu da Língua Portuguesa", logo: "MLP", logoImage: imgMuseuLingua },
+  { name: "Benfeitoria", logo: "BENF", logoImage: imgBenfeitoria },
+  { name: "Webedia", logo: "WEB", logoImage: imgWebedia },
+  { name: "BR Malls", logo: "BRMALLS", logoImage: imgBrmalls },
+  { name: "Credipronto", logo: "CRED", logoImage: imgCrediponto },
+  { name: "CEBDS", logo: "CEBDS", logoImage: imgCebds },
+  { name: "Sistac", logo: "SIST", logoImage: imgSistac },
+  { name: "Multiseguros", logo: "MULTI", logoImage: imgMultiseguros },
+  { name: "Softex", logo: "SOFTEX", logoImage: imgSoftex },
+  { name: "Logo Branca", logo: "LB", logoImage: imgLogoBranca },
+  { name: "Rio Criativo", logo: "RC", logoImage: imgRioCriativo },
 ];
 
 const awards = [
@@ -105,7 +58,7 @@ const awards = [
     title: "British Council",
     subtitle: "Young Creative Entrepreneur",
     description: "Reconhecimento internacional pela inovação em projetos culturais",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2022/12/1400226_10151692115789499_1362031008_o.jpeg",
+    image: imgYCEMedium,
     country: "gb"
   },
   {
@@ -113,7 +66,7 @@ const awards = [
     title: "Prêmios TAL",
     subtitle: "Prêmio de TVs públicas da América Latina",
     description: "Série 'Garagem Maker' indicada a melhor interprograma",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2021/04/garagem-maker.jpg",
+    image: imgGaragemMaker,
     country: "uy"
   },
   {
@@ -121,7 +74,7 @@ const awards = [
     title: "Sunny Side of The Doc",
     subtitle: "Prêmio de melhor projeto transmídia",
     description: "Bike Lovers App de Segunda Tela no Docs Wanted",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr_Yx3fc6ALvSC7-DM1hWCeiK5oxZs5Zg6qg&s",
+    image: imgSunnySideDocAwards,
     country: "fr"
   },
   {
@@ -137,7 +90,7 @@ const awards = [
     title: "Power To The Pixel",
     subtitle: "Selecionado brasileiro para competição internacional",
     description: "Projeto selecionado para competição internacional de projetos Transmídia",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2025/07/Screenshot-2025-07-30-at-17.17.24.png",
+    image: imgPttp,
     country: "gb"
   },
   {
@@ -150,26 +103,26 @@ const awards = [
   },
   {
     icon: Trophy,
-    title: "Culture Shift",
-    subtitle: "Evento do British Council",
-    description: "Edição realizada no Brasil com a empresa Technology Will Save Us",
-    image: "https://cms.mobcontent.com.br/wp-content/uploads/2024/03/14662161862_d6f780bd6c_o.jpg",
+    title: "Prêmio Tela Viva",
+    subtitle: "Reconhecimento em produção audiovisual",
+    description: "Premiação em produção para TV e streaming",
+    image: imgPremioTelaViva768,
     country: "br"
   },
   {
-    icon: Target,
-    title: "MICSUR",
-    subtitle: "Mercado de Indústrias Culturais da América Latina",
-    description: "Selecionado para caravana brasileira no evento",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpwQ0IsreJNSGFcOHcFyCJdtSjqqPjvzX4WQ&s",
-    country: "ar"
+    icon: Award,
+    title: "Rio Criativo",
+    subtitle: "Certificado Rio Criativo",
+    description: "Reconhecimento em projetos culturais do Rio de Janeiro",
+    image: imgCertificadoRioCriativo,
+    country: "br"
   },
   {
     icon: Award,
     title: "SXSW",
     subtitle: "Selecionado pela Apex Brasil",
     description: "Participação com stand no evento",
-    image: sxswImage,
+    image: imgSxsw,
     country: "us"
   }
 ];
@@ -179,7 +132,7 @@ export const SocialProofSection = () => {
 
   return (
     <section 
-      className="py-20 bg-lab-darker relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 bg-lab-darker relative overflow-hidden"
       style={{
         backgroundImage: `url(${showMambembeImage})`,
         backgroundSize: 'cover',
@@ -192,21 +145,21 @@ export const SocialProofSection = () => {
         <div className="neural-grid opacity-5" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Clients Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+        <div className="mb-12 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 sm:mb-4">
               Clientes que <span className="text-gradient-forest">Confiam</span>
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-2xl mx-auto px-1">
               Grandes instituições culturais e marcas escolhem a mobCONTENT 
               para transformar suas narrativas
             </p>
           </div>
 
           {/* Clients Grid */}
-          <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3">
             {clients.map((client, index) => (
               <div
                 key={client.name}
@@ -216,18 +169,18 @@ export const SocialProofSection = () => {
                   transform: `translateZ(${index * 2}px)`
                 }}
               >
-                <div className={`${client.name === 'Fundação Roberto Marinho' ? 'h-40' : 'h-28'} bg-card/20 rounded-lg flex items-center justify-center p-6`}>
+                <div className="aspect-square w-full bg-card/20 rounded-lg flex items-center justify-center p-3 sm:p-4">
                   {client.logoImage && !imageErrors[`client-${index}`] ? (
                     <img 
                       src={client.logoImage} 
                       alt={client.name} 
-                      className={`mx-auto logo-parceiro-branco ${client.name === 'Fundação Roberto Marinho' ? 'h-28 w-auto' : 'h-16 w-auto'}`}
+                      className="mx-auto logo-parceiro-branco max-h-full max-w-full w-full h-full object-contain"
                       style={{ objectFit: 'contain' }}
                       onError={() => setImageErrors(prev => ({ ...prev, [`client-${index}`]: true }))}
                     />
                   ) : (
-                    <div className="h-16 w-16 bg-forest-accent/10 rounded-lg flex items-center justify-center">
-                      <span className="text-forest font-bold text-sm">{client.logo}</span>
+                    <div className="h-12 w-12 bg-forest-accent/10 rounded-lg flex items-center justify-center">
+                      <span className="text-forest font-bold text-xs">{client.logo}</span>
                     </div>
                   )}
                 </div>
@@ -237,41 +190,41 @@ export const SocialProofSection = () => {
         </div>
 
         {/* Numbers Section */}
-        <div className="mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-card/20 rounded-xl p-6 text-center test-change">
-              <div className="text-4xl md:text-5xl font-black text-forest mb-2">50+</div>
-              <div className="text-white/80 uppercase">projetos Culturais</div>
+        <div className="mb-12 sm:mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
+            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center test-change">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">50+</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">projetos Culturais</div>
             </div>
-            <div className="bg-card/20 rounded-xl p-6 text-center">
-              <div className="text-4xl md:text-5xl font-black text-forest mb-2">400+</div>
-              <div className="text-white/80 uppercase">Videos Produzidos</div>
+            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">400+</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">Videos Produzidos</div>
             </div>
-            <div className="bg-card/20 rounded-xl p-6 text-center">
-              <div className="text-4xl md:text-5xl font-black text-forest mb-2">20+</div>
-              <div className="text-white/80 uppercase">Apps Produzidos</div>
+            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">20+</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">Apps Produzidos</div>
             </div>
-            <div className="bg-card/20 rounded-xl p-6 text-center">
-              <div className="text-4xl md:text-5xl font-black text-forest mb-2">15+</div>
-              <div className="text-white/80 uppercase">Anos no Mercado</div>
+            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">15+</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">Anos no Mercado</div>
             </div>
           </div>
         </div>
 
         {/* Awards Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+        <div className="mb-12 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 sm:mb-4">
               Reconhecimento <span className="text-gradient-forest">Internacional</span>
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-2xl mx-auto px-1">
               Nosso trabalho é reconhecido globalmente por sua excelência 
               e impacto transformador na cultura
             </p>
           </div>
 
           {/* Awards Grid */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {awards.map((award, index) => {
               const Icon = award.icon;
               
@@ -304,17 +257,17 @@ export const SocialProofSection = () => {
                     </div>
                   )}
                   
-                  <div className="relative z-10 bg-card/20 border-2 border-white/15 rounded-xl p-8 h-full">
+                  <div className="relative z-10 bg-card/20 border-2 border-white/15 rounded-xl p-5 sm:p-8 h-full">
                     {/* Icon */}
-                    <div className="mb-6">
-                      <div className="w-12 h-12 bg-forest-accent/10 rounded-xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">
-                        <Icon className="w-6 h-6 text-forest group-hover:scale-125 filter-forest transition-all duration-300" />
+                    <div className="mb-4 sm:mb-6">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-forest-accent/10 rounded-xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-forest group-hover:scale-125 filter-forest transition-all duration-300" />
                       </div>
                     </div>
 
                     {/* Content */}
                     <div>
-                      <h3 className="text-sm font-bold text-white mb-1 group-hover:text-forest-light transition-colors duration-300">
+                      <h3 className="text-xs sm:text-sm font-bold text-white mb-1 group-hover:text-forest-light transition-colors duration-300">
                         {award.title}
                       </h3>
                       <p className="text-forest font-semibold text-xs mb-1">

@@ -12,6 +12,7 @@ interface AIProject {
   impact: string;
   format?: string;
   image: string;
+  link?: string;
 }
 
 interface AIProjectModalProps {
@@ -38,7 +39,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 50 }}
           transition={{ type: "spring", duration: 0.5 }}
-          className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-xl border border-white/20 rounded-3xl"
+          className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-gray-900/98 backdrop-blur-xl border border-white/20 rounded-3xl"
         >
           {/* Close Button */}
           <Button
@@ -85,7 +86,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
                 </div>
                 Sobre o Projeto
               </h3>
-              <p className="text-white/90 leading-relaxed text-lg">
+              <p className="text-gray-200 leading-relaxed text-lg">
                 {project.detailedDescription}
               </p>
             </div>
@@ -118,7 +119,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
                 </div>
                 Impacto
               </h3>
-              <p className="text-white/90 leading-relaxed">
+              <p className="text-gray-200 leading-relaxed">
                 {project.impact}
               </p>
             </div>
@@ -127,7 +128,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
             {project.format && (
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-white">Formato</h3>
-                <p className="text-forest-light font-medium">
+                <p className="text-gray-200 font-medium">
                   {project.format}
                 </p>
               </div>
@@ -146,12 +147,14 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
                 >
                   <a 
                     href={
-                      project.id === "museum-black-memory" 
+                      project.link
+                        ? project.link
+                        : project.id === "museum-black-memory" 
                         ? "https://www.instagram.com/museudamemorianegraemia/" 
                         : project.id === "oraculo-cultural"
                         ? "https://oraculocultural.com.br/"
                         : project.id === "griot-ai"
-                        ? "https://grioai.com.br/"
+                        ? "https://grioai-20163.web.app/"
                         : project.id === "e-ia-professor"
                         ? "https://www.youtube.com/watch?v=5KkIA1xMxuI"
                         : project.id === "lobotomia-mulheres"
@@ -161,6 +164,7 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
                         : "#contato"
                     }
                     target={
+                      project.link ||
                       project.id === "museum-black-memory" || 
                       project.id === "oraculo-cultural" ||
                       project.id === "griot-ai" ||
@@ -173,7 +177,9 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
                     rel="noopener noreferrer"
                   >
                     {
-                      project.id === "museum-black-memory" 
+                      project.link
+                        ? "Acessar site"
+                        : project.id === "museum-black-memory" 
                         ? "Saiba mais" 
                         : project.id === "oraculo-cultural"
                         ? "Acessar site"

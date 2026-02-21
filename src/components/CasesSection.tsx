@@ -8,7 +8,7 @@ import oraculoImage from "@/assets/oraculo.png";
 import grioAIImage from "@/assets/grioai.png";
 import falatorioImage from "@/assets/falatorio.jpeg";
 import tomzeImage from "@/assets/TomZe-768x576.jpg";
-import mdaImage from "@/assets/mda.jpeg";
+import museuAmanhaImage from "@/assets/MuseuDoAmanha-300x277.png";
 import geminiImage from "@/assets/Gemini_Generated_Image_yrunukyrunukyrun Medium.jpeg";
 import { SectionTracker } from "@/components/Analytics/SectionTracker";
 
@@ -50,7 +50,7 @@ const cases = [
       { icon: Users, label: "Acessibilidade completa" },
       { icon: Globe, label: "Popups interativos nos locais de exposição" }
     ],
-    image: mdaImage,
+    image: museuAmanhaImage,
     color: "forest-light",
     videoUrl: "https://www.youtube.com/watch?v=JFg02dn56qU"
   },
@@ -59,7 +59,7 @@ const cases = [
     category: "IA",
     title: "Griô AI",
     subtitle: "História de Baquaqua com IA",
-    description: "Descubra a história de Baquaqua através de documentos reais com a ajuda de um agente IA.",
+    description: "Um agente de IA que conduz pela história de Baquaqua com documentos reais.",
     achievements: [
       { icon: Award, label: "Selecionado Lei Aldir Blanc" },
       { icon: Users, label: "Vídeos gerados por IA" }
@@ -104,7 +104,7 @@ export const CasesSection = () => {
   });
 
   return (
-    <section id="projetos" className="py-32 bg-black relative overflow-hidden">
+    <section id="projetos" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-black relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <img src={imaginePosters} alt="" className="parallax-bg-image opacity-10" />
@@ -113,25 +113,25 @@ export const CasesSection = () => {
         <div className="neural-grid opacity-10" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <SectionTracker sectionName="Cases de Sucesso">
           {/* Section Header */}
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
               Cases de <span className="text-gradient-forest">Sucesso</span>
             </h2>
-            <p ref={sectionDescription.ref} className={`text-xl text-white/70 max-w-3xl mx-auto leading-relaxed ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
+            <p ref={sectionDescription.ref} className={`text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
               {sectionDescription.displayText}
             </p>
           </div>
         </SectionTracker>
 
         {/* Cases Grid - Compact Cards */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
           {cases.map((caseItem, index) => (
             <SectionTracker key={caseItem.id} sectionName={`Case View - ${caseItem.title}`}>
               <div
-                className="bg-card/30 backdrop-blur-sm border border-white/10 rounded-xl p-6 group transition-all duration-300 hover:bg-card/50 hover:border-forest-accent/30"
+                className="bg-card/30 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 group transition-all duration-300 hover:bg-card/50 hover:border-forest-accent/30"
                 onClick={() => {
                   trackEvent('case_view', {
                     event_category: 'engagement',
@@ -142,7 +142,7 @@ export const CasesSection = () => {
                 }}
               >
                 {/* Content */}
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   {/* Category Badge */}
                   <div className="inline-flex items-center px-3 py-1.5 bg-forest-accent/25 rounded-full">
                     <div className="w-2 h-2 bg-forest-accent rounded-full mr-2" />
@@ -150,7 +150,7 @@ export const CasesSection = () => {
                   </div>
 
                   {/* Project Image */}
-                  <div className="aspect-[4/3] bg-gradient-to-br from-forest-accent/25 to-white/10 rounded-lg border border-white/20 backdrop-blur-sm overflow-hidden">
+                  <div className="aspect-[4/3] min-h-[140px] sm:min-h-0 bg-gradient-to-br from-forest-accent/25 to-white/10 rounded-lg border border-white/20 backdrop-blur-sm overflow-hidden">
                     {!imageErrors[caseItem.id] ? (
                       <img 
                         src={caseItem.image} 
@@ -168,17 +168,17 @@ export const CasesSection = () => {
                   </div>
 
                   {/* Title */}
-                  <div className="pt-2">
-                    <h3 className="text-lg font-black text-white mb-1 group-hover:text-forest-light transition-colors">
+                  <div className="pt-1 sm:pt-2">
+                    <h3 className="text-base sm:text-lg font-black text-white mb-1 group-hover:text-forest-light transition-colors">
                       {caseItem.title}
                     </h3>
-                    <p className="text-xs text-forest-light font-medium">
+                    <p className="text-xs text-forest-light font-medium line-clamp-1">
                       {caseItem.subtitle}
                     </p>
                   </div>
 
                   {/* Description */}
-                  <p className="text-white/80 text-sm leading-relaxed">
+                  <p className="text-white/80 text-xs sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-none">
                     {caseItem.description}
                   </p>
 
@@ -201,7 +201,7 @@ export const CasesSection = () => {
                   <a 
                     href={
                       caseItem.id === 'oraculo' ? 'https://oraculocultural.com.br' :
-                      caseItem.id === 'griot-ai' ? 'https://grioai.com.br/' :
+                      caseItem.id === 'griot-ai' ? 'https://grioai-20163.web.app/' :
                       caseItem.id === 'falatorio-ruas' ? 'https://www.falatorionarua.com.br/' :
                       caseItem.id === 'memoria-negra' ? 'https://mobcontent.com.br/museudamemorianegraemia/' :
                       caseItem.videoUrl || '#'
@@ -222,7 +222,7 @@ export const CasesSection = () => {
                           event_category: 'outbound',
                           event_label: caseItem.title,
                           link_url: caseItem.id === 'oraculo' ? 'https://oraculocultural.com.br' :
-                                    caseItem.id === 'griot-ai' ? 'https://grioai.com.br/' :
+                                    caseItem.id === 'griot-ai' ? 'https://grioai-20163.web.app/' :
                                     caseItem.id === 'falatorio-ruas' ? 'https://www.falatorionarua.com.br/' :
                                     caseItem.id === 'memoria-negra' ? 'https://mobcontent.com.br/museudamemorianegraemia/' : '#'
                         });
@@ -237,7 +237,7 @@ export const CasesSection = () => {
       event_category: 'engagement',
       event_label: `View Project: ${caseItem.title}`,
       link_url: caseItem.id === 'oraculo' ? 'https://oraculocultural.com.br' :
-               caseItem.id === 'griot-ai' ? 'https://grioai.com.br/' :
+               caseItem.id === 'griot-ai' ? 'https://grioai-20163.web.app/' :
                caseItem.id === 'falatorio-ruas' ? 'https://www.falatorionarua.com.br/' :
                caseItem.id === 'memoria-negra' ? 'https://mobcontent.com.br/museudamemorianegraemia/' : '#'
     });
@@ -255,9 +255,9 @@ export const CasesSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-24">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white">
+        <div className="text-center mt-16 sm:mt-20 md:mt-24">
+          <div className="space-y-4 sm:space-y-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-white px-2">
               Pronto para criar algo revolucionário?
             </h3>
             <a href="#contato">
