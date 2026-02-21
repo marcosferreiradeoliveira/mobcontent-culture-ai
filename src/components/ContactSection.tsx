@@ -160,7 +160,7 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
           {/* Contact Form */}
-          <div className="bg-card/30 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-6 md:p-8">
+          <div className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-6 md:p-8">
             {isSuccess ? (
               <div className="text-center p-8">
                 <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
@@ -183,7 +183,7 @@ export const ContactSection = () => {
                       name="name"
                       type="text"
                       required
-                      className="bg-card/50 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
+                      className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
                       placeholder="Seu nome completo"
                       disabled={isSubmitting}
                     />
@@ -195,7 +195,7 @@ export const ContactSection = () => {
                       name="email"
                       type="email"
                       required
-                      className="bg-card/50 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
+                      className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
                       placeholder="seu@email.com"
                       disabled={isSubmitting}
                     />
@@ -208,7 +208,7 @@ export const ContactSection = () => {
                     id="company"
                     name="company"
                     type="text"
-                    className="bg-card/50 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
+                    className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
                     placeholder="Nome da sua organização"
                     disabled={isSubmitting}
                   />
@@ -221,7 +221,7 @@ export const ContactSection = () => {
                     name="message"
                     required
                     rows={5}
-                    className="bg-white/90 border-white/20 text-gray-900 placeholder:text-gray-500 focus:border-forest-accent resize-none"
+                    className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent resize-none"
                     placeholder="Conte-nos sobre seu projeto e como podemos ajudar..."
                     disabled={isSubmitting}
                   />
@@ -315,7 +315,7 @@ export const ContactSection = () => {
                     className="block group"
                   >
                     <div
-                      className="bg-card/20 border border-white/10 rounded-xl p-6 gallery-hover hover:border-forest-accent/40 transition-all duration-300 group-hover:bg-forest/5"
+                      className="bg-black/40 border border-white/10 rounded-xl p-6 gallery-hover hover:border-forest-accent/40 transition-all duration-300 group-hover:bg-black/60"
                       style={{ animationDelay: `${index * 150}ms` }}
                     >
                       <div className="flex items-start gap-3 sm:gap-4">

@@ -131,7 +131,7 @@ export const CasesSection = () => {
           {cases.map((caseItem, index) => (
             <SectionTracker key={caseItem.id} sectionName={`Case View - ${caseItem.title}`}>
               <div
-                className="bg-card/30 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 group transition-all duration-300 hover:bg-card/50 hover:border-forest-accent/30"
+                className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 group transition-all duration-300 hover:bg-black/70 hover:border-forest-accent/30"
                 onClick={() => {
                   trackEvent('case_view', {
                     event_category: 'engagement',
@@ -150,7 +150,7 @@ export const CasesSection = () => {
                   </div>
 
                   {/* Project Image */}
-                  <div className="aspect-[4/3] min-h-[140px] sm:min-h-0 bg-gradient-to-br from-forest-accent/25 to-white/10 rounded-lg border border-white/20 backdrop-blur-sm overflow-hidden">
+                  <div className="aspect-[4/3] min-h-[140px] sm:min-h-0 bg-gradient-to-br from-forest-accent/20 to-black/40 rounded-lg border border-white/20 backdrop-blur-sm overflow-hidden">
                     {!imageErrors[caseItem.id] ? (
                       <img 
                         src={caseItem.image} 

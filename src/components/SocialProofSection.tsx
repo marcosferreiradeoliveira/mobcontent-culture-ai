@@ -169,7 +169,7 @@ export const SocialProofSection = () => {
                   transform: `translateZ(${index * 2}px)`
                 }}
               >
-                <div className="aspect-square w-full bg-card/20 rounded-lg flex items-center justify-center p-3 sm:p-4">
+                <div className="aspect-square w-full bg-black/40 rounded-lg flex items-center justify-center p-3 sm:p-4">
                   {client.logoImage && !imageErrors[`client-${index}`] ? (
                     <img 
                       src={client.logoImage} 
@@ -192,19 +192,19 @@ export const SocialProofSection = () => {
         {/* Numbers Section */}
         <div className="mb-12 sm:mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
-            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center test-change">
+            <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center test-change">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">50+</div>
               <div className="text-white/80 uppercase text-xs sm:text-sm">projetos Culturais</div>
             </div>
-            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center">
+            <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">400+</div>
               <div className="text-white/80 uppercase text-xs sm:text-sm">Videos Produzidos</div>
             </div>
-            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center">
+            <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">20+</div>
               <div className="text-white/80 uppercase text-xs sm:text-sm">Apps Produzidos</div>
             </div>
-            <div className="bg-card/20 rounded-xl p-4 sm:p-6 text-center">
+            <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">15+</div>
               <div className="text-white/80 uppercase text-xs sm:text-sm">Anos no Mercado</div>
             </div>
@@ -257,7 +257,7 @@ export const SocialProofSection = () => {
                     </div>
                   )}
                   
-                  <div className="relative z-10 bg-card/20 border-2 border-white/15 rounded-xl p-5 sm:p-8 h-full">
+                  <div className="relative z-10 bg-black/40 border-2 border-white/15 rounded-xl p-5 sm:p-8 h-full">
                     {/* Icon */}
                     <div className="mb-4 sm:mb-6">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-forest-accent/10 rounded-xl flex items-center justify-center group-hover:bg-forest-accent/25 transition-colors duration-300 morphing-shape">

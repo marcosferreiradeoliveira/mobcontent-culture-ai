@@ -40,27 +40,19 @@ export const AIProjectCard = ({ project, index, onClick }: AIProjectCardProps) =
       className={`${getCardSize(index)} group cursor-pointer`}
       onClick={onClick}
     >
-      <div className="relative h-full bg-card/40 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-card/60 hover:border-forest-accent/40 hover:shadow-2xl hover:shadow-forest-accent/20">
+      <div className="relative h-full bg-black/60 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-black/70 hover:border-forest-accent/40 hover:shadow-2xl hover:shadow-forest-accent/20">
         {/* Background Image */}
-        <div className="absolute inset-0 opacity-50 group-hover:opacity-70 transition-opacity duration-500">
+        <div className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500">
           <img 
             src={project.image} 
             alt={project.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
         </div>
 
         {/* Content */}
         <div className="relative z-10 h-full p-6 md:p-8 flex flex-col">
-          {/* Category Badge */}
-          <div className="mb-4">
-            <div className="inline-flex items-center px-4 py-2 bg-forest-accent/25 backdrop-blur-sm rounded-full">
-              <div className="w-2 h-2 bg-forest-accent rounded-full mr-2 animate-pulse" />
-              <span className="text-forest-accent font-bold text-sm">IA</span>
-            </div>
-          </div>
-
           {/* Project Content */}
           <div className="mt-auto space-y-4">
             <h3 className="text-2xl md:text-3xl font-bold text-white">

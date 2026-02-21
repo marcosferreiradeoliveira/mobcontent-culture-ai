@@ -23,6 +23,7 @@ import fabricaConteudoImage from "@/assets/FabricadeConeudo.png";
 import rouanetImage from "@/assets/rouanet.jpeg";
 import execucaoImage from "@/assets/execucao.jpeg";
 import growthImage from "@/assets/growth.jpeg";
+import aiPageBg from "@/assets/fundoIA.jpeg";
 
 interface AIProject {
   id: string;
@@ -41,9 +42,9 @@ const aiProjects: AIProject[] = [
   {
     id: "museum-black-memory",
     title: "Museu da Memória Negra em IA",
-    shortDescription: "Resgate da história afro-brasileira com IA generativa para recriar momentos sem registros pictóricos.",
-    fullTitle: "Museu da Memória Negra em IA: Resgatando Memórias Culturais",
-    detailedDescription: "Este projeto emprega IA generativa para criar representações visuais fotorrealistas de momentos significativos da história afro-brasileira que carecem de registros. Ao aliar pesquisa histórica detalhada com tecnologia de ponta, o museu preenche lacunas na memória e promove a inclusão. O projeto foi exposto na Alemanha e Áustria.",
+    shortDescription: "Reimaginação artística e poética de grandes nomes da história negra brasileira.",
+    fullTitle: "Museu da Memória Negra em IA",
+    detailedDescription: "Reimaginação artística e poética de grandes nomes da história negra brasileira, com IA generativa. O projeto cria representações visuais que preenchem lacunas na memória e promovem a inclusão. Foi exposto na Alemanha e Áustria.",
     technologies: "Inteligência Artificial Generativa, Pesquisa Histórica",
     impact: "Resgate e inclusão memorial da história afro-brasileira",
     image: geminiImage
@@ -164,7 +165,14 @@ const AIPage = () => {
   useCursorTrail();
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white relative">
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${aiPageBg})` }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 z-0 bg-black/60" aria-hidden="true" />
+      <div className="relative z-10">
       <Navigation />
       
       <main className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-7xl">
@@ -215,6 +223,7 @@ const AIPage = () => {
       </main>
       
       <Footer />
+      </div>
     </div>
   );
 };

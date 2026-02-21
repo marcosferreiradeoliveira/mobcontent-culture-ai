@@ -26,17 +26,17 @@ const AppCard = ({ title, description, technologies, category, imageUrl }: AppCa
   const [imageError, setImageError] = useState(false);
   
   return (
-    <Card className="h-full flex flex-col transition-all hover:shadow-lg hover:-translate-y-1">
+    <Card className="h-full flex flex-col transition-all hover:shadow-lg hover:-translate-y-1 text-white">
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start gap-2">
-          <CardTitle className="text-lg sm:text-xl min-w-0">{title}</CardTitle>
-          <Badge variant="outline" className="bg-forest/10 text-forest">
+          <CardTitle className="text-lg sm:text-xl min-w-0 text-white">{title}</CardTitle>
+          <Badge variant="outline" className="bg-forest/10 text-forest border-white/20">
             {category}
           </Badge>
         </div>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col">
-        <p className="text-muted-foreground mb-4 flex-1">{description}</p>
+        <p className="text-white/90 mb-4 flex-1">{description}</p>
         {imageUrl && !imageError && (
           <img 
             src={imageUrl} 
@@ -54,7 +54,7 @@ const AppCard = ({ title, description, technologies, category, imageUrl }: AppCa
         )}
         <div className="flex flex-wrap gap-2 mt-auto pt-2">
           {technologies.map((tech) => (
-            <Badge key={tech} variant="secondary" className="font-normal">
+            <Badge key={tech} variant="secondary" className="font-normal bg-white/10 text-white/90 border-white/20">
               {tech}
             </Badge>
           ))}

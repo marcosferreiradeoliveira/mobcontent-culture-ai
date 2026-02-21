@@ -19,7 +19,7 @@ export const Navigation = () => {
     { label: "Apps", href: "/desenvolvimento-apps" },
     { label: "Audiovisual", href: "/video-production" },
     { label: "Sobre a mob", href: "/sobre" },
-    { label: "Contato", href: "/#contato" }
+    { label: "Contato", href: "#contato" }
   ];
 
   return (

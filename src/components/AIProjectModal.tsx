@@ -62,11 +62,6 @@ export const AIProjectModal = ({ project, onClose }: AIProjectModalProps) => {
             
             {/* Header Content */}
             <div className="absolute bottom-8 left-8 right-16">
-              <div className="inline-flex items-center px-4 py-2 bg-forest-accent/25 backdrop-blur-sm rounded-full mb-4">
-                <div className="w-2 h-2 bg-forest-accent rounded-full mr-2 animate-pulse" />
-                <span className="text-forest-accent font-bold text-sm">IA</span>
-              </div>
-              
               <h2 className="text-3xl md:text-4xl font-black text-white mb-2">
                 {project.fullTitle}
               </h2>

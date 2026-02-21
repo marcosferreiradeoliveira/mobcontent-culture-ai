@@ -5,6 +5,12 @@ import { ContactSection } from "@/components/ContactSection";
 import { PageViewTracker } from "@/components/Analytics/PageViewTracker";
 import { motion } from "framer-motion";
 import { Award, Lightbulb, Target, Sparkles } from "lucide-react";
+import thisIsGreatImage from "@/assets/this-is-great.jpg";
+import pequenosImage from "@/assets/Pequenos.jpg";
+import gambiarraImage from "@/assets/gambiarra.jpg";
+import sunnySideImage from "@/assets/sunny-side-doc-awards.jpg";
+import premioTelaVivaImage from "@/assets/premio-tela-viva-768x512.jpg";
+import showMambembeBg from "@/assets/ShowMambembe-1536x864.jpg";
 
 const SobreMob = () => {
   useEffect(() => {
@@ -38,8 +44,8 @@ const SobreMob = () => {
     {
       id: "premios",
       icon: Award,
-      title: "Reconhecimento e marcos",
-      content: "Marcos Ferreira foi agraciado com o Young Creative Entrepreneur pelo British Council em 2013. A mobCONTENT foi destaque no Power To The Pixel (Londres, 2015). Projetos premiados: App Amanhã (melhor app IoT, 2016), Cidade Antigamente (melhor app RV, 2017), e seleção para o 14º Doc Futura (Canal Futura / Fundação Roberto Marinho, 2023). A empresa tem presença internacional (UK, USA, França, Espanha, Alemanha, Itália, Argentina)."
+      title: "Reconhecimento internacional",
+      content: "Marcos Ferreira foi agraciado com o Young Creative Entrepreneur pelo British Council em 2013. A mobCONTENT foi destaque no Power To The Pixel (Londres, 2015). Projetos premiados: App Amanhã (melhor app IoT, 2016), Cidade Antigamente (melhor app RV, 2017). A empresa tem presença internacional (UK, USA, França, Espanha, Alemanha, Itália, Argentina)."
     },
     {
       id: "hoje",
@@ -50,11 +56,16 @@ const SobreMob = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white relative">
+      <div
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
+        style={{ backgroundImage: `url(${showMambembeBg})` }}
+      />
+      <div className="fixed inset-0 bg-black/70 -z-10" aria-hidden />
       <Navigation />
       <PageViewTracker />
 
-      <main className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-4xl">
+      <main className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 max-w-5xl relative z-0">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -69,43 +80,176 @@ const SobreMob = () => {
           </p>
         </motion.header>
 
-        <div className="space-y-12 sm:space-y-16">
-          {sections.map((section, index) => (
-            <motion.section
-              key={section.id}
-              id={section.id}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="relative"
-            >
+        <div className="space-y-12 sm:space-y-20 max-w-5xl mx-auto">
+          {/* Imagem à esquerda */}
+          <motion.section
+            id="genese"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center"
+          >
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg order-2 md:order-1">
+              <img
+                src={thisIsGreatImage}
+                alt="mobCONTENT - Inovação e narrativas digitais"
+                className="w-full h-56 sm:h-64 object-cover"
+              />
+            </div>
+            <div className="order-1 md:order-2">
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-forest-accent/20 flex items-center justify-center">
-                  <section.icon className="w-5 h-5 sm:w-6 sm:h-6 text-forest-accent" />
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-forest-accent" />
                 </div>
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                    {section.title}
+                    {sections[0].title}
                   </h2>
                   <p className="text-white/85 leading-relaxed text-sm sm:text-base">
-                    {section.content}
+                    {sections[0].content}
                   </p>
                 </div>
               </div>
-            </motion.section>
-          ))}
+            </div>
+          </motion.section>
+
+          {/* Imagem à direita */}
+          <motion.section
+            id="vanguarda"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center"
+          >
+            <div>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-forest-accent/20 flex items-center justify-center">
+                  <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-forest-accent" />
+                </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                    {sections[1].title}
+                  </h2>
+                  <p className="text-white/85 leading-relaxed text-sm sm:text-base">
+                    {sections[1].content}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg">
+              <img
+                src={pequenosImage}
+                alt="Pequenos - mobCONTENT"
+                className="w-full h-56 sm:h-64 object-cover"
+              />
+            </div>
+          </motion.section>
+
+          {/* Imagem à esquerda */}
+          <motion.section
+            id="projetos"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center"
+          >
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg order-2 md:order-1">
+              <img
+                src={gambiarraImage}
+                alt="Gambiarra - mobCONTENT"
+                className="w-full h-56 sm:h-64 object-cover"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-forest-accent/20 flex items-center justify-center">
+                  <Target className="w-5 h-5 sm:w-6 sm:h-6 text-forest-accent" />
+                </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                    {sections[2].title}
+                  </h2>
+                  <p className="text-white/85 leading-relaxed text-sm sm:text-base">
+                    {sections[2].content}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* Imagem à direita */}
+          <motion.section
+            id="premios"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.24 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center"
+          >
+            <div>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-forest-accent/20 flex items-center justify-center">
+                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-forest-accent" />
+                </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                    {sections[3].title}
+                  </h2>
+                  <p className="text-white/85 leading-relaxed text-sm sm:text-base">
+                    {sections[3].content}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg">
+              <img
+                src={sunnySideImage}
+                alt="Sunny Side of the Doc - premiação"
+                className="w-full h-56 sm:h-64 object-cover"
+              />
+            </div>
+          </motion.section>
+
+          {/* Imagem à esquerda */}
+          <motion.section
+            id="hoje"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.32 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center"
+          >
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg order-2 md:order-1">
+              <img
+                src={premioTelaVivaImage}
+                alt="Prêmio Tela Viva"
+                className="w-full h-56 sm:h-64 object-cover"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-forest-accent/20 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-forest-accent" />
+                </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                    {sections[4].title}
+                  </h2>
+                  <p className="text-white/85 leading-relaxed text-sm sm:text-base">
+                    {sections[4].content}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
         </div>
 
-        <motion.div
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-16 sm:mt-20 pt-12 border-t border-white/10"
+          transition={{ delay: 0.4 }}
+          className="mt-16 sm:mt-20 text-white/70 text-sm sm:text-base leading-relaxed text-center max-w-2xl mx-auto"
         >
-          <p className="text-white/70 text-sm sm:text-base leading-relaxed text-center max-w-2xl mx-auto">
-            A trajetória da mobCONTENT ilustra como empreendimentos brasileiros no setor de tecnologia criativa podem alcançar reconhecimento nacional e internacional, combinando talento local com visão global e compromisso com a inovação com propósito.
-          </p>
-        </motion.div>
+          A trajetória da mobCONTENT ilustra como empreendimentos brasileiros no setor de tecnologia criativa podem alcançar reconhecimento nacional e internacional, combinando talento local com visão global e compromisso com a inovação com propósito.
+        </motion.p>
 
         <section className="mt-16 sm:mt-24">
           <ContactSection />
