@@ -77,28 +77,33 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <!-- Single Page Apps for GitHub Pages -->
+    <!-- Single Page Apps for GitHub Pages: corrige URL corrompida ao abrir em rota interna -->
     <script>
-      // Corrige URL ao abrir direto em rota interna (ex: /desenvolvimento-apps, /ai).
-      // Se a query estiver corrompida (?/&/~and~/...), restaura só o path. Senão, ?/rota vira /rota.
-      (function(l) {
+      function cleanUrl() {
+        var l = window.location;
         var q = l.search.slice(1);
         var hasQuery = l.search.length >= 2;
+        var hasTildeAnd = q.indexOf('~and~') !== -1;
         var isCorrupted = hasQuery && (
           q.indexOf('/&/') !== -1 ||
           q.indexOf('?/&') !== -1 ||
-          (q.match(/~and~/g) && q.match(/~and~/g).length > 1)
+          hasTildeAnd
         );
         if (isCorrupted) {
           var cleanPath = l.pathname.replace(/\/$/, '') || '/';
-          window.history.replaceState(null, null, cleanPath + (l.hash || ''));
+          window.history.replaceState(null, '', cleanPath + (l.hash || ''));
           return;
         }
         if (!hasQuery || l.search[1] !== '/') return;
         var decoded = q.split('&').map(function(s) { return s.replace(/~and~/g, '&'); }).join('?');
         if (!/^\//.test(decoded)) return;
-        window.history.replaceState(null, null, decoded + (l.hash || ''));
-      }(window.location));
+        window.history.replaceState(null, '', decoded + (l.hash || ''));
+      }
+      cleanUrl();
+      window.addEventListener('load', cleanUrl);
+      setTimeout(cleanUrl, 0);
+      setTimeout(cleanUrl, 150);
+      setTimeout(cleanUrl, 500);
     </script>
     
     <div id="root"></div>
