@@ -13,12 +13,14 @@ import SobreMob from "./pages/SobreMob";
 import NotFound from "./pages/NotFound";
 import { PageViewTracker } from "./components/Analytics/PageViewTracker";
 import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
+import { LocaleProvider } from "./i18n/LocaleContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+    <LocaleProvider>
+      <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter basename={import.meta.env.VITE_CUSTOM_DOMAIN ? '' : (import.meta.env.PROD ? '/mobcontent-culture-ai' : '')}>
@@ -38,6 +40,7 @@ const App = () => (
         <FloatingWhatsApp />
       </BrowserRouter>
     </TooltipProvider>
+    </LocaleProvider>
   </QueryClientProvider>
 );
 

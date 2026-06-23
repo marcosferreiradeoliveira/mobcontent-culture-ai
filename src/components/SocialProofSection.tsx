@@ -30,6 +30,7 @@ import imgPttp from "@/assets/PTTP.png";
 import imgSxsw from "@/assets/sxsw.jpg";
 import theAiArtImage from "@/assets/theaiart.jpeg";
 import globalFusionImage from "@/assets/globalfusion.jpeg";
+import { useLocale } from "@/i18n/LocaleContext";
 
 const clients = [
   { name: "Fundação Roberto Marinho", logo: "FRM", logoImage: imgFundacaoRobertoMarinho },
@@ -52,82 +53,24 @@ const clients = [
   { name: "Rio Criativo", logo: "RC", logoImage: imgRioCriativo },
 ];
 
-const awards = [
-  {
-    icon: Award,
-    title: "British Council",
-    subtitle: "Young Creative Entrepreneur",
-    description: "Reconhecimento internacional pela inovação em projetos culturais",
-    image: imgYCEMedium,
-    country: "gb"
-  },
-  {
-    icon: Trophy,
-    title: "Prêmios TAL",
-    subtitle: "Prêmio de TVs públicas da América Latina",
-    description: "Série 'Garagem Maker' indicada a melhor interprograma",
-    image: imgGaragemMaker,
-    country: "uy"
-  },
-  {
-    icon: Globe,
-    title: "Sunny Side of The Doc",
-    subtitle: "Prêmio de melhor projeto transmídia",
-    description: "Bike Lovers App de Segunda Tela no Docs Wanted",
-    image: imgSunnySideDocAwards,
-    country: "fr"
-  },
-  {
-    icon: Target,
-    title: "The AI Art Magazine",
-    subtitle: "Escolhido pela revista alemã",
-    description: "Selecionado com destaque pela curadora Hannah Johson com o Golden Ticket",
-    image: theAiArtImage,
-    country: "de"
-  },
-  {
-    icon: Award,
-    title: "Power To The Pixel",
-    subtitle: "Selecionado brasileiro para competição internacional",
-    description: "Projeto selecionado para competição internacional de projetos Transmídia",
-    image: imgPttp,
-    country: "gb"
-  },
-  {
-    icon: Globe,
-    title: "Global Fusion",
-    subtitle: "Exposição de arte gerada por IA",
-    description: "Obra 'Anastácia' exibida na Alemanha e Áustria",
-    image: globalFusionImage,
-    country: "at"
-  },
-  {
-    icon: Trophy,
-    title: "Prêmio Tela Viva",
-    subtitle: "Reconhecimento em produção audiovisual",
-    description: "Premiação em produção para TV e streaming",
-    image: imgPremioTelaViva768,
-    country: "br"
-  },
-  {
-    icon: Award,
-    title: "Rio Criativo",
-    subtitle: "Certificado Rio Criativo",
-    description: "Reconhecimento em projetos culturais do Rio de Janeiro",
-    image: imgCertificadoRioCriativo,
-    country: "br"
-  },
-  {
-    icon: Award,
-    title: "SXSW",
-    subtitle: "Selecionado pela Apex Brasil",
-    description: "Participação com stand no evento",
-    image: imgSxsw,
-    country: "us"
-  }
+const awardConfig = [
+  { key: "britishCouncil" as const, icon: Award, title: "British Council", image: imgYCEMedium, country: "gb" },
+  { key: "premioTal" as const, icon: Trophy, title: "Prêmios TAL", image: imgGaragemMaker, country: "uy" },
+  { key: "sunnySide" as const, icon: Globe, title: "Sunny Side of The Doc", image: imgSunnySideDocAwards, country: "fr" },
+  { key: "aiArtMagazine" as const, icon: Target, title: "The AI Art Magazine", image: theAiArtImage, country: "de" },
+  { key: "powerToPixel" as const, icon: Award, title: "Power To The Pixel", image: imgPttp, country: "gb" },
+  { key: "globalFusion" as const, icon: Globe, title: "Global Fusion", image: globalFusionImage, country: "at" },
+  { key: "telaViva" as const, icon: Trophy, title: "Prêmio Tela Viva", image: imgPremioTelaViva768, country: "br" },
+  { key: "rioCriativo" as const, icon: Award, title: "Rio Criativo", image: imgCertificadoRioCriativo, country: "br" },
+  { key: "sxsw" as const, icon: Award, title: "SXSW", image: imgSxsw, country: "us" },
 ];
 
 export const SocialProofSection = () => {
+  const { t } = useLocale();
+  const awards = awardConfig.map((award) => ({
+    ...award,
+    ...t.social.awards[award.key],
+  }));
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   return (
@@ -150,11 +93,11 @@ export const SocialProofSection = () => {
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 sm:mb-4">
-              Clientes que <span className="text-gradient-forest">Confiam</span>
+              {t.social.clientsTitle}{" "}
+              <span className="text-gradient-forest">{t.social.clientsTitleHighlight}</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-2xl mx-auto px-1">
-              Grandes instituições culturais e marcas escolhem a mobCONTENT 
-              para transformar suas narrativas
+              {t.social.clientsDescription}
             </p>
           </div>
 
@@ -194,19 +137,19 @@ export const SocialProofSection = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center test-change">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">50+</div>
-              <div className="text-white/80 uppercase text-xs sm:text-sm">projetos Culturais</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">{t.social.stats.projects}</div>
             </div>
             <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">400+</div>
-              <div className="text-white/80 uppercase text-xs sm:text-sm">Videos Produzidos</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">{t.social.stats.videos}</div>
             </div>
             <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">20+</div>
-              <div className="text-white/80 uppercase text-xs sm:text-sm">Apps Produzidos</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">{t.social.stats.apps}</div>
             </div>
             <div className="bg-black/40 rounded-xl p-4 sm:p-6 text-center">
               <div className="text-2xl sm:text-4xl md:text-5xl font-black text-forest mb-1 sm:mb-2">15+</div>
-              <div className="text-white/80 uppercase text-xs sm:text-sm">Anos no Mercado</div>
+              <div className="text-white/80 uppercase text-xs sm:text-sm">{t.social.stats.years}</div>
             </div>
           </div>
         </div>
@@ -215,11 +158,11 @@ export const SocialProofSection = () => {
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 sm:mb-4">
-              Reconhecimento <span className="text-gradient-forest">Internacional</span>
+              {t.social.awardsTitle}{" "}
+              <span className="text-gradient-forest">{t.social.awardsTitleHighlight}</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-2xl mx-auto px-1">
-              Nosso trabalho é reconhecido globalmente por sua excelência 
-              e impacto transformador na cultura
+              {t.social.awardsDescription}
             </p>
           </div>
 

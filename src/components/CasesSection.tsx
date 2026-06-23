@@ -11,96 +11,55 @@ import tomzeImage from "@/assets/TomZe-768x576.jpg";
 import museuAmanhaImage from "@/assets/MuseuDoAmanha-300x277.png";
 import geminiImage from "@/assets/Gemini_Generated_Image_yrunukyrunukyrun Medium.jpeg";
 import { SectionTracker } from "@/components/Analytics/SectionTracker";
+import { useLocale } from "@/i18n/LocaleContext";
 
-const cases = [
-  {
-    id: "oraculo",
-    category: "IA",
-    title: "Oráculo Cultural",
-    subtitle: "Agente de IA para Editais",
-    description: "Sistema de IA que avalia seu projeto e cria textos voltados a editais culturais.",
-    achievements: [
-      { icon: Users, label: "Podcasts gerados por IA" },
-      { icon: Globe, label: "Deep research de cada edital" }
-    ],
-    image: oraculoImage,
-    color: "forest-accent"
-  },
-  {
-    id: "museu-lingua",
-    category: "Audiovisual",
-    title: "Museu da Língua Portuguesa", 
-    subtitle: "Produção Audiovisual Cultural",
-    description: "Captação de mais de 120 vídeos para a exposição Linha do Tempo da Língua Portuguesa.",
-    achievements: [
-      { icon: Users, label: "Nomes como Bethânia, Gil e Arnaldo Antunes" },
-      { icon: Globe, label: "Licenciamento de acervo audiovisual histórico" }
-    ],
-    image: tomzeImage,
-    color: "forest",
-    videoUrl: "https://www.youtube.com/watch?v=Dd_TIBGHY60"
-  },
-  {
-    id: "museu-amanha",
-    category: "Apps",
-    title: "App Museu do Amanhã",
-    subtitle: "Aplicativo com audioguia e integração com beacons",
-    description: "Sistema de alertas georreferenciados para uma experiência de visitação aprimorada.",
-    achievements: [
-      { icon: Users, label: "Acessibilidade completa" },
-      { icon: Globe, label: "Popups interativos nos locais de exposição" }
-    ],
-    image: museuAmanhaImage,
-    color: "forest-light",
-    videoUrl: "https://www.youtube.com/watch?v=JFg02dn56qU"
-  },
-  {
-    id: "griot-ai",
-    category: "IA",
-    title: "Griô AI",
-    subtitle: "História de Baquaqua com IA",
-    description: "Um agente de IA que conduz pela história de Baquaqua com documentos reais.",
-    achievements: [
-      { icon: Award, label: "Selecionado Lei Aldir Blanc" },
-      { icon: Users, label: "Vídeos gerados por IA" }
-    ],
-    image: grioAIImage,
-    color: "forest-accent"
-  },
-  {
-    id: "falatorio-ruas",
-    category: "Intervenção Urbana",
-    title: "Falatório nas Ruas",
-    subtitle: "Intervenções com lambe-lambes",
-    description: "Intervenções com lambe-lambes de frases de Stella do Patrocínio pela cidade do Rio de Janeiro.",
-    achievements: [
-      { icon: Users, label: "QR code com texto curatorial" },
-      { icon: Globe, label: "Acessibilidade completa" }
-    ],
-    image: stellaImage,
-    color: "forest-light"
-  },
-  {
-    id: "memoria-negra",
-    category: "IA",
-    title: "Museu da Memória Negra em IA",
-    subtitle: "IA Generativa para Cultura",
-    description: "Projeto que usa IA generativa para recolocar expoentes da história negra em lugar de altivez",
-    achievements: [
-      { icon: Globe, label: "Exibido na Alemanha, Áustria, México e Japão" },
-      { icon: Award, label: "Escolhido pela The Ai Art Magazine (ALE)" }
-    ],
-    image: geminiImage,
-    color: "forest-accent"
-  }
+const caseConfig = [
+  { id: "oraculo" as const, image: oraculoImage, color: "forest-accent" },
+  { id: "museu-lingua" as const, image: tomzeImage, color: "forest", videoUrl: "https://www.youtube.com/watch?v=Dd_TIBGHY60" },
+  { id: "museu-amanha" as const, image: museuAmanhaImage, color: "forest-light", videoUrl: "https://www.youtube.com/watch?v=JFg02dn56qU" },
+  { id: "griot-ai" as const, image: grioAIImage, color: "forest-accent" },
+  { id: "falatorio-ruas" as const, image: stellaImage, color: "forest-light" },
+  { id: "memoria-negra" as const, image: geminiImage, color: "forest-accent" },
 ];
 
+const caseTranslationKey: Record<(typeof caseConfig)[number]["id"], "oraculo" | "museuLingua" | "museuAmanha" | "griotAi" | "falatorio" | "memoriaNegra"> = {
+  oraculo: "oraculo",
+  "museu-lingua": "museuLingua",
+  "museu-amanha": "museuAmanha",
+  "griot-ai": "griotAi",
+  "falatorio-ruas": "falatorio",
+  "memoria-negra": "memoriaNegra",
+};
+
+const caseLinks: Record<string, string> = {
+  oraculo: "https://oraculocultural.com.br",
+  "griot-ai": "https://grioai-20163.web.app/",
+  "falatorio-ruas": "https://www.falatorionarua.com.br/",
+  "memoria-negra": "https://mobcontent.com.br/museudamemorianegraemia/",
+};
+
 export const CasesSection = () => {
+  const { t } = useLocale();
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const sectionDescription = useTypingEffect({
-    text: "Projetos que demonstram nossa capacidade de integrar IA, audiovisual e apps para criar soluções culturais transformadoras",
+    text: t.cases.description,
     speed: 40,
-    delay: 500
+    delay: 500,
+  });
+
+  const cases = caseConfig.map((config) => {
+    const copy = t.cases[caseTranslationKey[config.id]];
+    return {
+      ...config,
+      category: copy.category,
+      title: copy.title,
+      subtitle: copy.subtitle,
+      description: copy.description,
+      achievements: [
+        { icon: Users, label: copy.achievements[0] },
+        { icon: config.id === "griot-ai" || config.id === "memoria-negra" ? Award : Globe, label: copy.achievements[1] },
+      ],
+    };
   });
 
   return (
@@ -118,7 +77,8 @@ export const CasesSection = () => {
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
-              Cases de <span className="text-gradient-forest">Sucesso</span>
+              {t.cases.title}{" "}
+              <span className="text-gradient-forest">{t.cases.titleHighlight}</span>
             </h2>
             <p ref={sectionDescription.ref} className={`text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
               {sectionDescription.displayText}
@@ -199,13 +159,7 @@ export const CasesSection = () => {
 
                   {/* CTA */}
                   <a 
-                    href={
-                      caseItem.id === 'oraculo' ? 'https://oraculocultural.com.br' :
-                      caseItem.id === 'griot-ai' ? 'https://grioai-20163.web.app/' :
-                      caseItem.id === 'falatorio-ruas' ? 'https://www.falatorionarua.com.br/' :
-                      caseItem.id === 'memoria-negra' ? 'https://mobcontent.com.br/museudamemorianegraemia/' :
-                      caseItem.videoUrl || '#'
-                    }
+                    href={caseLinks[caseItem.id] || caseItem.videoUrl || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full"
@@ -221,10 +175,7 @@ export const CasesSection = () => {
                         trackEvent('external_link_click', {
                           event_category: 'outbound',
                           event_label: caseItem.title,
-                          link_url: caseItem.id === 'oraculo' ? 'https://oraculocultural.com.br' :
-                                    caseItem.id === 'griot-ai' ? 'https://grioai-20163.web.app/' :
-                                    caseItem.id === 'falatorio-ruas' ? 'https://www.falatorionarua.com.br/' :
-                                    caseItem.id === 'memoria-negra' ? 'https://mobcontent.com.br/museudamemorianegraemia/' : '#'
+                          link_url: caseLinks[caseItem.id] || caseItem.videoUrl || "#",
                         });
                       }
                     }}
@@ -236,15 +187,12 @@ export const CasesSection = () => {
     trackEvent('case_study_click', {
       event_category: 'engagement',
       event_label: `View Project: ${caseItem.title}`,
-      link_url: caseItem.id === 'oraculo' ? 'https://oraculocultural.com.br' :
-               caseItem.id === 'griot-ai' ? 'https://grioai-20163.web.app/' :
-               caseItem.id === 'falatorio-ruas' ? 'https://www.falatorionarua.com.br/' :
-               caseItem.id === 'memoria-negra' ? 'https://mobcontent.com.br/museudamemorianegraemia/' : '#'
+      link_url: caseLinks[caseItem.id] || caseItem.videoUrl || "#",
     });
   }}
   className="w-full border-forest-accent text-forest-accent hover:bg-forest-accent hover:text-white transition-all duration-300 mt-4"
 >
-  Ver projeto
+  {t.cases.viewProject}
   <ArrowRight className="ml-2 w-3.5 h-3.5" />
 </Button>
                   </a>
@@ -258,14 +206,14 @@ export const CasesSection = () => {
         <div className="text-center mt-16 sm:mt-20 md:mt-24">
           <div className="space-y-4 sm:space-y-6">
             <h3 className="text-xl sm:text-2xl font-bold text-white px-2">
-              Pronto para criar algo revolucionário?
+              {t.cases.ctaTitle}
             </h3>
             <a href="#contato">
               <Button 
                 size="lg"
                 className="bg-forest hover:bg-forest-dark text-white font-semibold px-12 py-4 forest-glow morphing-shape"
               >
-                Vamos conversar sobre seu projeto
+                {t.cases.ctaButton}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </a>

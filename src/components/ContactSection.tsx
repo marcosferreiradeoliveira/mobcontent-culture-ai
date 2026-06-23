@@ -7,6 +7,7 @@ import { AnalyticsButton } from "@/components/ui/analytics-button";
 import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { trackFormSubmission, trackEvent } from "@/utils/analytics";
+import { getWhatsAppUrl, useLocale } from "@/i18n/LocaleContext";
 import equipeImage from "@/assets/equipe02-1024x683.jpg";
 
 declare global {
@@ -17,14 +18,16 @@ declare global {
 }
 
 export const ContactSection = () => {
+  const { t } = useLocale();
+  const whatsappUrl = getWhatsAppUrl(t.whatsapp.message);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const sectionDescription = useTypingEffect({
-    text: "Pronto para transformar sua visão cultural em realidade? Entre em contato e vamos criar algo extraordinário juntos.",
+    text: t.contact.description,
     speed: 30,
-    delay: 300
+    delay: 300,
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -102,10 +105,10 @@ export const ContactSection = () => {
           form_name: formName,
           error: data.error || 'Unknown error'
         });
-        throw new Error(data.error || 'Ocorreu um erro ao enviar a mensagem');
+        throw new Error(data.error || t.contact.errorGeneric);
       }
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Ocorreu um erro inesperado';
+      const errorMessage = err instanceof Error ? err.message : t.contact.errorGeneric;
       setError(errorMessage);
       // Track form error
       trackEvent('form_error', {
@@ -141,20 +144,21 @@ export const ContactSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
-            Vamos <span className="text-gradient-forest">Conversar</span>
+            {t.contact.title}{t.contact.title ? " " : ""}
+            <span className="text-gradient-forest">{t.contact.titleHighlight}</span>
           </h2>
           <p ref={sectionDescription.ref} className={`text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed px-1 ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
             {sectionDescription.displayText}
           </p>
           <a
-            href="https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT."
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-4 sm:mt-6 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors text-sm sm:text-base"
-            aria-label="Falar pelo WhatsApp"
+            aria-label={t.contact.whatsappAria}
           >
             <MessageCircle className="w-5 h-5 flex-shrink-0" />
-            Falar pelo WhatsApp
+            {t.contact.whatsapp}
           </a>
         </div>
 
@@ -164,8 +168,8 @@ export const ContactSection = () => {
             {isSuccess ? (
               <div className="text-center p-8">
                 <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">Mensagem Enviada!</h3>
-                <p className="text-white/70">Obrigado pelo seu contato. Retornaremos em breve!</p>
+                <h3 className="text-2xl font-bold text-white mb-2">{t.contact.successTitle}</h3>
+                <p className="text-white/70">{t.contact.successMessage}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -177,52 +181,52 @@ export const ContactSection = () => {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-white">Nome *</Label>
+                    <Label htmlFor="name" className="text-white">{t.contact.name}</Label>
                     <Input
                       id="name"
                       name="name"
                       type="text"
                       required
                       className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
-                      placeholder="Seu nome completo"
+                      placeholder={t.contact.namePlaceholder}
                       disabled={isSubmitting}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-white">Email *</Label>
+                    <Label htmlFor="email" className="text-white">{t.contact.email}</Label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
                       required
                       className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
-                      placeholder="seu@email.com"
+                      placeholder={t.contact.emailPlaceholder}
                       disabled={isSubmitting}
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="company" className="text-white">Empresa/Organização</Label>
+                  <Label htmlFor="company" className="text-white">{t.contact.company}</Label>
                   <Input
                     id="company"
                     name="company"
                     type="text"
                     className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent"
-                    placeholder="Nome da sua organização"
+                    placeholder={t.contact.companyPlaceholder}
                     disabled={isSubmitting}
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-white">Mensagem *</Label>
+                  <Label htmlFor="message" className="text-white">{t.contact.message}</Label>
                   <Textarea
                     id="message"
                     name="message"
                     required
                     rows={5}
                     className="bg-black/40 border-white/20 text-white placeholder:text-white/50 focus:border-forest-accent resize-none"
-                    placeholder="Conte-nos sobre seu projeto e como podemos ajudar..."
+                    placeholder={t.contact.messagePlaceholder}
                     disabled={isSubmitting}
                   />
                 </div>
@@ -240,12 +244,12 @@ export const ContactSection = () => {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="h-5 w-5 animate-spin" />
-                        Enviando...
+                        {t.contact.sending}
                       </>
                     ) : (
                       <>
                         <Send className="h-5 w-5" />
-                        Enviar Mensagem
+                        {t.contact.send}
                       </>
                     )}
                   </AnalyticsButton>
@@ -255,7 +259,7 @@ export const ContactSection = () => {
             
             {/* Social Media Links */}
             <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10">
-              <p className="text-white/70 mb-3 sm:mb-4 text-center text-sm sm:text-base">Siga-nos nas redes sociais</p>
+              <p className="text-white/70 mb-3 sm:mb-4 text-center text-sm sm:text-base">{t.contact.followUs}</p>
               <div className="flex justify-center gap-6">
                 <a 
                   href="https://www.instagram.com/mobcontent/" 
@@ -286,32 +290,34 @@ export const ContactSection = () => {
               {[
                 {
                   icon: Mail,
-                  title: "Email",
+                  title: t.contact.cards.email.title,
                   info: "contato@mobcontent.com.br",
-                  description: "Resposta em até 24h úteis"
+                  description: t.contact.cards.email.description,
+                  href: "mailto:contato@mobcontent.com.br",
                 },
                 {
                   icon: Phone,
-                  title: "WhatsApp",
+                  title: t.contact.cards.whatsapp.title,
                   info: "+55 21 96622-5632",
-                  description: "Atendimento: Seg-Sex, 9h-18h"
+                  description: t.contact.cards.whatsapp.description,
+                  href: whatsappUrl,
                 },
                 {
                   icon: MapPin,
-                  title: "Sede",
+                  title: t.contact.cards.office.title,
                   info: "Rio de Janeiro - RJ",
-                  description: "Atendemos clientes em todo o Brasil"
-                }
+                  description: t.contact.cards.office.description,
+                  href: "#",
+                },
               ].map((contact, index) => {
                 const Icon = contact.icon;
                 
                 return (
                   <a
                     key={contact.title}
-                    href={contact.title === "Email" ? "mailto:contato@mobcontent.com.br" : 
-                         contact.title === "WhatsApp" ? "https://wa.me/5521966225632?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20mobCONTENT." : "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={contact.href}
+                    target={contact.href.startsWith("http") ? "_blank" : undefined}
+                    rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="block group"
                   >
                     <div

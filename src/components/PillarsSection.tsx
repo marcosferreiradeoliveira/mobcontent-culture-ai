@@ -4,53 +4,51 @@ import { Brain, Camera, Smartphone, ArrowRight } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocale } from "@/i18n/LocaleContext";
 import machineLearningImage from "@/assets/machine-learning.jpg";
 import texturaImage from "@/assets/textura.png";
 import anastaciaImage from "@/assets/anastacia.png";
 import museuLinguaImage from "@/assets/cropped-MuseuDaLinguaPOrtuguesa2.jpg";
 import mg0671Image from "@/assets/MG_0671-1024x683.jpg";
 
-const pillars = [
+const pillarConfig = [
   {
-    id: "ia",
+    id: "ia" as const,
     icon: Brain,
-    title: "Inteligência Artificial",
-    description: "Desenvolvemos IAs generativas e narrativas interativas que revolucionam a experiência cultural. Do Oráculo Cultural ao Griot AI, criamos sistemas inteligentes que conectam pessoas à cultura de forma inovadora.",
-    highlights: ["Oráculo Cultural", "IA Generativa", "Narrativas Interativas", "Griot AI"],
     gradient: "from-forest-accent/20 to-forest-accent/5",
     backgroundImage: anastaciaImage,
-    path: '/ai'
+    path: "/ai",
   },
   {
-    id: "audiovisual",
+    id: "audiovisual" as const,
     icon: Camera,
-    title: "Produção Audiovisual",
-    description: "Criamos conteúdo audiovisual de alta qualidade para TV, streaming e instituições culturais. Séries, documentários e conteúdo de marca que transformam narrativas em experiências visuais impactantes.",
-    highlights: ["Séries & Documentários", "Conteúdo para Streaming", "TV & Marca", "Narrativas Visuais"],
     gradient: "from-forest/20 to-forest/5",
     backgroundImage: museuLinguaImage,
-    path: '/video-production'
+    path: "/video-production",
   },
   {
-    id: "apps",
+    id: "apps" as const,
     icon: Smartphone,
-    title: "Desenvolvimento de Apps",
-    description: "Desenvolvemos aplicativos para museus, turismo e clientes corporativos com experiência internacional. Soluções digitais que aproximam pessoas da cultura através da tecnologia.",
-    highlights: ["Apps para Museus", "Turismo Digital", "eTrilhas", "Clientes Internacionais"],
     gradient: "from-forest-light/20 to-forest-light/5",
     backgroundImage: mg0671Image,
-    path: '/desenvolvimento-apps'
-  }
+    path: "/desenvolvimento-apps",
+  },
 ];
 
 export const PillarsSection = () => {
+  const { t } = useLocale();
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const navigate = useNavigate();
   const sectionDescription = useTypingEffect({
-    text: "Soluções integradas que formam nossa metodologia única para transformar a interação humana com a cultura",
+    text: t.pillars.description,
     speed: 40,
-    delay: 500
+    delay: 500,
   });
+
+  const pillars = pillarConfig.map((config) => ({
+    ...config,
+    ...t.pillars[config.id],
+  }));
 
   const handlePillarClick = (path: string) => {
     navigate(path);
@@ -78,7 +76,8 @@ export const PillarsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4">
-            Nossos <span className="text-gradient-forest">Pilares</span>
+            {t.pillars.title}{" "}
+            <span className="text-gradient-forest">{t.pillars.titleHighlight}</span>
           </h2>
           <p ref={sectionDescription.ref} className={`text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed px-1 ${sectionDescription.isTyping ? 'typing-cursor' : ''}`}>
             {sectionDescription.displayText}
@@ -145,7 +144,7 @@ export const PillarsSection = () => {
                         className="w-full border-forest-accent text-forest-accent hover:bg-forest-accent hover:text-white transition-all duration-300 morphing-shape text-xs"
                         onClick={() => handlePillarClick(pillar.path)}
                       >
-                        Saiba mais
+                        {t.pillars.learnMore}
                       </AnalyticsButton>
 
                       {/* Decorative Elements */}
