@@ -6,7 +6,7 @@ import { trackEvent } from "@/utils/analytics";
 import imaginePosters from "@/assets/imagine-poster.jpg";
 import oraculoImage from "@/assets/oraculo.png";
 import grioAIImage from "@/assets/grioai.png";
-import falatorioImage from "@/assets/falatorio.jpeg";
+import stellaImage from "@/assets/Stella Medium.jpeg";
 import tomzeImage from "@/assets/TomZe-768x576.jpg";
 import museuAmanhaImage from "@/assets/MuseuDoAmanha-300x277.png";
 import geminiImage from "@/assets/Gemini_Generated_Image_yrunukyrunukyrun Medium.jpeg";
@@ -77,7 +77,7 @@ const cases = [
       { icon: Users, label: "QR code com texto curatorial" },
       { icon: Globe, label: "Acessibilidade completa" }
     ],
-    image: "https://www.falatorionarua.com.br/static/media/projeto.ff22b6d08a2d6964fe84.png",
+    image: stellaImage,
     color: "forest-light"
   },
   {

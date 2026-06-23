@@ -47,6 +47,7 @@ const VideoProduction = () => {
     { label: "Apps", href: "/desenvolvimento-apps" },
     { label: "Audiovisual", href: "/video-production" },
     { label: "Sobre a mob", href: "/sobre" },
+    { label: "Marcos Ferreira", href: "https://marcosferreira.art.br/" },
     { label: "Contato", href: "#contato" }
   ];
 
@@ -224,10 +225,11 @@ const VideoProduction = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) =>
-                item.href.startsWith('#') ? (
+                item.href.startsWith('#') || item.href.startsWith('http') ? (
                   <a
                     key={item.label}
                     href={item.href}
+                    {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     className={`text-sm font-medium hover:text-forest transition-colors ${
                       isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
                     }`}
@@ -270,10 +272,11 @@ const VideoProduction = () => {
         >
           <div className="px-6 py-4 space-y-4">
             {navItems.map((item) =>
-              item.href.startsWith('#') ? (
+              item.href.startsWith('#') || item.href.startsWith('http') ? (
                 <a
                   key={item.label}
                   href={item.href}
+                  {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className={`block py-2 hover:text-forest transition-colors ${
                     isScrolled ? 'text-gray-700 hover:text-forest' : 'text-white/90 hover:text-white'
                   }`}

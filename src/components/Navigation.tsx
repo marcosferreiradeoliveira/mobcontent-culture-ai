@@ -20,6 +20,7 @@ export const Navigation = () => {
     { label: "Apps", href: "/desenvolvimento-apps", internal: true },
     { label: "Audiovisual", href: "/video-production", internal: true },
     { label: "Sobre a mob", href: "/sobre", internal: true },
+    { label: "Marcos Ferreira", href: "https://marcosferreira.art.br/", internal: false },
     { label: "Contato", href: "#contato", internal: false }
   ];
 
@@ -57,6 +58,7 @@ export const Navigation = () => {
                 <a
                   key={item.label}
                   href={item.href}
+                  {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className={`font-medium transition-colors duration-300 hover:text-forest ${
                     isScrolled ? 'text-primary' : 'text-white'
                   }`}
@@ -96,6 +98,7 @@ export const Navigation = () => {
                   <a
                     key={item.label}
                     href={item.href}
+                    {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     className="block text-primary font-medium hover:text-forest transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
